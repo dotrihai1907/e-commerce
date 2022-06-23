@@ -21,7 +21,6 @@ function Forgot() {
               Send Code
             </div>
           </label>
-          <br />
           <input
             type="code"
             placeholder={" " + " " + "Code"}

@@ -9,6 +9,6 @@
 
 @layer components {
   .input {
-    @apply border-t-0 border-l-0 border-r-0 border-b border-black rounded-none w-[296px] h-[24px] text-[16px] leading-[19px] text-[#757575];
+    @apply border-transparent border-b border-solid border-b-black rounded-none w-[296px] h-[24px] text-[16px] leading-[19px] text-[#757575];
   }
 }

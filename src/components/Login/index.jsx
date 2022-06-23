@@ -13,7 +13,6 @@ function Login() {
             placeholder={" " + " " + "Email@mail.com"}
             className="absolute top-[80px] left-[11.65px] input"
           />
-          <br />
           <label>
             <input
               type="password"
