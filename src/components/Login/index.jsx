@@ -1,5 +1,3 @@
-import "antd/dist/antd.css";
-
 import Vector from "../../assets/vectors/Vector.png";
 
 function Login() {
@@ -12,24 +10,24 @@ function Login() {
           </h1>
           <input
             type="email"
-            placeholder="Email@mail.com"
-            className="absolute top-[80px] left-[19px] input"
+            placeholder={" " + " " + "Email@mail.com"}
+            className="absolute top-[80px] left-[11.65px] input"
           />
           <br />
           <label>
             <input
               type="password"
-              placeholder="Password"
-              className="absolute top-[132px] left-[19px] input"
+              placeholder={" " + " " + "Password"}
+              className="absolute top-[132px] left-[11.65px] input"
             />
-            <div className="absolute top-[136px] right-[16.2px] font-[700] text-[12px] leading-[14px] text-[#383737] not-italic w-[48px] h-[14px] cursor-pointer">
+            <div className="absolute flex justify-end top-[136px] right-[16.2px] font-[700] text-[12px] leading-[14px] text-[#383737] not-italic w-[48px] h-[14px] cursor-pointer">
               Forgot?
             </div>
           </label>
-          <button className="absolute top-[177px] w-[318px] bg-[#FFD333] rounded-[5px] h-[37px] font-[700] text-[24px] leading-[28.13px]">
+          <button className="absolute hover:opacity-80 top-[177px] left-[11.65px] w-[296px] bg-[#FFD333] rounded-[5px] h-[37px] font-[700] text-[24px] leading-[28.13px]">
             Login
           </button>
-          <div className="absolute cursor-pointer top-[231px] w-[319.17px] text-center font-[700] text-[14px] leading-[16px] not-italic text-[#646464]">
+          <div className="absolute cursor-pointer top-[231px] w-[319.17px] h-[37px] text-center font-[700] text-[14px] leading-[16px] not-italic text-[#646464]">
             Create An Account
           </div>
         </div>
