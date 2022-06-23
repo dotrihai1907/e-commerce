@@ -1,3 +1,5 @@
+import "./App.css";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { RedirectRole, UserRole, AdminRole } from "./pages/RouteGuard";
@@ -27,12 +29,12 @@ function App() {
       <div className="app">
         <Routes>
           <Route path="/" element={<Home />}>
-            <Route element={RedirectRole}>
-              <Route path="/forgot" element={<Forgot />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/verify" element={<Verify />} />
-            </Route>
+            {/* <Route element={RedirectRole}> */}
+            <Route path="/forgot" element={<Forgot />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/verify" element={<Verify />} />
+            {/* </Route> */}
           </Route>
 
           <Route element={UserRole}>

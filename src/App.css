@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+
+@layer base {
+  * {
+    @apply font-roboto;
+  }
+}
+
+@layer components {
+  .input {
+    @apply border-t-0 border-l-0 border-r-0 border-b border-black rounded-none w-[296px] h-[24px] text-[16px] leading-[19px] text-[#757575]
+  }
+}
