@@ -18,7 +18,6 @@
   line-height: 78px;
   border-radius: 1px;
   display: flex;
-  width: 225px;
 }
 
 .site_layout .site_layout_background {
@@ -27,11 +26,12 @@
 
 .sider {
   min-width: 225px !important;
-  background: #3D464D !important
+  background: #3D464D !important;
 }
 
 .menuBackground {
-  background: #3D464D !important
+  background: #3D464D !important;
+  border: 1px solid #3D464D
   
 }
 
