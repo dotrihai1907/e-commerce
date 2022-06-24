@@ -8,6 +8,8 @@ import Checkout from "./pages/UserScreen/Checkout";
 import ProductDetail from "./pages/UserScreen/ProductDetail";
 import ShoppingCart from "./pages/UserScreen/ShoppingCart";
 import UserDetail from "./pages/UserScreen/UserDetail";
+
+import Admin from "./pages/AdminScreen/Admin";
 import OrderDetail from "./pages/AdminScreen/OrderDetail";
 import OrderList from "./pages/AdminScreen/OrderList";
 import ProductCreate from "./pages/AdminScreen/ProductCreate";
@@ -37,28 +39,30 @@ function App() {
             {/* </Route> */}
           </Route>
 
-          <Route element={UserRole}>
-            <Route path="/" element={<Home />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/product-detail" element={<ProductDetail />} />
-            <Route path="/shopping-cart" element={<ShoppingCart />} />
-            <Route path="/user-detail" element={<UserDetail />} />
-          </Route>
+          {/* <Route element={UserRole}> */}
+          <Route path="/" element={<Home />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/product-detail" element={<ProductDetail />} />
+          <Route path="/shopping-cart" element={<ShoppingCart />} />
+          <Route path="/user-detail" element={<UserDetail />} />
+          {/* </Route> */}
 
-          <Route element={AdminRole}>
-            <Route path="/order-detail" element={<OrderDetail />} />
-            <Route path="/order-list" element={<OrderList />} />
-            <Route path="/product-create" element={<ProductCreate />} />
-            <Route path="/product-edit" element={<ProductEdit />} />
-            <Route path="/product-list" element={<ProductList />} />
-            <Route path="/user-create" element={<UserCreate />} />
+          {/* <Route element={AdminRole}> */}
+          <Route path="/admin" element={<Admin />}>
+            <Route path="/admin/order-detail" element={<OrderDetail />} />
+            <Route path="/admin/order-list" element={<OrderList />} />
+            <Route path="/admin/product-create" element={<ProductCreate />} />
+            <Route path="/admin/product-edit" element={<ProductEdit />} />
+            <Route path="/admin/product-list" element={<ProductList />} />
+            <Route path="/admin/user-create" element={<UserCreate />} />
             <Route
-              path="/user-detail-by-admin"
+              path="/admin/user-detail-by-admin"
               element={<UserDetailByAdmin />}
             />
-            <Route path="/user-list" element={<UserList />} />
-            <Route path="/user-edit" element={<UserEdit />} />
+            <Route path="/admin/user-list" element={<UserList />} />
+            <Route path="/admin/user-edit" element={<UserEdit />} />
           </Route>
+          {/* </Route> */}
         </Routes>
       </div>
     </Router>

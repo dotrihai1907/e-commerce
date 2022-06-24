@@ -2,7 +2,7 @@
 @tailwind components;
 
 @layer base {
-  * {
+  body {
     @apply font-roboto max-w-[1440px];
   }
 }
