@@ -1,0 +1,141 @@
+.orderDetail {
+  position: relative;
+  padding: 25px 35px 42px 32px;
+  font-style: normal;
+  .breadcrumb {
+    font-family: "Arial";
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #929395;
+    //-----------------------------
+    .orderList {
+      &:hover {
+        color: #ffd333;
+      }
+    }
+    //------------------------------
+    .orderId {
+      color: #929395;
+    }
+  }
+  //-----------------------------
+  .title {
+    font-family: "Work Sans";
+    margin-top: 21px;
+    .name {
+      font-weight: 600;
+      font-size: 35px;
+      line-height: 41px;
+    }
+    //-----------------------------
+    .id {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+      color: #929395;
+    }
+  }
+  //-----------------------------
+  .detail {
+    position: relative;
+    margin-top: 16px;
+    background-color: white;
+    box-shadow: 0.5px 0.5px 12px rgba(0, 0, 0, 0.25);
+    //-----------------------------
+    .updateOrder {
+      display: flex;
+      //-----------------------------
+      .date {
+        margin-top: 15px;
+        margin-left: 23px;
+        //-----------------------------
+        .created {
+          display: flex;
+          margin-bottom: 11px;
+          //-----------------------------
+          .iconCreated {
+            font-size: 20px;
+            margin-right: 3px;
+          }
+          //-----------------------------
+          .textCreated {
+            font-family: "Arial";
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 20px;
+          }
+        }
+        //-----------------------------
+        .updated {
+          display: flex;
+          margin-bottom: 11px;
+          //---------------------------
+          .iconUpdated {
+            font-size: 20px;
+            margin-right: 3px;
+          }
+          //-----------------------------
+          .textUpdated {
+            font-family: "Arial";
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 20px;
+          }
+        }
+        //-----------------------------
+        .idOrder {
+          font-family: "Work Sans";
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 19px;
+          color: #929395;
+        }
+      }
+      //-----------------------------
+      .status {
+        position: absolute;
+        left: 53.58%;
+        top: 13px;
+        font-family: "Work Sans";
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        //--------------------------
+        .selectStatus {
+          width: 193px;
+          height: 40px;
+          margin-top: 11px;
+          border-radius: 2px;
+        }
+      }
+      //-----------------------------
+      .paided {
+        position: absolute;
+        left: 73.21%;
+        top: 13px;
+        font-family: "Work Sans";
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        //--------------------------
+        .selectPaided {
+          width: 106px;
+          height: 40px;
+          margin-top: 11px;
+          border-radius: 2px;
+        }
+      }
+      //-----------------------------
+      .button {
+        position: absolute;
+        left: 85.25%;
+        top: 44px;
+        background: #ffd333;
+        border-radius: 5px;
+        width: 147px;
+        height: 40px;
+      }
+    }
+  }
+}

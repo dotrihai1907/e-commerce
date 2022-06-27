@@ -83,7 +83,7 @@ function Admin() {
             className={styles.search}
           />
 
-          <Badge count={2} className={styles.notify}>
+          <Badge count={2} color="#FFD333" className={styles.notify}>
             <FaBell className={styles.iconNotify} />
           </Badge>
 
@@ -95,6 +95,7 @@ function Admin() {
             </div>
           </div>
         </div>
+
         <div className={styles.content}>
           <Outlet />
         </div>

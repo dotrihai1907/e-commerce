@@ -6,19 +6,21 @@
   //--------------------------------
   .navigation {
     min-width: 225px;
+    width: 15.625vw;
     //--------------------------------
     .logo {
       display: flex;
       position: relative;
       align-items: center;
-      height: 78px;
-      background-color: #FFD333;
+      min-height: 78px;
+      height: 7.62%;
+      background-color: #ffd333;
       color: #000000;
       text-transform: uppercase;
       //--------------------------------
       .shopApp {
         position: absolute;
-        font-family:'Red Rose';
+        font-family: "Red Rose";
         font-size: 25px;
         width: 140px;
         left: 10.13px;
@@ -27,7 +29,7 @@
       .admin {
         position: absolute;
         right: 10.13px;
-        font-family: 'Arial';
+        font-family: "Arial";
         background: white;
         border-radius: 5px;
         font-size: 10px;
@@ -40,13 +42,13 @@
     }
     //--------------------------------
     .menu {
-      background-color: #3D464D;
-      font-family: 'Arial';
-      height: calc(1024px - 78px);
+      background-color: #3d464d;
+      font-family: "Arial";
+      height: 92.38vh;
       .application {
         font-weight: 700;
-        font-size: 12px;      
-        color: #C4C4C4;
+        font-size: 12px;
+        color: #c4c4c4;
         text-transform: uppercase;
         margin-left: 10.13px;
         height: 58px;
@@ -55,7 +57,7 @@
       //--------------------------------
       .dashboard {
         display: flex;
-        background-color: #3D464D;
+        background-color: #3d464d;
         height: 55px;
         line-height: 55px;
         margin-left: 10.13px;
@@ -63,7 +65,7 @@
         color: white;
         //-------------------------------
         .iconDashboard {
-          color:white;
+          color: white;
           font-size: 20px;
           margin-top: 15.5px;
           margin-right: 12px;
@@ -81,16 +83,16 @@
           position: relative;
           //------------------------------
           .iconProduct {
-          font-size: 20px;
-          margin-top: 15.5px;
-          margin-right: 12px;
+            font-size: 20px;
+            margin-top: 15.5px;
+            margin-right: 12px;
           }
           //------------------------------
           .iconDownProduct {
             position: absolute;
             font-size: 20px;
             margin-top: 17.5px;
-            right: 10.13px;       
+            right: 10.13px;
           }
         }
         //------------------------------
@@ -110,16 +112,16 @@
           position: relative;
           //------------------------------
           .iconUser {
-          font-size: 20px;
-          margin-top: 15.5px;
-          margin-right: 12px;
+            font-size: 20px;
+            margin-top: 15.5px;
+            margin-right: 12px;
           }
           //------------------------------
           .iconDownUser {
             position: absolute;
             font-size: 20px;
             margin-top: 17.5px;
-            right: 10.13px;       
+            right: 10.13px;
           }
         }
         //------------------------------
@@ -160,8 +162,7 @@
           position: absolute;
           font-size: 20px;
           margin-top: 17.5px;
-          right: 10.13px; 
-
+          right: 10.13px;
         }
       }
     }
@@ -170,23 +171,24 @@
   .header {
     display: flex;
     position: relative;
+    width: 84.375vw;
     height: 78px;
-    font-family: 'Arial';
+    font-family: "Arial";
     font-weight: 400;
     //-------------------------------
     .toggleMenu {
       position: absolute;
       width: 29.06px;
       height: 25.43px;
-      left: 1.74vw;
+      left: 2.06%;
       top: 26.285px;
     }
     //------------------------------
     .search {
       position: absolute;
-      left: 5.625vw;
+      left: 6.67%;
       top: 17.725px;
-      background-color: #E5E5E5;
+      background-color: #e5e5e5;
       border-radius: 5px;
       height: 42.55px;
       color: #929395;
@@ -196,7 +198,7 @@
     //------------------------------
     .notify {
       position: absolute;
-      left: 67.71vw;
+      left: 80.25%;
       top: 25.845px;
       //------------------------------
       .iconNotify {
@@ -207,8 +209,8 @@
     //------------------------------
     .admin {
       display: flex;
-      position: relative;
-      left: 71.01vw;
+      position: absolute;
+      left: 84.16%;
       //------------------------------
       .avatar {
         position: absolute;
@@ -233,8 +235,11 @@
         }
       }
     }
-
+  }
+  //------------------------------
+  .content {
+    width: 84.375vw;
+    height: 92.38vh;
+    background-color: #f5f7fa;
   }
 }
-
-
