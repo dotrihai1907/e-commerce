@@ -1,76 +1,240 @@
+.dashboard {
+  display: flex;
+  background: white;
+  font-style: normal;
+  font-weight: 700;
+  //--------------------------------
+  .navigation {
+    min-width: 225px;
+    //--------------------------------
+    .logo {
+      display: flex;
+      position: relative;
+      align-items: center;
+      height: 78px;
+      background-color: #FFD333;
+      color: #000000;
+      text-transform: uppercase;
+      //--------------------------------
+      .shopApp {
+        position: absolute;
+        font-family:'Red Rose';
+        font-size: 25px;
+        width: 140px;
+        left: 10.13px;
+      }
+      //--------------------------------
+      .admin {
+        position: absolute;
+        right: 10.13px;
+        font-family: 'Arial';
+        background: white;
+        border-radius: 5px;
+        font-size: 10px;
+        width: 53.7px;
+        height: 18px;
+        line-height: 18px;
+        text-align: center;
+        margin-left: 10.87px;
+      }
+    }
+    //--------------------------------
+    .menu {
+      background-color: #3D464D;
+      font-family: 'Arial';
+      height: calc(1024px - 78px);
+      .application {
+        font-weight: 700;
+        font-size: 12px;      
+        color: #C4C4C4;
+        text-transform: uppercase;
+        margin-left: 10.13px;
+        height: 58px;
+        line-height: 58px;
+      }
+      //--------------------------------
+      .dashboard {
+        display: flex;
+        background-color: #3D464D;
+        height: 55px;
+        line-height: 55px;
+        margin-left: 10.13px;
+        font-size: 18px;
+        color: white;
+        //-------------------------------
+        .iconDashboard {
+          color:white;
+          font-size: 20px;
+          margin-top: 15.5px;
+          margin-right: 12px;
+        }
+      }
+      //------------------------------
+      .product {
+        line-height: 55px;
+        margin-left: 10.13px;
+        font-size: 18px;
+        color: white;
+        //------------------------------
+        .subMenuProduct {
+          display: flex;
+          position: relative;
+          //------------------------------
+          .iconProduct {
+          font-size: 20px;
+          margin-top: 15.5px;
+          margin-right: 12px;
+          }
+          //------------------------------
+          .iconDownProduct {
+            position: absolute;
+            font-size: 20px;
+            margin-top: 17.5px;
+            right: 10.13px;       
+          }
+        }
+        //------------------------------
+        .itemMenuProduct {
+          margin-left: 32px;
+        }
+      }
+      //------------------------------
+      .user {
+        line-height: 55px;
+        margin-left: 10.13px;
+        font-size: 18px;
+        color: white;
+        //------------------------------
+        .subMenuUser {
+          display: flex;
+          position: relative;
+          //------------------------------
+          .iconUser {
+          font-size: 20px;
+          margin-top: 15.5px;
+          margin-right: 12px;
+          }
+          //------------------------------
+          .iconDownUser {
+            position: absolute;
+            font-size: 20px;
+            margin-top: 17.5px;
+            right: 10.13px;       
+          }
+        }
+        //------------------------------
+        .itemMenuUser {
+          margin-left: 32px;
+        }
+      }
+      //-----------------------------
+      .orders {
+        display: flex;
+        line-height: 55px;
+        margin-left: 10.13px;
+        font-size: 18px;
+        color: white;
+        //------------------------------
+        .iconOrders {
+          font-size: 20px;
+          margin-top: 15.5px;
+          margin-right: 12px;
+        }
+      }
+      //------------------------------
+      .settings {
+        display: flex;
+        position: relative;
+        line-height: 55px;
+        margin-left: 10.13px;
+        font-size: 18px;
+        color: white;
+        //------------------------------
+        .iconSettings {
+          font-size: 20px;
+          margin-top: 15.5px;
+          margin-right: 12px;
+        }
+        //------------------------------
+        .iconLeftSettings {
+          position: absolute;
+          font-size: 20px;
+          margin-top: 17.5px;
+          right: 10.13px; 
 
+        }
+      }
+    }
+  }
+  //----------------------------------
+  .header {
+    display: flex;
+    position: relative;
+    height: 78px;
+    font-family: 'Arial';
+    font-weight: 400;
+    //-------------------------------
+    .toggleMenu {
+      position: absolute;
+      width: 29.06px;
+      height: 25.43px;
+      left: 1.74vw;
+      top: 26.285px;
+    }
+    //------------------------------
+    .search {
+      position: absolute;
+      left: 5.625vw;
+      top: 17.725px;
+      background-color: #E5E5E5;
+      border-radius: 5px;
+      height: 42.55px;
+      color: #929395;
+      width: 292px;
+      font-size: 20px;
+    }
+    //------------------------------
+    .notify {
+      position: absolute;
+      left: 67.71vw;
+      top: 25.845px;
+      //------------------------------
+      .iconNotify {
+        width: 27.12px;
+        height: 26.31px;
+      }
+    }
+    //------------------------------
+    .admin {
+      display: flex;
+      position: relative;
+      left: 71.01vw;
+      //------------------------------
+      .avatar {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        top: 19px;
+      }
+      //------------------------------
+      .info {
+        margin-left: 52.89px;
+        margin-top: 20px;
+        //--------------------------
+        .name {
+          font-size: 18px;
+          line-height: 21px;
+        }
+        //------------------------
+        .role {
+          font-size: 15px;
+          color: #929395;
+          line-height: 17px;
+        }
+      }
+    }
 
-.trigger {
-  padding: 0 40px;
-  font-size: 18px;
-  line-height: 64px;
-  cursor: pointer;
-  transition: color 0.3s;
-  &:hover {
-      color: #917513 ;
   }
 }
 
 
-.logo {
-  height: 78px;
-  background-color: #FFD333;
-  line-height: 78px;
-  border-radius: 1px;
-  display: flex;
-}
-
-.site_layout .site_layout_background {
-  background: whitesmoke;
-}
-
-.sider {
-  min-width: 225px !important;
-  background: #3D464D !important;
-}
-
-.menuBackground {
-  background: #3D464D !important;
-  border: 1px solid #3D464D
-  
-}
-
-.subMenu {
-  margin-left: -13.87px !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  font-family: 'Arial';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 21px; 
-  color: white;
-  padding: 3.5px 0 !important;
-}
-
-.subItem {
-  height: 55px;
-  color: white;
-  background: #3D464D !important;
-  margin: 0  !important;
-  padding: 0px 0px 0px 53px !important;
-  font-family: 'Arial';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 21px;
-  height: 55px !important;
-}
-
-.menuItem {
-  padding-left: 10.13px !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  font-family: 'Arial';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 21px; 
-  color: white;
-  height: 55px !important;
-}

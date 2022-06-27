@@ -15,7 +15,7 @@ function Forgot() {
             <input
               type="email"
               placeholder={" " + " " + "Email@mail.com"}
-              className="absolute top-[80px] left-[11.65px] input"
+              className="absolute top-[80px] left-[11.65px] input focus:outline-none"
             />
             <div className="absolute top-[85px] right-[16.2px] font-[700] text-[12px] leading-[14px] text-[#585757] not-italic w-[89px] h-[14px] cursor-pointer flex justify-end">
               Send Code
@@ -24,7 +24,7 @@ function Forgot() {
           <input
             type="code"
             placeholder={" " + " " + "Code"}
-            className="absolute top-[132px] left-[11.65px] input"
+            className="absolute top-[132px] left-[11.65px] input focus:outline-none"
           />
           <button className="absolute hover:opacity-80 top-[177px] left-[11.65px] w-[296px] bg-[#FFD333] rounded-[5px] h-[37px] font-[700] text-[24px] leading-[28.13px]">
             Recover Password
