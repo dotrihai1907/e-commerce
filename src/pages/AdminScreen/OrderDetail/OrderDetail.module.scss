@@ -137,5 +137,156 @@
         height: 40px;
       }
     }
+    //----------------------------
+    .divider {
+      margin-top: 25px;
+      color: #929395;
+    }
+    //-----------------------------
+    .orderInfo {
+      display: flex;
+      position: relative;
+      //--------------------------
+      .customer {
+        display: flex;
+        margin-top: 11px;
+        margin-left: 35px;
+        //---------------------------
+        .circleCustomer {
+          position: relative;
+          background-color: #3d464d;
+          width: 75px;
+          height: 75px;
+          border-radius: 50%;
+          margin-right: 15px;
+          //--------------------------
+          .iconCustomer {
+            position: absolute;
+            color: #ffd333;
+            width: 30px;
+            height: 30px;
+            top: 30%;
+            left: 30%;
+          }
+        }
+        //--------------------------
+        .textCustomer {
+          font-family: "Work Sans";
+          //--------------------------
+          .nameCustomer {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 23px;
+            margin-bottom: 10px;
+          }
+          //------------------------
+          .detailCustomer {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            color: #3d464d;
+            margin-bottom: 7px;
+            //--------------------------
+            .lineSpace {
+              margin-bottom: 7px;
+            }
+          }
+        }
+      }
+      //--------------------------
+      .shipping {
+        display: flex;
+        position: absolute;
+        top: 11px;
+        left: 34.03%;
+        //--------------------------
+        .circleShipping {
+          position: relative;
+          background-color: #3d464d;
+          width: 75px;
+          height: 75px;
+          border-radius: 50%;
+          margin-right: 15px;
+          //--------------------------
+          .iconShipping {
+            position: absolute;
+            color: #ffd333;
+            width: 30px;
+            height: 30px;
+            top: 30%;
+            left: 30%;
+          }
+        }
+        //--------------------------
+        .textShipping {
+          font-family: "Work Sans";
+          //--------------------------
+          .nameShipping {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 23px;
+            margin-bottom: 10px;
+          }
+          //------------------------
+          .detailShipping {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            color: #3d464d;
+            //--------------------------
+            .lineSpace {
+              margin-bottom: 7px;
+            }
+          }
+        }
+      }
+      //--------------------------
+      .address {
+        display: flex;
+        position: absolute;
+        top: 11px;
+        left: 65.36%;
+        //--------------------------
+        .circleAddress {
+          position: relative;
+          background-color: #3d464d;
+          width: 75px;
+          height: 75px;
+          border-radius: 50%;
+          margin-right: 15px;
+          //--------------------------
+          .iconAddress {
+            position: absolute;
+            color: #ffd333;
+            width: 30px;
+            height: 30px;
+            top: 30%;
+            left: 30%;
+          }
+        }
+        //--------------------------
+        .textAddress {
+          font-family: "Work Sans";
+          //--------------------------
+          .nameAddress {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 23px;
+            margin-bottom: 10px;
+          }
+          //------------------------
+          .detailAddress {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            color: #3d464d;
+            //--------------------------
+            .lineSpace {
+              margin-bottom: 7px;
+            }
+          }
+        }
+      }
+    }
   }
 }
