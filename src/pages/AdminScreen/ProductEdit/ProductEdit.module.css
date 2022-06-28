@@ -1,0 +1,24 @@
+.heading {
+  font-family: "Work Sans";
+  font-style: normal;
+
+  font-size: 35px;
+  line-height: 41px;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: #000000;
+}
+.saveProduct {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23.46px;
+  letter-spacing: -0.02em;
+  height: 40px;
+  color: #000000;
+  background-color: #ffd333;
+  padding-right: 14px;
+  padding-left: 14px;
+  border-radius: 5px;
+}

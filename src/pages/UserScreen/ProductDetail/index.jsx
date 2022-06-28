@@ -1,5 +1,5 @@
-function ProductDetail() {
-  return <div>ProductDetail</div>;
-}
+import React from "react";
 
-export default ProductDetail;
+export default function index() {
+  return <div>index</div>;
+}

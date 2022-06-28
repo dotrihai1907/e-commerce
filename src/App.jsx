@@ -23,43 +23,47 @@ import Verify from "./components/Verify";
 
 function App() {
   return (
-    <Router>
-      <div className="app">
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route element={RedirectRole}>
-              <Route path="/forgot" element={<Forgot />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/verify" element={<Verify />} />
-            </Route>
-          </Route>
+    <ProductEdit />
+    // <ProductList />
+    // <ProductCreate />
+    // {/* <Route path="/product-detail" element={<ProductDetail />} /> */}
+    // <Router>
+    //   <div className="app">
+    //     {/* <Routes>
+    //       <Route path="/" element={<Home />}>
+    //         {/* <Route element={RedirectRole}> */}
+    //         <Route path="/forgot" element={<Forgot />} />
+    //         <Route path="/login" element={<Login />} />
+    //         <Route path="/register" element={<Register />} />
+    //         <Route path="/verify" element={<Verify />} />
+    //         {/* </Route> */}
+    //       </Route>
 
-          <Route element={UserRole}>
-            <Route path="/" element={<Home />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/product-detail" element={<ProductDetail />} />
-            <Route path="/shopping-cart" element={<ShoppingCart />} />
-            <Route path="/user-detail" element={<UserDetail />} />
-          </Route>
+    //       <Route element={UserRole}>
+    //         <Route path="/" element={<Home />} />
+    //         <Route path="/checkout" element={<Checkout />} />
+    //         <Route path="/product-detail" element={<ProductDetail />} />
+    //         <Route path="/shopping-cart" element={<ShoppingCart />} />
+    //         <Route path="/user-detail" element={<UserDetail />} />
+    //       </Route>
 
-          <Route element={AdminRole}>
-            <Route path="/order-detail" element={<OrderDetail />} />
-            <Route path="/order-list" element={<OrderList />} />
-            <Route path="/product-create" element={<ProductCreate />} />
-            <Route path="/product-edit" element={<ProductEdit />} />
-            <Route path="/product-list" element={<ProductList />} />
-            <Route path="/user-create" element={<UserCreate />} />
-            <Route
-              path="/user-detail-by-admin"
-              element={<UserDetailByAdmin />}
-            />
-            <Route path="/user-list" element={<UserList />} />
-            <Route path="/user-edit" element={<UserEdit />} />
-          </Route>
-        </Routes>
-      </div>
-    </Router>
+    //       <Route element={AdminRole}>
+    //         <Route path="/order-detail" element={<OrderDetail />} />
+    //         <Route path="/order-list" element={<OrderList />} />
+    //         <Route path="/product-create" element={<ProductCreate />} />
+    //         <Route path="/product-edit" element={<ProductEdit />} />
+    //         <Route path="/product-list" element={<ProductList />} />
+    //         <Route path="/user-create" element={<UserCreate />} />
+    //         <Route
+    //           path="/user-detail-by-admin"
+    //           element={<UserDetailByAdmin />}
+    //         />
+    //         <Route path="/user-list" element={<UserList />} />
+    //         <Route path="/user-edit" element={<UserEdit />} />
+    //       </Route>
+    //     </Routes>
+    //   </div>
+    // </Router> */}
   );
 }
 
