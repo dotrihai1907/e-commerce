@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap");
+.heading {
+  font-weight: 700;
+  font-family: "Arial";
+  font-style: normal;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: #000;
+  line-height: 25px;
+  padding: 13.5px 0px;
+  margin-left: 22px;
+}
+.categories {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+
+  letter-spacing: -0.02em;
+  color: #fff;
+  background-color: #919eab;
+  border-radius: 2px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  height: 24px;
+  padding: 0 14px;
+  margin-left: 11px;
+  margin-top: 11px;
+  gap: 0px;
+}
+.site_tag_plus {
+  /* font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  color: #fff;
+  cursor: poiter; */
+}

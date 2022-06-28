@@ -1,0 +1,44 @@
+.headingImage {
+  font-weight: 700;
+  font-family: "Arial";
+  font-style: normal;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: #000;
+  line-height: 25px;
+  padding: 13.5px 0px;
+  margin-left: 22px;
+}
+.inputFile {
+  display: none;
+}
+
+.fileBox {
+  display: inline-block;
+  width: 100%;
+  border: 1px solid #929395;
+  padding: 5px 0px 5px 5px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  height: 40px;
+  position: absolute;
+}
+
+.fileButton {
+  background: #c4cdd5;
+  border-radius: 2px;
+  padding: 10px 25px;
+  position: absolute;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Arial";
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+  z-index: 5;
+  /* top: 0px; */
+  /* right: 0px; */
+  height: 40px;
+}
