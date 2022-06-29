@@ -20,7 +20,6 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 function Admin() {
-  console.log("hello");
   return (
     <div className={styles.dashboard}>
       <div className={styles.navigation}>

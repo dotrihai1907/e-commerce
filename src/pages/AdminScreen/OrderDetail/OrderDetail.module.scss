@@ -107,6 +107,7 @@
           height: 40px;
           margin-top: 11px;
           border-radius: 2px;
+          cursor: pointer;
         }
       }
       //-----------------------------
@@ -124,13 +125,14 @@
           height: 40px;
           margin-top: 11px;
           border-radius: 2px;
+          cursor: pointer;
         }
       }
       //-----------------------------
       .button {
         position: absolute;
         left: 85.25%;
-        top: 44px;
+        top: 45px;
         background: #ffd333;
         border-radius: 5px;
         width: 147px;
@@ -138,7 +140,7 @@
       }
     }
     //----------------------------
-    .divider {
+    .firstDivider {
       margin-top: 25px;
       color: #929395;
     }
@@ -287,6 +289,108 @@
           }
         }
       }
+    }
+    //--------------------------
+    .secondDivider {
+      margin-top: 33px;
+      color: #929395;
+    }
+    //------------------------
+    .titleTable {
+      font-family: "Work Sans";
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 26px;
+      margin-left: 2.01%;
+    }
+    //------------------------
+    .footerTable {
+      display: flex;
+      font-family: "Arial";
+      font-weight: 700;
+      font-size: 25px;
+      line-height: 29px;
+      //--------------------------
+      .textFooter {
+        width: 80%;
+        text-align: center;
+        margin-right: 26px;
+      }
+      //------------------------
+      .numberTable {
+        width: 20%;
+      }
+    }
+    //--------------------------
+    .titleProductTable {
+      font-family: "Arial";
+      font-weight: 700;
+      font-size: 20px;
+      margin-left: 3.12%;
+    }
+    //------------------------
+    .product {
+      display: flex;
+      font-family: "Arial";
+      margin-left: 3.41%;
+      //---------------------------------
+      .avatarProduct {
+        width: 93.72px;
+        height: 60px;
+        box-shadow: 0.5px 0.5px 12px rgba(0, 0, 0, 0.25);
+        margin-right: 17.2px;
+      }
+      //------------------------
+      .textProduct {
+        font-family: "Arial";
+        font-weight: 400;
+        //------------------------------
+        .textName {
+          font-size: 20px;
+        }
+        //------------------------
+        .textId {
+          font-size: 18px;
+          color: #929395;
+        }
+      }
+    }
+    //--------------------------
+    .titlePriceTable {
+      font-family: "Arial";
+      font-weight: 700;
+      font-size: 20px;
+    }
+    //------------------------
+    .price {
+      font-family: "Arial";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+    }
+    //------------------------
+    .titleQuantityTable {
+      font-family: "Arial";
+      font-weight: 700;
+      font-size: 20px;
+    }
+    //------------------------
+    .quantity {
+      font-family: "Arial";
+      font-weight: 400;
+      font-size: 20px;
+    }
+    //------------------------
+    .titleTotalTable {
+      font-family: "Arial";
+      font-weight: 700;
+      font-size: 20px;
+    }
+    //---------------------------
+    .total {
+      font-family: "Arial";
+      font-weight: 400;
+      font-size: 20px;
     }
   }
 }

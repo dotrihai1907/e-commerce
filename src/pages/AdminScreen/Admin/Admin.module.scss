@@ -6,14 +6,12 @@
   //--------------------------------
   .navigation {
     min-width: 225px;
-    width: 15.625vw;
     //--------------------------------
     .logo {
       display: flex;
       position: relative;
       align-items: center;
       min-height: 78px;
-      height: 7.62%;
       background-color: #ffd333;
       color: #000000;
       text-transform: uppercase;
@@ -44,7 +42,7 @@
     .menu {
       background-color: #3d464d;
       font-family: "Arial";
-      height: 92.38vh;
+      height: 946px;
       .application {
         font-weight: 700;
         font-size: 12px;
@@ -171,7 +169,7 @@
   .header {
     display: flex;
     position: relative;
-    width: 84.375vw;
+    width: 1215px;
     height: 78px;
     font-family: "Arial";
     font-weight: 400;
@@ -238,8 +236,8 @@
   }
   //------------------------------
   .content {
-    width: 84.375vw;
-    height: 92.38vh;
+    width: 1215px;
+    height: 946px;
     background-color: #f5f7fa;
   }
 }
