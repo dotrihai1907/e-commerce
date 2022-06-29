@@ -9,6 +9,7 @@ module.exports = {
       },
       boxShadow: {
         form: "4px 4px 4px rgba(0, 0, 0, 0.25)",
+        delete: "5px 5px 15px 2px rbga(0, 0, 0, 0.5)",
       },
     },
   },
