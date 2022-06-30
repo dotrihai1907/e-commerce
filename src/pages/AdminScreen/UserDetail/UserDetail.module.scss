@@ -1,0 +1,166 @@
+.userDetail {
+  position: relative;
+  padding: 25px 36px 44px 40px;
+  font-style: normal;
+  //---------------------------------
+  .breadcrumb {
+    font-family: "Arial";
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #929395;
+    //-----------------------------
+    .userList {
+      &:hover {
+        color: #ffd333;
+      }
+    }
+    //------------------------------
+    .userId {
+      color: #929395;
+    }
+  }
+  //-----------------------------
+  .title {
+    font-family: "Work Sans";
+    margin-top: 21px;
+    .name {
+      font-weight: 600;
+      font-size: 35px;
+      line-height: 41px;
+    }
+    //-----------------------------
+    .id {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+      color: #929395;
+    }
+  }
+  //-----------------------------
+  .detail {
+    position: relative;
+    margin-top: 28px;
+    background-color: white;
+    box-shadow: 0.5px 0.5px 12px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    font-family: "Work Sans";
+    //-----------------------------
+    .avatar {
+      margin-top: 33px;
+      margin-bottom: 19px;
+    }
+    //-----------------------------
+    .name {
+      font-weight: 600;
+      font-size: 35px;
+      line-height: 41px;
+      margin-bottom: 7px;
+    }
+    //-----------------------------
+    .email {
+      font-weight: 400;
+      font-size: 25px;
+      line-height: 29px;
+      color: #2234d2;
+      margin-bottom: 8px;
+    }
+    //-----------------------------
+    .phone {
+      font-weight: 400;
+      font-size: 25px;
+      line-height: 29px;
+    }
+    //-----------------------------
+    .divider {
+      margin-right: 28px;
+      margin-left: 20px;
+      margin-top: 23px;
+      margin-bottom: 19px;
+      height: 0px;
+      border-top: 1px solid #929395;
+    }
+    //------------------------
+    .content {
+      font-weight: 500;
+      font-size: 25px;
+      //--------------------------
+      .role {
+        display: flex;
+        height: 39px;
+        margin-top: 19px;
+        //--------------------------
+        .textRole {
+          margin-left: 35.93%;
+        }
+        //------------------------
+        .valueRole {
+          margin-left: 12.36%;
+          background: #4b9528;
+          border-radius: 50px;
+          color: white;
+          width: 123px;
+          height: 39px;
+        }
+      }
+      //------------------------
+      .status {
+        display: flex;
+        height: 39px;
+        margin-top: 24px;
+        //--------------------------
+        .textStatus {
+          margin-left: 35.93%;
+        }
+        //------------------------
+        .valueStatus {
+          margin-left: 10.25%;
+          background: #4b9528;
+          border-radius: 50px;
+          color: white;
+          width: 123px;
+          height: 39px;
+        }
+      }
+      //--------------------------
+      .verifyEmail {
+        display: flex;
+        height: 39px;
+        margin-top: 24px;
+        //--------------------------
+        .textVerifyEmail {
+          margin-left: 35.93%;
+        }
+        //--------------------------
+        .iconVerifyEmail {
+          margin-left: 7.98%;
+          height: 35px;
+          width: 35px;
+          color: white;
+          background: #4b9528;
+          border-radius: 50%;
+        }
+      }
+      //------------------------
+      .verifyContact {
+        display: flex;
+        height: 39px;
+        margin-top: 24px;
+        padding-bottom: 120px;
+        //--------------------------
+        .textVerifyContact {
+          margin-left: 35.93%;
+        }
+        //--------------------------
+        .iconVerifyContact {
+          margin-left: 5.5%;
+          height: 35px;
+          width: 35px;
+          color: white;
+          background: #4b9528;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}

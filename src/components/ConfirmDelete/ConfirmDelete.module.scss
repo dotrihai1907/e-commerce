@@ -18,7 +18,8 @@
   //--------------------------
   .firstDivider {
     position: absolute;
-    color: #929395;
+    height: 0px;
+    border-top: 1px solid #929395;
     top: 42px;
   }
   //--------------------------
@@ -32,7 +33,8 @@
   //--------------------------
   .secondDivider {
     position: absolute;
-    color: #929395;
+    height: 0px;
+    border-top: 1px solid #929395;
     top: 135px;
   }
   //--------------------------

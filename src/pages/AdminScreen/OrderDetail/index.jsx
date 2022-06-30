@@ -133,7 +133,7 @@ function OrderDetail() {
           <button className={styles.button}>Update order</button>
         </div>
 
-        <Divider className={styles.firstDivider} />
+        <hr className={styles.firstDivider} />
 
         <div className={styles.orderInfo}>
           <div className={styles.customer}>
@@ -182,7 +182,7 @@ function OrderDetail() {
           </div>
         </div>
 
-        <Divider className={styles.secondDivider} />
+        <hr className={styles.secondDivider} />
 
         <div className={styles.items}>
           <Table
