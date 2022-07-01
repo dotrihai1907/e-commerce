@@ -1,0 +1,102 @@
+.topBar {
+  font-style: normal;
+  //------------------------
+  .top {
+    display: flex;
+    height: 38px;
+    background: #f0e9e9;
+    border-radius: 5px 5px 0px 0px;
+    font-family: "Arial";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 38px;
+    color: #5b5b5b;
+    cursor: pointer;
+  }
+  //------------------------
+  .main {
+    display: flex;
+    height: 124px;
+    background: #ffd333;
+    border-radius: 5px;
+    //------------------------
+    .name {
+      text-transform: uppercase;
+      font-family: "Red Rose";
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 124px;
+      margin-left: 11.32%;
+      margin-right: 15px;
+    }
+    //------------------------
+    .searchBar {
+      display: flex;
+      font-family: "Arial";
+      width: 51.94%;
+      height: 50.35px;
+      background: #c4c4c4;
+      border-radius: 5px;
+      margin-top: 38.625px;
+      //------------------------
+      .classify {
+        display: flex;
+        cursor: pointer;
+        .iconCategories {
+          color: #2e2d2d;
+          width: 30.89px;
+          height: 25.43px;
+          margin-top: 12.46px;
+          margin-left: 8px;
+          margin-right: 3.15px;
+        }
+        //------------------------
+        .textCategories {
+          font-weight: 700;
+          font-size: 25px;
+          line-height: 50.35px;
+          color: #4b4b4b;
+          width: 137px;
+          border-right: 1px solid #6c6c6c;
+        }
+      }
+      //------------------------
+      .input {
+        font-weight: 400;
+        font-size: 25px;
+        color: #535353;
+        ::placeholder {
+          color: #535353;
+        }
+      }
+    }
+    //------------------------
+    .badge {
+      font-family: "Roboto";
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 16px;
+      margin-top: 42px;
+      margin-left: 30px;
+      cursor: pointer;
+      //--------------------------
+      .cart {
+        width: 39.55px;
+        height: 42.08px;
+      }
+    }
+    //------------------------
+    .iconUser {
+      width: 50.49px;
+      height: 48.7px;
+      margin-left: 32.14px;
+      margin-top: 39.56px;
+    }
+    //------------------------
+    .avatar {
+      border: 1px solid #9b9191;
+      margin-left: 32.14px;
+      margin-top: 39.56px;
+    }
+  }
+}

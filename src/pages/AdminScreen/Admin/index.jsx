@@ -83,7 +83,15 @@ function Admin() {
             className={styles.search}
           />
 
-          <Badge count={2} color="#FFD333" className={styles.notify}>
+          <Badge
+            count={
+              <div className="bg-[#FFD333] text-black w-[16.61px] h-[16.11px] rounded-[50%] text-center leading-[16.11px] mr-[2px] mt-[2px]">
+                2
+              </div>
+            }
+            color="#FFD333"
+            className={styles.notify}
+          >
             <FaBell className={styles.iconNotify} />
           </Badge>
 
