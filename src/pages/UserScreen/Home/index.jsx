@@ -1,8 +1,7 @@
 import "antd/dist/antd.css";
 import styles from "./Home.module.scss";
 
-import { Outlet } from "react-router-dom";
-import { Row, Col } from "antd";
+import { Col } from "antd";
 
 import TopBar from "../../../components/TopBar";
 import Category from "../../../components/Category";

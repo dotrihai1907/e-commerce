@@ -13,8 +13,8 @@ function Verify() {
           </p>
           <input
             type="code"
-            placeholder={" " + " " + "Code"}
-            className="absolute top-[100px] left-[11.65px] input focus:outline-none "
+            placeholder="Code"
+            className="absolute pl-[9px] top-[100px] left-[11.65px] input focus:outline-none "
           />
           <button className="absolute hover:opacity-80 top-[177px] left-[11.65px] w-[296px] bg-[#FFD333] rounded-[5px] h-[37px] font-[700] text-[24px] leading-[28.13px]">
             Verify

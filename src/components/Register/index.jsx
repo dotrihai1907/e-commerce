@@ -33,19 +33,19 @@ function Register() {
           </h1>
           <input
             type="username"
-            placeholder={" " + " " + "User Name"}
-            className="absolute top-[58px] left-[11px] input focus:outline-none"
+            placeholder="User Name"
+            className="absolute pl-[9px] top-[58px] left-[11px] input focus:outline-none"
           />
           <input
             type="email"
-            placeholder={" " + " " + "Email@mail.com"}
-            className="absolute top-[95px] left-[11px] input focus:outline-none"
+            placeholder="Email@mail.com"
+            className="absolute pl-[9px] top-[95px] left-[11px] input focus:outline-none"
           />
           <label>
             <input
               type={type}
-              placeholder={" " + " " + "Password"}
-              className="absolute top-[132px] left-[11px] input focus:outline-none"
+              placeholder="Password"
+              className="absolute pl-[9px] top-[132px] left-[11px] input focus:outline-none"
             />
             <div
               className="absolute top-[136px] right-[16.2px] font-[700] text-[12px] leading-[14px] text-[#585757] not-italic w-[48px] h-[14px] cursor-pointer flex justify-end"
@@ -56,8 +56,8 @@ function Register() {
           </label>
           <input
             type="password"
-            placeholder={" " + " " + "Confirm Password"}
-            className="absolute top-[169px] left-[11px] input focus:outline-none"
+            placeholder="Confirm Password"
+            className="absolute pl-[9px] top-[169px] left-[11px] input focus:outline-none"
           />
           <button className="absolute hover:opacity-80 top-[212px] left-[11px] w-[296px] bg-[#FFD333] rounded-[5px] h-[37px] font-[700] text-[24px] leading-[28.13px]">
             Register

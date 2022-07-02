@@ -10,14 +10,14 @@ function Login() {
           </h1>
           <input
             type="email"
-            placeholder={" " + " " + "Email@mail.com"}
-            className="absolute top-[80px] left-[11.65px] input focus:outline-none"
+            placeholder="Email@mail.com"
+            className="absolute pl-[9px] top-[80px] left-[11.65px] input focus:outline-none"
           />
           <label>
             <input
               type="password"
-              placeholder={" " + " " + "Password"}
-              className="absolute top-[132px] left-[11.65px]  focus:outline-none"
+              placeholder="Password"
+              className="absolute pl-[9px] top-[132px] left-[11.65px]  focus:outline-none"
             />
             <div className="absolute flex justify-end top-[136px] right-[16.2px] font-[700] text-[12px] leading-[14px] text-[#383737] not-italic w-[48px] h-[14px] cursor-pointer">
               Forgot?
