@@ -13,7 +13,9 @@ li {
 }
 
 .category {
+  height: 628px;
   position: relative;
+  width: 280px;
   font-family: "Arial";
   font-style: normal;
   font-weight: 700;
@@ -22,13 +24,15 @@ li {
   //------------------------
   .title {
     display: flex;
-    padding-left: 24px;
+    padding-left: 18.93px;
     font-size: 32px;
     height: 91px;
     line-height: 91px;
     //------------------------
     .iconTitle {
-      margin-top: 29.5px;
+      width: 30.89px;
+      height: 25.43px;
+      margin-top: 32.785px;
       margin-right: 16.18px;
       cursor: pointer;
       &:hover {
@@ -42,7 +46,7 @@ li {
     //------------------------
     .list {
       .item {
-        padding-left: 24px;
+        padding-left: 18.93px;
         position: relative;
         display: flex;
         height: 52px;
