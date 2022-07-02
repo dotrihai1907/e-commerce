@@ -1,0 +1,36 @@
+.benefit {
+  display: flex;
+  width: 280px;
+  height: 94px;
+  background: #f8f8f8;
+  border: 1px solid #dfd8d8;
+  border-radius: 5px;
+  margin-top: 8px;
+  //------------------------
+  .icon {
+    width: 41.13px;
+    height: 30px;
+    margin-top: 32px;
+    margin-right: 14.45px;
+    margin-left: 27.79px;
+  }
+  //------------------------
+  .text {
+    font-family: "Arial";
+    font-style: normal;
+    //--------------------------
+    .name {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 28px;
+      margin-top: 19px;
+      margin-bottom: 2px;
+    }
+    //------------------------
+    .description {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+}
