@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { RedirectRole, UserRole, AdminRole } from "./pages/RouteGuard";
+import Navigation from "./pages/UserScreen/Navigation";
 import Home from "./pages/UserScreen/Home";
 import Checkout from "./pages/UserScreen/Checkout";
 import ProductDetail from "./pages/UserScreen/ProductDetail";
@@ -30,22 +31,22 @@ function App() {
     <Router>
       <div className="app">
         <Routes>
-          <Route path="/" element={<Home />}>
+          <Route path="/" element={<Navigation />}>
             {/* <Route element={RedirectRole}> */}
+            <Route index element={<Home />} />
             <Route path="/forgot" element={<Forgot />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/verify" element={<Verify />} />
             {/* </Route> */}
-          </Route>
 
-          {/* <Route element={UserRole}> */}
-          <Route path="/" element={<Home />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/product-detail" element={<ProductDetail />} />
-          <Route path="/shopping-cart" element={<ShoppingCart />} />
-          <Route path="/user-detail" element={<UserDetail />} />
-          {/* </Route> */}
+            {/* <Route element={UserRole}> */}
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/product-detail" element={<ProductDetail />} />
+            <Route path="/shopping-cart" element={<ShoppingCart />} />
+            <Route path="/user-detail" element={<UserDetail />} />
+            {/* </Route> */}
+          </Route>
 
           {/* <Route element={AdminRole}> */}
           <Route path="/admin" element={<Admin />}>

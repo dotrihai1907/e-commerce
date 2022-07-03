@@ -3,7 +3,6 @@ import styles from "./Home.module.scss";
 
 import { Col } from "antd";
 
-import TopBar from "../../../components/TopBar";
 import Category from "../../../components/Category";
 import CarouselPhotos from "../../../components/CarouselPhotos";
 import BenefitCoupon from "../../../components/BenefitCoupon";
@@ -12,7 +11,6 @@ import ProductCard from "../../../components/ProductCard";
 function Home() {
   return (
     <div>
-      <TopBar />
       <div className={styles.content}>
         <div className={styles.introduction}>
           <Col span={6}>

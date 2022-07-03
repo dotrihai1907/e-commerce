@@ -67,58 +67,55 @@ function ShoppingCart() {
   ];
 
   return (
-    <div>
-      <TopBar />
-      <div className={styles.container}>
-        <Breadcrumb separator=">" className={styles.navTab}>
-          <Breadcrumb.Item>
-            <NavLink to="/" className={styles.home}>
-              Home
-            </NavLink>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item className={styles.shoppingCart}>
-            Shopping Cart
-          </Breadcrumb.Item>
-        </Breadcrumb>
+    <div className={styles.container}>
+      <Breadcrumb separator=">" className={styles.navTab}>
+        <Breadcrumb.Item>
+          <NavLink to="/" className={styles.home}>
+            Home
+          </NavLink>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item className={styles.shoppingCart}>
+          Shopping Cart
+        </Breadcrumb.Item>
+      </Breadcrumb>
 
-        <div className={styles.title}>Shopping Cart</div>
+      <div className={styles.title}>Shopping Cart</div>
 
-        <Table
-          className={styles.table}
-          dataSource={data}
-          columns={columns}
-          bordered={false}
-          pagination={false}
-        />
+      <Table
+        className={styles.table}
+        dataSource={data}
+        columns={columns}
+        bordered={false}
+        pagination={false}
+      />
 
-        <div className={styles.checkout}>
-          <div className={styles.coupon}>
-            <input placeholder="Coupon Code" className={styles.couponInput} />
-            <button className={styles.couponButton}>Apply Coupon</button>
-          </div>
+      <div className={styles.checkout}>
+        <div className={styles.coupon}>
+          <input placeholder="Coupon Code" className={styles.couponInput} />
+          <button className={styles.couponButton}>Apply Coupon</button>
+        </div>
 
-          <div className={styles.cartTotals}>
-            <div className={styles.firstCart}>Cart Totals</div>
+        <div className={styles.cartTotals}>
+          <div className={styles.firstCart}>Cart Totals</div>
 
-            <div className={styles.mainCart}>
-              <div className={styles.subtotal}>
-                <p className={styles.textSubtotal}>Subtotal</p>
-                <p className={styles.numSubtotal}>${data[0].total}</p>
-              </div>
-
-              <div className={styles.shipping}>
-                <p className={styles.textShipping}>Shipping</p>
-                <p className={styles.numShipping}>$20.00</p>
-              </div>
-
-              <div className={styles.total}>
-                <p className={styles.textTotal}>Total</p>
-                <p className={styles.numTotal}>$140.00</p>
-              </div>
+          <div className={styles.mainCart}>
+            <div className={styles.subtotal}>
+              <p className={styles.textSubtotal}>Subtotal</p>
+              <p className={styles.numSubtotal}>${data[0].total}</p>
             </div>
 
-            <button className={styles.finalcart}>Proceed to checkout</button>
+            <div className={styles.shipping}>
+              <p className={styles.textShipping}>Shipping</p>
+              <p className={styles.numShipping}>$20.00</p>
+            </div>
+
+            <div className={styles.total}>
+              <p className={styles.textTotal}>Total</p>
+              <p className={styles.numTotal}>$140.00</p>
+            </div>
           </div>
+
+          <button className={styles.finalcart}>Proceed to checkout</button>
         </div>
       </div>
     </div>
