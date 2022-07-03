@@ -98,9 +98,24 @@ function ShoppingCart() {
           </div>
 
           <div className={styles.cartTotals}>
-            <div className={styles.fristCart}>Cart Totals</div>
+            <div className={styles.firstCart}>Cart Totals</div>
 
-            <div className={styles.mainCart}></div>
+            <div className={styles.mainCart}>
+              <div className={styles.subtotal}>
+                <p className={styles.textSubtotal}>Subtotal</p>
+                <p className={styles.numSubtotal}>${data[0].total}</p>
+              </div>
+
+              <div className={styles.shipping}>
+                <p className={styles.textShipping}>Shipping</p>
+                <p className={styles.numShipping}>$20.00</p>
+              </div>
+
+              <div className={styles.total}>
+                <p className={styles.textTotal}>Total</p>
+                <p className={styles.numTotal}>$140.00</p>
+              </div>
+            </div>
 
             <button className={styles.finalcart}>Proceed to checkout</button>
           </div>

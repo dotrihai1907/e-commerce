@@ -87,7 +87,7 @@
         color: #33a0ff;
         cursor: pointer;
         &:hover {
-          opacity: 0.8;
+          color: #0465bb;
         }
       }
     }
@@ -134,10 +134,109 @@
         color: #000000;
         &:hover {
           color: white;
+          opacity: 0.8;
         }
       }
     }
     //------------------------
-    
+    .cartTotals {
+      box-sizing: border-box;
+      width: 571px;
+      height: 450px;
+      background: #fffefe;
+      border: 1px solid rgba(90, 90, 90, 0.4);
+      border-radius: 5px;
+      font-family: "Roboto";
+      //------------------------
+      .firstCart {
+        margin-top: 18px;
+        margin-left: 31px;
+        font-size: 34px;
+        line-height: 40px;
+        color: #000000;
+      }
+      //------------------------
+      .mainCart {
+        margin-top: 31px;
+        margin-left: 31px;
+        margin-right: 65px;
+        //------------------------
+        .subtotal {
+          display: flex;
+          position: relative;
+          //------------------------
+          .textSubtotal {
+            font-size: 24px;
+            line-height: 28px;
+            color: #000000;
+          }
+          //------------------------
+          .numSubtotal {
+            position: absolute;
+            font-size: 24px;
+            line-height: 28px;
+            color: #5a5a5a;
+            right: 0;
+          }
+        }
+        //------------------------
+        .shipping {
+          display: flex;
+          position: relative;
+          margin-top: 38px;
+          //------------------------
+          .textShipping {
+            font-size: 24px;
+            line-height: 28px;
+            color: #000000;
+          }
+          //------------------------
+          .numShipping {
+            position: absolute;
+            font-size: 24px;
+            line-height: 28px;
+            color: #5a5a5a;
+            right: 0;
+          }
+        }
+        //------------------------
+        .total {
+          display: flex;
+          position: relative;
+          margin-top: 49px;
+          //-------------------------------
+          .textTotal {
+            font-size: 32px;
+            line-height: 38px;
+            color: #000000;
+          }
+          //------------------------
+          .numTotal {
+            position: absolute;
+            font-size: 24px;
+            line-height: 28px;
+            color: #5a5a5a;
+            right: 0;
+          }
+        }
+      }
+      //------------------------
+      .finalcart {
+        margin: 48px;
+        width: 487px;
+        height: 69px;
+        line-height: 69px;
+        background: #ffd333;
+        border-radius: 5px;
+        font-family: "Roboto";
+        font-size: 34px;
+        color: #000000;
+        margin-left: 41px;
+        &:hover {
+          color: white;
+          opacity: 0.8;
+        }
+      }
+    }
   }
 }
