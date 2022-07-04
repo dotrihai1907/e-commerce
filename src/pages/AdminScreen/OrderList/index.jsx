@@ -12,7 +12,7 @@ function OrderDetail() {
         </Breadcrumb.Item>
         <Breadcrumb.Item>
           <a href="" className={style_css.breadcrumb}>
-            Ordersh
+            Order
           </a>
         </Breadcrumb.Item>
       </Breadcrumb>
