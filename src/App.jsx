@@ -36,6 +36,7 @@ function App() {
       <div className="app" style={{ width: "100%", height: "100%" }}>
         <Routes>
           <Route path="/" element={<Navigation />}>
+            <Route index element={<Home />} />
             <Route
               element={<RedirectRole accessToken={accessToken} role={role} />}
             >
