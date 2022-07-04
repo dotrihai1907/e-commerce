@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.itemPerPage {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+
+  text-align: center;
+
+  color: #000000;
+}
+.numberItem {
+  width: 55px;
+  height: 25px;
+  margin-left: 5px;
+  font-size: 16px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #929395;
+  border-radius: 2px;
+}

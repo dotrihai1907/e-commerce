@@ -1,0 +1,159 @@
+@import (css)
+  url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.style_table {
+  :global {
+    .ant-table-wrapper {
+      height: 100% !important;
+      font-size: 40px;
+    }
+    .ant-spin-nested-loading {
+      height: inherit;
+    }
+    .ant-table-column-title {
+      font-size: 20px !important;
+      font-weight: 700 !important;
+      line-height: 23px !important;
+      flex: 1 1 80%;
+    }
+    .ant-table-content {
+      border-top: 2px solid #929395;
+    }
+    .ant-table-thead {
+      border-top: 2px #929395 solid;
+    }
+    .ant-table-thead > tr > th {
+      background-color: #fff;
+    }
+    .ant-table-tbody > tr {
+      height: 77px;
+    }
+    .ant-table-tbody > tr > td {
+      border-top: 1px solid #929395;
+      border-bottom: none;
+    }
+
+    tr > th:nth-child(2) > div {
+      position: relative;
+    }
+    tr > th:nth-child(2) > div > span:nth-child(1) {
+      position: absolute;
+      left: 10px;
+    }
+    tr > th:nth-child(2) > div > span:nth-child(2) {
+      position: absolute;
+      left: 60px;
+    }
+    tr > th:nth-child(3) > div {
+      position: relative;
+    }
+    tr > th:nth-child(3) > div > span:nth-child(1) {
+      position: absolute;
+      left: 0px;
+    }
+    tr > th:nth-child(3) > div > span:nth-child(2) {
+      position: absolute;
+      left: 80px;
+    }
+    .ant-spin-container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .ant-pagination {
+      justify-content: flex-start;
+      // margin-left: 32px;
+      margin-bottom: 16px;
+      padding-left: 32px;
+    }
+    .ant-pagination-item {
+      font-family: "Arial";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 30px;
+      text-align: center;
+      color: #212b36;
+    }
+    .ant-pagination > li > button {
+      font-family: "Arial";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 30px;
+      text-align: center;
+      background-color: #dfe3e8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .ant-pagination > li > button:hover {
+      background: #919eab;
+      color: #ffd333;
+      border: none;
+      outline: none;
+    }
+    .ant-pagination > li > button > span {
+      font-size: 14px;
+      font-family: "Arial";
+      font-style: normal;
+      font-weight: 700;
+    }
+    .ant-pagination > li {
+      background-color: #dfe3e8;
+      border: 1px solid #dfe3e8;
+      border-radius: 4px;
+    }
+    .ant-pagination > li > a {
+      border: none;
+      outline: none;
+    }
+
+    .ant-pagination-item-active > a {
+      background-color: #ffd333 !important;
+      color: #212b36 !important;
+    }
+
+    //---------------------------------------- tbody
+
+    .ant-table-cell.ant-table-column-has-sorters::before {
+      width: 0 !important;
+    }
+
+    .ant-table-column-sorters {
+      font-family: "Arial";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 23px;
+      color: #000000 !important;
+      display: flex;
+    }
+    .ant-table-column-sorter.ant-table-column-sorter-full {
+      color: #000000 !important;
+      flex: 1 1 20%;
+    }
+
+    #id {
+      font-family: "Arial";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 23px;
+
+      color: #000000;
+    }
+    .user {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .ant-table-cell {
+      font-family: "Arial";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 23px;
+      color: #000000;
+      padding: 13px !important;
+    }
+  }
+}

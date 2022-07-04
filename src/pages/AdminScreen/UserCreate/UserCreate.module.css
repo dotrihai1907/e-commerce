@@ -1,0 +1,43 @@
+.heading {
+  font-family: "Work Sans";
+  font-style: normal;
+
+  font-size: 35px;
+  line-height: 41px;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: #000000;
+}
+.heading_info {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 25px;
+
+  color: #000000;
+  margin-bottom: 12px;
+  margin-left: 26px;
+  margin-top: 18px;
+}
+.addUser {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 23.46px;
+  letter-spacing: -0.02em;
+  height: 40px;
+  color: #000000;
+  background-color: #ffd333;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+.breadcrumb {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #929395 !important;
+}

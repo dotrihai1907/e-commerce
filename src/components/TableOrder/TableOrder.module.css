@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.itemPerPage {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+
+  text-align: center;
+
+  color: #000000;
+}
+.numberItem {
+  width: 55px;
+  height: 25px;
+  margin-left: 5px;
+  font-size: 16px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #929395;
+  border-radius: 2px;
+}
+.paidedComplete {
+  background-color: #ffd333;
+  border-radius: 20px;
+  padding: 1.5px 20px;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  /* identical to box height */
+
+  color: #ffffff;
+}
+.paidedPending {
+  background-color: #366ab8;
+  border-radius: 20px;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  /* identical to box height */
+
+  color: #ffffff;
+  padding: 1.5px 20px;
+}
