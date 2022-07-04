@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+.wrapper_review {
+  /* margin-top: 20px; */
+  margin: 20px 0;
+}
+.heading_review {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 33px;
+
+  color: #000000;
+}
+.wrapper_comment {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* padding: 10px 0; */
+  height: 124px;
+  font-family: "Roboto", sans-serif;
+}
+.write_review {
+  padding: 16px 50px;
+  font-family: Arial;
+  font-style: normal;
+}

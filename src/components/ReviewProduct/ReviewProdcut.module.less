@@ -1,0 +1,118 @@
+@import (css)
+  url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+.style_reviewProduct {
+  :global {
+    .ant-tabs-nav {
+      height: 50px;
+      margin-bottom: 0 !important;
+    }
+    .ant-tabs-content-holder {
+      min-height: 520px;
+      max-height: 520px;
+    }
+    .ant-tabs-nav::before {
+      border-bottom: 1px solid #c2c2c2;
+    }
+    .ant-tabs-nav-wrap {
+      justify-content: center;
+    }
+    .ant-tabs-nav-list {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 700;
+
+      line-height: 23px;
+    }
+    .ant-tabs-tab {
+      font-size: 20px;
+
+      padding: 15px 28px 10px;
+    }
+    .ant-tabs-tabpane {
+      padding-left: 50px;
+
+      padding-right: 50px;
+    }
+    .ant-tabs-tab + .ant-tabs-tab {
+      margin-left: 0;
+      margin-right: 4px;
+    }
+    .ant-tabs-tab.ant-tabs-tab-active {
+      background-color: #e7e2e2;
+    }
+    .ant-tabs-tab-active > div {
+      color: #000000 !important;
+    }
+    .ant-tabs-ink-bar.ant-tabs-ink-bar-animated {
+      background-color: #ffd333;
+    }
+    .ant-pagination {
+      margin-top: 20px;
+    }
+    .ant-pagination-item {
+      border: 1px solid #dfe3e8;
+      border-radius: 4px;
+      background-color: #e5e5e5;
+      font-family: "Arial";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      // line-height: 20px;
+      /* or 143% */
+
+      text-align: center;
+
+      color: #000000;
+      outline: none;
+    }
+    .ant-pagination-item-active a {
+      background-color: #ffd333;
+      color: #000000 !important;
+    }
+    .ant-pagination-item a {
+      color: #000000 !important;
+    }
+    .ant-pagination-item-active:hover {
+      border-color: transparent;
+    }
+    .ant-pagination-item:hover {
+      border-color: transparent;
+    }
+    .ant-pagination-item-active:hover a {
+      color: #000000 !important;
+    }
+    .ant-pagination-item-link {
+      background-color: #e5e5e5 !important;
+      color: #000000 !important;
+      position: relative;
+    }
+    .anticon.anticon-left {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 14px;
+    }
+    .anticon.anticon-right {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 14px;
+    }
+    .ant-pagination-next:hover .ant-pagination-item-link {
+      border-color: transparent;
+    }
+    .ant-pagination-prev:hover .ant-pagination-item-link {
+      border-color: transparent;
+      background-color: #919eab;
+      color: #ffd333;
+    }
+    .ant-pagination-prev:hover .ant-pagination-item-link {
+      background-color: #919eab !important;
+      color: #ffd333 !important;
+    }
+    .ant-pagination-next:hover .ant-pagination-item-link {
+      background-color: #919eab !important;
+      color: #ffd333 !important;
+    }
+  }
+}

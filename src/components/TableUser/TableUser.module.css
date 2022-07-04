@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.itemPerPage {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: #000000;
+}
+.numberItem {
+  width: 55px;
+  height: 25px;
+  margin-left: 5px;
+  font-size: 16px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #929395;
+  border-radius: 2px;
+}
+.nameUser {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  /* identical to box height */
+
+  color: #000000;
+}
+.role {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+
+  padding: 0 8px;
+  height: 18px;
+  color: #ffffff;
+  background-color: #4b9528;
+  border-radius: 10px;
+  max-width: 69px;
+}
+.gmailUser {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #3d464d;
+}

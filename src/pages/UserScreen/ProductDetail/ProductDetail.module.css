@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+.container {
+  width: 1440px;
+  padding: 12px 145px 20px;
+}
+.wrapper_breadcrumb {
+  background-color: #fffbfb;
+  padding: 12px 160px;
+
+  /* height: 50px; */
+}
+.breadcrumb {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+
+  letter-spacing: -0.32px;
+
+  color: #595959 !important;
+}
