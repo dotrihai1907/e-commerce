@@ -1,6 +1,7 @@
 import "./App.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { RedirectRole, UserRole, AdminRole } from "./pages/RouteGuard";
 import Navigation from "./pages/UserScreen/Navigation";
@@ -21,57 +22,54 @@ import UserDetailByAdmin from "./pages/AdminScreen/UserDetail";
 import UserEdit from "./pages/AdminScreen/UserEdit";
 import UserList from "./pages/AdminScreen/UserList";
 
-import Forgot from "./components/Forgot";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import Verify from "./components/Verify";
 import MyProfile from "./components/MyProfile";
 import OrderHistory from "./components/OrderHistory";
 
+import { selectRole, selectAccessToken } from "./redux/auth/selector";
+
 function App() {
+  const role = useSelector(selectRole);
+  const accessToken = useSelector(selectAccessToken);
+
   return (
     <Router>
       <div className="app" style={{ width: "100%", height: "100%" }}>
         <Routes>
           <Route path="/" element={<Navigation />}>
-            {/* <Route element={RedirectRole}> */}
-            <Route index element={<Home />} />
-            <Route path="/forgot" element={<Forgot />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/verify" element={<Verify />} />
-            {/* </Route> */}
-
-            {/* <Route element={UserRole}> */}
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/product-detail" element={<ProductDetail />} />
-            <Route path="/shopping-cart" element={<ShoppingCart />} />
-            <Route path="/user-detail" element={<UserDetail />}>
-              <Route path="/user-detail/my-profile" element={<MyProfile />} />
-              <Route
-                path="/user-detail/order-history"
-                element={<OrderHistory />}
-              />
+            <Route element={RedirectRole} accessToken={accessToken} role={role}>
+              <Route index element={<Home />} />
             </Route>
-            {/* </Route> */}
+
+            <Route element={UserRole} accessToken={accessToken} role={role}>
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/product-detail" element={<ProductDetail />} />
+              <Route path="/shopping-cart" element={<ShoppingCart />} />
+              <Route path="/user-detail" element={<UserDetail />}>
+                <Route path="/user-detail/my-profile" element={<MyProfile />} />
+                <Route
+                  path="/user-detail/order-history"
+                  element={<OrderHistory />}
+                />
+              </Route>
+            </Route>
           </Route>
 
-          {/* <Route element={AdminRole}> */}
-          <Route path="/admin" element={<Admin />}>
-            <Route path="/admin/order-detail" element={<OrderDetail />} />
-            <Route path="/admin/order-list" element={<OrderList />} />
-            <Route path="/admin/product-create" element={<ProductCreate />} />
-            <Route path="/admin/product-edit" element={<ProductEdit />} />
-            <Route path="/admin/product-list" element={<ProductList />} />
-            <Route path="/admin/user-create" element={<UserCreate />} />
-            <Route
-              path="/admin/user-detail-by-admin"
-              element={<UserDetailByAdmin />}
-            />
-            <Route path="/admin/user-list" element={<UserList />} />
-            <Route path="/admin/user-edit" element={<UserEdit />} />
+          <Route element={AdminRole} accessToken={accessToken} role={role}>
+            <Route path="/admin" element={<Admin />}>
+              <Route path="/admin/order-detail" element={<OrderDetail />} />
+              <Route path="/admin/order-list" element={<OrderList />} />
+              <Route path="/admin/product-create" element={<ProductCreate />} />
+              <Route path="/admin/product-edit" element={<ProductEdit />} />
+              <Route path="/admin/product-list" element={<ProductList />} />
+              <Route path="/admin/user-create" element={<UserCreate />} />
+              <Route
+                path="/admin/user-detail-by-admin"
+                element={<UserDetailByAdmin />}
+              />
+              <Route path="/admin/user-list" element={<UserList />} />
+              <Route path="/admin/user-edit" element={<UserEdit />} />
+            </Route>
           </Route>
-          {/* </Route> */}
         </Routes>
       </div>
     </Router>

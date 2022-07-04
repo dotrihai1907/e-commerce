@@ -92,6 +92,9 @@
       margin-left: 32.14px;
       margin-top: 39.56px;
       cursor: pointer;
+      &:hover {
+        color: white;
+      }
     }
     //------------------------
     .avatar {
@@ -100,5 +103,6 @@
       margin-top: 39.56px;
       cursor: pointer;
     }
+    //------------------------
   }
 }
