@@ -10,13 +10,13 @@ import { Input, Badge, Avatar, Modal } from "antd";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 
-import { selectAccessToken } from "../../redux/auth/selector";
+import { selectAccessToken, selectAvatar } from "../../redux/auth/selector";
 
 import Login from "../Login";
 
 function TopBar() {
   const accessToken = useSelector(selectAccessToken);
-  console.log(accessToken);
+  const avatar = useSelector(selectAvatar);
 
   const [isHidden, setIsHidden] = useState(false);
 
@@ -71,19 +71,23 @@ function TopBar() {
         </Badge>
 
         {accessToken ? (
-          <Avatar size={49} className={styles.avatar} />
+          <Avatar size={49} src={avatar} className={styles.avatar} />
         ) : (
           <FiUser className={styles.iconUser} onClick={showModal} />
         )}
 
-        <Modal
-          visible={isHidden}
-          onOk={handleOk}
-          onCancel={handleCancel}
-          className={style_less.style_TopBar}
-        >
-          <Login />
-        </Modal>
+        {accessToken ? (
+          <></>
+        ) : (
+          <Modal
+            visible={isHidden}
+            onOk={handleOk}
+            onCancel={handleCancel}
+            className={style_less.style_TopBar}
+          >
+            <Login />
+          </Modal>
+        )}
       </div>
     </div>
   );

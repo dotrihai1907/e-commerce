@@ -12,7 +12,6 @@ function Login() {
   const dispatch = useDispatch();
 
   const handleLogin = () => {
-    console.log(email, password);
     dispatch(login(email, password));
   };
   return (
