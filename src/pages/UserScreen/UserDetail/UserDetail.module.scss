@@ -1,0 +1,76 @@
+.container {
+  padding-left: 144px;
+  padding-bottom: 52px;
+  font-style: normal;
+  font-family: "Roboto";
+  .navTab {
+    margin-left: 15px;
+    height: 50px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    color: #595959;
+    //-----------------------------
+    .home {
+      &:hover {
+        color: #ffd333;
+      }
+    }
+    //----------------
+    .myAccount {
+      color: #595959;
+    }
+  }
+  //----------------
+  .title {
+    margin-left: 15px;
+    height: 47px;
+    margin-top: 19px;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 47px;
+    color: #000000;
+  }
+  //------------------------
+  .content {
+    display: flex;
+    margin-top: 24px;
+    //------------------------
+    .leftNavbar {
+      width: 280px;
+      background: #fffefe;
+      border: 1px solid rgba(90, 90, 90, 0.4);
+      box-shadow: 0.5px 0.5px 10px rgba(0, 0, 0, 0.25);
+      border-radius: 5px;
+      //-----------------------
+      .navigation {
+        margin-top: 21px;
+        margin-left: 33.39px;
+        height: 33px;
+        line-height: 33px;
+        font-weight: 700;
+        font-size: 28px;
+        color: #000000;
+        margin-bottom: 29px;
+      }
+      //------------------------
+      .text {
+        height: 28px;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28px;
+        color: #868484;
+        margin-bottom: 21px;
+        margin-left: 36.04px;
+        cursor: pointer;
+        &:hover {
+          color: #f2d672;
+        }
+      }
+    }
+  }
+}

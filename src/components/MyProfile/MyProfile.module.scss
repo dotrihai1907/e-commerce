@@ -1,0 +1,100 @@
+.content {
+  padding-left: 35px;
+  font-family: "Roboto";
+  font-style: normal;
+  color: #000000;
+
+  //------------------------
+  .userInfo {
+    display: flex;
+    width: 837px;
+    height: 258px;
+    background: rgba(182, 182, 182, 0.4);
+    border: 1px solid rgba(90, 90, 90, 0.4);
+    border-bottom: transparent;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0.5px 0.5px 12px rgba(0, 0, 0, 0.25);
+    //------------------------
+    .avatar {
+      border: 1px solid #9b9191;
+      margin-left: 33px;
+      margin-top: 30px;
+      margin-right: 35px;
+    }
+    //------------------------
+    .detail {
+      margin-top: 39px;
+      //------------------------
+      .name {
+        height: 42px;
+        font-size: 36px;
+        line-height: 42px;
+        margin-bottom: 3px;
+        font-weight: 700;
+      }
+
+      //------------------------
+      .text {
+        display: flex;
+        margin-bottom: 10px;
+        line-height: 23px;
+        font-size: 20px;
+        //------------------------
+        .first {
+          font-weight: 700;
+          margin-right: 5px;
+        }
+      }
+      //------------------------
+      .button {
+        width: 157px;
+        height: 39px;
+        background: #ffd333;
+        border-radius: 5px;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 39px;
+        &:hover {
+          color: white;
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+  //------------------------
+  .table {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 1px solid rgba(90, 90, 90, 0.4);
+    border-top: transparent;
+    box-shadow: 0.5px 0.5px 12px rgba(0, 0, 0, 0.25);
+    //------------------------
+    .titleTable {
+      margin-left: 31px;
+      height: 38px;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 38px;
+    }
+    //------------------------
+    .titleColumns {
+      height: 28px;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 28px;
+      display: flex;
+      justify-content: center;
+    }
+    //------------------------
+    .textColumns {
+      height: 28px;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 28px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

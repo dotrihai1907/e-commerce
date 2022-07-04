@@ -25,6 +25,7 @@ import Forgot from "./components/Forgot";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Verify from "./components/Verify";
+import MyProfile from "./components/MyProfile";
 
 function App() {
   return (
@@ -44,7 +45,9 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/product-detail" element={<ProductDetail />} />
             <Route path="/shopping-cart" element={<ShoppingCart />} />
-            <Route path="/user-detail" element={<UserDetail />} />
+            <Route path="/user-detail" element={<UserDetail />}>
+              <Route path="/user-detail/my-profile" element={<MyProfile />} />
+            </Route>
             {/* </Route> */}
           </Route>
 
