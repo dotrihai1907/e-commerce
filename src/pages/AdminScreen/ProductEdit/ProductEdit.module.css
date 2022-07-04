@@ -1,24 +1,41 @@
 .heading {
   font-family: "Work Sans";
   font-style: normal;
-
+  font-weight: 600;
   font-size: 35px;
   line-height: 41px;
   letter-spacing: -0.02em;
-  font-weight: 600;
   color: #000000;
 }
 .saveProduct {
   font-family: "Work Sans";
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 20px;
   line-height: 23.46px;
   letter-spacing: -0.02em;
   height: 40px;
   color: #000000;
   background-color: #ffd333;
-  padding-right: 14px;
-  padding-left: 14px;
+  padding-right: 10px;
+  padding-left: 10px;
   border-radius: 5px;
+}
+.breadcrumb {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #929395 !important;
+}
+.productID {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.02em;
+  color: #929395;
+  margin-left: 3px;
 }

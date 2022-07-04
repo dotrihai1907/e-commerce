@@ -31,7 +31,7 @@ import OrderHistory from "./components/OrderHistory";
 function App() {
   return (
     <Router>
-      <div className="app">
+      <div className="app" style={{ width: "100%", height: "100%" }}>
         <Routes>
           <Route path="/" element={<Navigation />}>
             {/* <Route element={RedirectRole}> */}

@@ -27,7 +27,7 @@ const beforeUpload = (file) => {
   return isJpgOrPng && isLt2M;
 };
 
-export default function UploadAvatar() {
+export default function UploadAvatar(props) {
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState();
 
@@ -45,6 +45,7 @@ export default function UploadAvatar() {
       });
     }
   };
+  console.log(props);
   return (
     <div
       className="bg-[#fff]"
@@ -53,7 +54,7 @@ export default function UploadAvatar() {
         height: "34.2%",
       }}
     >
-      <h1 className={styleUploadAvatar.headingImage}>Images</h1>
+      <h1 className={styleUploadAvatar.headingImage}>{props.avatar}</h1>
       <hr style={{ borderTop: "1px solid #929395" }} />
       <Upload
         name="avatar"
