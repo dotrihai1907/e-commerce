@@ -4,6 +4,7 @@ import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
 import styles from "./TableProduct.module.less";
+import style_css from "./TableProduct.module.css";
 import { FaRegStar, FaStar } from "react-icons/fa";
 const data = [
   {
@@ -52,11 +53,7 @@ const columns = [
       multiple: 3,
     },
     render: () => {
-      return (
-        <p key={Math.random()} id="id">
-          1
-        </p>
-      );
+      return <p id="id">1</p>;
     },
   },
   {
@@ -68,13 +65,13 @@ const columns = [
     },
     render: () => {
       return (
-        <div key={Math.random()} className="flex product">
+        <div className="flex product ">
           <img
             src="https://cdn.elly.vn/uploads/2021/04/21222457/tong-quan-thuong-hieu-giay-adidas.6.jpg"
             alt="shoes"
-            className="w-[60px], h-[60px] pr-3"
+            className="w-[60px], h-[60px] mr-3"
           />
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col justify-around">
             <span className="text-xl leading-[23px] font-normal text-[#000] font-sans">
               Adidas shoes
             </span>
@@ -94,7 +91,7 @@ const columns = [
       multiple: 2,
     },
     render: () => {
-      return <p key={Math.random()}>Adidas</p>;
+      return <p>Adidas</p>;
     },
   },
   {
@@ -105,7 +102,7 @@ const columns = [
       multiple: 1,
     },
     render: () => {
-      return <p key={Math.random()}>Sport shoes</p>;
+      return <p>Sport shoes</p>;
     },
   },
   {
@@ -116,7 +113,7 @@ const columns = [
       multiple: 1,
     },
     render: () => {
-      return <p key={Math.random()}>9 items</p>;
+      return <p>9 items</p>;
     },
   },
   {
@@ -127,7 +124,7 @@ const columns = [
       multiple: 1,
     },
     render: () => {
-      return <p key={Math.random()}>$275</p>;
+      return <p>$275</p>;
     },
   },
   {
@@ -139,7 +136,7 @@ const columns = [
     },
     render: () => {
       return (
-        <div className="flex h-[17px]" key={Math.random()}>
+        <div className="flex h-[17px]">
           <FaStar style={{ color: "#FFD333", width: 16, height: 15 }} />
           <FaStar style={{ color: "#FFD333", width: 16, height: 15 }} />
           <FaStar style={{ color: "#FFD333", width: 16, height: 15 }} />
@@ -153,7 +150,7 @@ const columns = [
     dataIndex: "action",
     render: () => {
       return (
-        <div className="flex" key={Math.random()}>
+        <div className="flex">
           <button>
             <FiEdit
               style={{
@@ -179,17 +176,17 @@ const columns = [
   },
 ];
 
-const onChange = (pagination, filters, sorter, extra) => {
-  console.log("params", pagination, filters, sorter, extra);
-};
-export default function TableProductList() {
+// const onChange = (pagination, filters, sorter, extra) => {
+//   console.log("params", pagination, filters, sorter, extra);
+// };
+export default function TableProduct() {
   return (
     <div style={{ position: "relative", width: "100%", height: "100%" }}>
       <Table
         style={{ width: "100%", backgroundColor: "#fff", height: "100%" }}
         columns={columns}
         dataSource={data}
-        onChange={onChange}
+        // onChange={onChange}
         className={styles.style_table}
         pagination={{
           pageSize: 5,
@@ -197,19 +194,9 @@ export default function TableProductList() {
         }}
       />
       <div style={{ position: "absolute", zIndex: 9, bottom: 45, right: 91 }}>
-        <span className=" itemPerPage">Items per page</span>
+        <span className={style_css.itemPerPage}>Items per page</span>
 
-        <input
-          type="number"
-          value={5}
-          style={{
-            border: " 1px solid #929395",
-            width: 55,
-            height: 25,
-            marginLeft: 5,
-            textAlign: "center",
-          }}
-        />
+        <input type="number" value={5} className={style_css.numberItem} />
       </div>
     </div>
   );

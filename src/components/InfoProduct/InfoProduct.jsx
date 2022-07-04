@@ -34,7 +34,7 @@ export default function InfoProduct() {
     <Form
       {...formItemLayout}
       form={form}
-      className="pt-5 px-[30px] border-t border-[#929395]"
+      className="pt-5 px-[32px] border-t border-[#929395]"
       onFinish={onFinish}
       scrollToFirstError
     >

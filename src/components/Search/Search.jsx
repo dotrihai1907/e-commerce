@@ -4,7 +4,7 @@ import { RiSearchLine } from "react-icons/ri";
 import styles from "./Search.module.less";
 import "./Search.module.less";
 
-export default function Search() {
+export default function Search(props) {
   const onSearch = (value) => console.log(value);
   return (
     <Input
@@ -15,7 +15,6 @@ export default function Search() {
         height: 51.08,
         border: "1.5px solid #C4C4C4",
         lineHeight: "23px",
-        fontSize: "20px",
         color: "#929395",
         fontFamily: "Arial",
         fontStyle: "normal",
@@ -23,7 +22,7 @@ export default function Search() {
         marginTop: "4.31%",
         marginBottom: "3.01%",
       }}
-      placeholder="Search products"
+      placeholder={props.placeholder}
     />
   );
 }
