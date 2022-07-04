@@ -36,40 +36,42 @@ function App() {
       <div className="app" style={{ width: "100%", height: "100%" }}>
         <Routes>
           <Route path="/" element={<Navigation />}>
-            {/* <Route element={RedirectRole} accessToken={accessToken} role={role}> */}
-            <Route index element={<Home />} />
-            {/* </Route> */}
+            <Route
+              element={<RedirectRole accessToken={accessToken} role={role} />}
+            >
+              <Route index element={<Home />} />
+            </Route>
 
-            {/* <Route element={UserRole} accessToken={accessToken} role={role}> */}
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/product-detail" element={<ProductDetail />} />
-            <Route path="/shopping-cart" element={<ShoppingCart />} />
-            <Route path="/user-detail" element={<UserDetail />}>
-              <Route path="/user-detail/my-profile" element={<MyProfile />} />
-              <Route
-                path="/user-detail/order-history"
-                element={<OrderHistory />}
-              />
+            <Route element={<UserRole accessToken={accessToken} role={role} />}>
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/product-detail" element={<ProductDetail />} />
+              <Route path="/shopping-cart" element={<ShoppingCart />} />
+              <Route path="/user-detail" element={<UserDetail />}>
+                <Route path="/user-detail/my-profile" element={<MyProfile />} />
+                <Route
+                  path="/user-detail/order-history"
+                  element={<OrderHistory />}
+                />
+              </Route>
             </Route>
           </Route>
-          {/* </Route> */}
 
-          {/* <Route element={AdminRole} accessToken={accessToken} role={role}> */}
-          <Route path="/admin" element={<Admin />}>
-            <Route path="/admin/order-detail" element={<OrderDetail />} />
-            <Route path="/admin/order-list" element={<OrderList />} />
-            <Route path="/admin/product-create" element={<ProductCreate />} />
-            <Route path="/admin/product-edit" element={<ProductEdit />} />
-            <Route path="/admin/product-list" element={<ProductList />} />
-            <Route path="/admin/user-create" element={<UserCreate />} />
-            <Route
-              path="/admin/user-detail-by-admin"
-              element={<UserDetailByAdmin />}
-            />
-            <Route path="/admin/user-list" element={<UserList />} />
-            <Route path="/admin/user-edit" element={<UserEdit />} />
+          <Route element={<AdminRole accessToken={accessToken} role={role} />}>
+            <Route path="/admin" element={<Admin />}>
+              <Route path="/admin/order-detail" element={<OrderDetail />} />
+              <Route path="/admin/order-list" element={<OrderList />} />
+              <Route path="/admin/product-create" element={<ProductCreate />} />
+              <Route path="/admin/product-edit" element={<ProductEdit />} />
+              <Route path="/admin/product-list" element={<ProductList />} />
+              <Route path="/admin/user-create" element={<UserCreate />} />
+              <Route
+                path="/admin/user-detail-by-admin"
+                element={<UserDetailByAdmin />}
+              />
+              <Route path="/admin/user-list" element={<UserList />} />
+              <Route path="/admin/user-edit" element={<UserEdit />} />
+            </Route>
           </Route>
-          {/* </Route> */}
         </Routes>
       </div>
     </Router>

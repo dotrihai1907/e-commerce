@@ -20,7 +20,10 @@ const selectUser = createSelector([selectAuth], (auth) => auth?.user);
 
 export const selectRole = createSelector([selectUser], (user) => user?.role);
 
-export const selectAvatar = createSelector([selectUser], user => user?.avatar);
+export const selectAvatar = createSelector(
+  [selectUser],
+  (user) => user?.avatar
+);
 
 //------------tokens------------------------------
 const selectTokens = createSelector([selectAuth], (auth) => auth?.tokens);
@@ -29,7 +32,6 @@ export const selectAccessToken = createSelector(
   [selectTokens],
   (tokens) => tokens?.access.token
 );
-
 
 export const selectRefreshToken = createSelector(
   [selectTokens],
