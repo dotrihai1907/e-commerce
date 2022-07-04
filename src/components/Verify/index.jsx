@@ -32,7 +32,7 @@ function Verify() {
         <img
           src={Vector}
           alt="Shop App"
-          className="absolute bottom-[20.76%] right-[34%]"
+          className="absolute bottom-[20.76%] right-[34%] w-[133px] h-[150px]"
         />
         <div className="absolute w-[31px] h-[31px] top-[2.5%] right-[2.4%] bg-white box-border border-1 border-[#E4E4E4] border-solid shadow-form rounded-[50%]">
           <h1 className="font-red_rose not-italic font-[700] text-[24px] leading-[30px] text-[#626060] text-center">

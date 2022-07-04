@@ -22,7 +22,7 @@ function Register() {
         <img
           src={Vector}
           alt="Shop App"
-          className="absolute bottom-[20.76%] right-[34%]"
+          className="absolute bottom-[20.76%] right-[34%] w-[133px] h-[150px]"
         />
       </div>
 
