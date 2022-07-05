@@ -5,31 +5,20 @@ import "antd/dist/antd.css";
 import Cart from "../../assets/vectors/Cart.png";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { FiSearch, FiUser } from "react-icons/fi";
-import { Input, Badge, Avatar, Modal } from "antd";
+import { Input, Badge, Avatar } from "antd";
 
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { selectAccessToken, selectAvatar } from "../../redux/auth/selector";
-
-import Login from "../Login";
 
 function TopBar() {
   const accessToken = useSelector(selectAccessToken);
   const avatar = useSelector(selectAvatar);
+  const navigate = useNavigate();
 
-  const [isHidden, setIsHidden] = useState(false);
-
-  const showModal = () => {
-    setIsHidden(true);
-  };
-
-  const handleOk = () => {
-    setIsHidden(false);
-  };
-
-  const handleCancel = () => {
-    setIsHidden(false);
+  const handleLogin = () => {
+    navigate("/login");
   };
 
   return (
@@ -73,20 +62,7 @@ function TopBar() {
         {accessToken ? (
           <Avatar size={49} src={avatar} className={styles.avatar} />
         ) : (
-          <FiUser className={styles.iconUser} onClick={showModal} />
-        )}
-
-        {accessToken ? (
-          <></>
-        ) : (
-          <Modal
-            visible={isHidden}
-            onOk={handleOk}
-            onCancel={handleCancel}
-            className={style_less.style_TopBar}
-          >
-            <Login />
-          </Modal>
+          <FiUser className={styles.iconUser} onClick={handleLogin} />
         )}
       </div>
     </div>

@@ -2,8 +2,10 @@ import "./App.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Spin } from "antd";
 
 import { RedirectRole, UserRole, AdminRole } from "./pages/RouteGuard";
+
 import Navigation from "./pages/UserScreen/Navigation";
 import Home from "./pages/UserScreen/Home";
 import Checkout from "./pages/UserScreen/Checkout";
@@ -25,22 +27,33 @@ import UserList from "./pages/AdminScreen/UserList";
 import MyProfile from "./components/MyProfile";
 import OrderHistory from "./components/OrderHistory";
 
-import { selectRole, selectAccessToken } from "./redux/auth/selector";
+import HomeLogin from "./pages/UserScreen/HomeLogin";
+import HomeRegister from "./pages/UserScreen/HomeRegister";
+import HomeForgot from "./pages/UserScreen/HomeForgot";
+
+import {
+  selectRole,
+  selectAccessToken,
+  selectLoading,
+} from "./redux/auth/selector";
 
 function App() {
   const role = useSelector(selectRole);
   const accessToken = useSelector(selectAccessToken);
+  const loading = useSelector(selectLoading);
 
   return (
     <Router>
-      <div className="app" style={{ width: "100%", height: "100%" }}>
-        <Routes>
-          <Route path="/" element={<Navigation />}>
-            <Route index element={<Home />} />
+      <Spin spinning={loading}>
+        <div className="app" style={{ width: "100%", height: "100%" }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
             <Route
               element={<RedirectRole accessToken={accessToken} role={role} />}
             >
-              <Route index element={<Home />} />
+              <Route path="/login" element={<HomeLogin />} />
+              <Route path="/register" element={<HomeRegister />} />
+              <Route path="/forgot" element={<HomeForgot />} />
             </Route>
 
             <Route element={<UserRole accessToken={accessToken} role={role} />}>
@@ -55,26 +68,31 @@ function App() {
                 />
               </Route>
             </Route>
-          </Route>
 
-          <Route element={<AdminRole accessToken={accessToken} role={role} />}>
-            <Route path="/admin" element={<Admin />}>
-              <Route path="/admin/order-detail" element={<OrderDetail />} />
-              <Route path="/admin/order-list" element={<OrderList />} />
-              <Route path="/admin/product-create" element={<ProductCreate />} />
-              <Route path="/admin/product-edit" element={<ProductEdit />} />
-              <Route path="/admin/product-list" element={<ProductList />} />
-              <Route path="/admin/user-create" element={<UserCreate />} />
-              <Route
-                path="/admin/user-detail-by-admin"
-                element={<UserDetailByAdmin />}
-              />
-              <Route path="/admin/user-list" element={<UserList />} />
-              <Route path="/admin/user-edit" element={<UserEdit />} />
+            <Route
+              element={<AdminRole accessToken={accessToken} role={role} />}
+            >
+              <Route path="/admin" element={<Admin />}>
+                <Route path="/admin/order-detail" element={<OrderDetail />} />
+                <Route path="/admin/order-list" element={<OrderList />} />
+                <Route
+                  path="/admin/product-create"
+                  element={<ProductCreate />}
+                />
+                <Route path="/admin/product-edit" element={<ProductEdit />} />
+                <Route path="/admin/product-list" element={<ProductList />} />
+                <Route path="/admin/user-create" element={<UserCreate />} />
+                <Route
+                  path="/admin/user-detail-by-admin"
+                  element={<UserDetailByAdmin />}
+                />
+                <Route path="/admin/user-list" element={<UserList />} />
+                <Route path="/admin/user-edit" element={<UserEdit />} />
+              </Route>
             </Route>
-          </Route>
-        </Routes>
-      </div>
+          </Routes>
+        </div>
+      </Spin>
     </Router>
   );
 }

@@ -1,9 +1,20 @@
 import Vector from "../../assets/vectors/Vector.png";
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { register } from "../../redux/auth/action";
 
 function Register() {
+  const [username, setUsername] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
   const [type, setType] = useState("password");
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChangeType = () => {
     if (type === "password") {
@@ -13,8 +24,20 @@ function Register() {
     }
   };
 
+  const handleChange = () => {
+    navigate("/login");
+  };
+
+  const handleRegister = () => {
+    dispatch(register(username, email, password));
+  };
+
+  const handleBackHome = () => {
+    navigate("/");
+  };
+
   return (
-    <div className="absolute top-[17.5%] left-[21.1%] w-[832px] h-[395px] rounded-[20px] bg-white shadow-form overflow-hidden">
+    <div className="absolute top-[17.5%] left-[21.1%] w-[832px] h-[395px] rounded-[20px] bg-white shadow-form overflow-hidden z-[50]">
       <div className="absolute left-0 top-0 bottom-0 right-[50%] bg-[#FAF096]">
         <h1 className=" absolute top-[68px] w-full text-[68px] leading-[80px] text-center font-[700] not-italic">
           Shop App
@@ -32,17 +55,23 @@ function Register() {
             Welcome to Shop App
           </h1>
           <input
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             type="username"
             placeholder="User Name"
             className="absolute pl-[9px] top-[58px] left-[11px] input focus:outline-none"
           />
           <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             type="email"
             placeholder="Email@mail.com"
             className="absolute pl-[9px] top-[95px] left-[11px] input focus:outline-none"
           />
           <label>
             <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               type={type}
               placeholder="Password"
               className="absolute pl-[9px] top-[132px] left-[11px] input focus:outline-none"
@@ -59,14 +88,23 @@ function Register() {
             placeholder="Confirm Password"
             className="absolute pl-[9px] top-[169px] left-[11px] input focus:outline-none"
           />
-          <button className="absolute hover:opacity-80 top-[212px] left-[11px] w-[296px] bg-[#FFD333] rounded-[5px] h-[37px] font-[700] text-[24px] leading-[28.13px]">
+          <button
+            onClick={handleRegister}
+            className="absolute hover:opacity-80 top-[212px] left-[11px] w-[296px] bg-[#FFD333] rounded-[5px] h-[37px] font-[700] text-[24px] leading-[28.13px]"
+          >
             Register
           </button>
-          <div className="absolute cursor-pointer top-[262px] w-[295px] h-[16px] text-center font-[700] text-[14px] leading-[16.41px] not-italic text-[#646464]">
+          <div
+            onClick={handleChange}
+            className="absolute cursor-pointer top-[262px] w-[295px] h-[16px] text-center font-[700] text-[14px] leading-[16.41px] not-italic text-[#646464]"
+          >
             Login
           </div>
         </div>
-        <div className="absolute w-[31px] h-[31px] top-[2.5%] right-[2.4%] bg-white box-border border-1 border-[#E4E4E4] border-solid shadow-form rounded-[50%]">
+        <div
+          onClick={handleBackHome}
+          className="absolute w-[31px] cursor-pointer h-[31px] top-[2.5%] right-[2.4%] bg-white box-border border-1 border-[#E4E4E4] border-solid shadow-form rounded-[50%]"
+        >
           <h1 className="font-red_rose not-italic font-[700] text-[24px] leading-[30px] text-[#626060] text-center">
             x
           </h1>

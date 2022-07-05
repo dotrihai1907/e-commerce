@@ -1,5 +1,5 @@
 import "antd/dist/antd.css";
-import styles from "./Home.module.scss";
+import styles from "./HomeLogin.module.scss";
 
 import { Col } from "antd";
 import TopBar from "../../../components/TopBar";
@@ -7,10 +7,12 @@ import Category from "../../../components/Category";
 import CarouselPhotos from "../../../components/CarouselPhotos";
 import BenefitCoupon from "../../../components/BenefitCoupon";
 import ProductCard from "../../../components/ProductCard";
+import Login from "../../../components/Login";
 
-function Home() {
+function HomeLogin() {
   return (
-    <div>
+    <div className="relative">
+      <Login />
       <TopBar />
       <div className={styles.content}>
         <div className={styles.introduction}>
@@ -45,4 +47,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomeLogin;
