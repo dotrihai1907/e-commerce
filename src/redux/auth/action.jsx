@@ -12,7 +12,7 @@ export const register = (username, email, password) => async (dispatch) => {
       password,
     });
     Modal.success({
-      title: "Register success",
+      title: "Register successed",
     });
   } catch (error) {
     Modal.error({
@@ -32,6 +32,9 @@ export const login = (email, password) => async (dispatch) => {
       deviceId: `deviceId-${email}`,
     });
     dispatch(loginSuccess(data.data));
+    Modal.success({
+      title: "Login successfully",
+    });
   } catch (error) {
     Modal.error({
       title: "Login failed",
@@ -48,6 +51,36 @@ export const forgot = (email) => async (dispatch) => {
       email,
     });
   } catch (error) {
+  } finally {
+    dispatch(loadingDone());
+  }
+};
+
+export const sendVerificationEmail =
+  (accessToken, deviceId) => async (dispatch) => {
+    dispatch(loading());
+    try {
+      await axios.post("/v1/auth/send-verification-email", deviceId, {
+        headers: { Authorization: "Bearer " + accessToken },
+      });
+    } catch (error) {
+    } finally {
+      dispatch(loadingDone());
+    }
+  };
+
+export const verifyEmail = (token, deviceId) => async (dispatch) => {
+  dispatch(loading());
+  try {
+    await axios.post(`/v1/auth/verify-email?token=${token}`, deviceId);
+    Modal.success({
+      title: "Verify email successfully",
+    });
+  } catch (error) {
+    Modal.error({
+      title: "Verify email failed",
+      content: error.message,
+    });
   } finally {
     dispatch(loadingDone());
   }

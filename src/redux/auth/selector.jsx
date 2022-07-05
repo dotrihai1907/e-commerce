@@ -25,6 +25,11 @@ export const selectAvatar = createSelector(
   (user) => user?.avatar
 );
 
+export const selectIsEmailVerified = createSelector(
+  [selectUser],
+  (user) => user?.isEmailVerified
+);
+
 //------------tokens------------------------------
 const selectTokens = createSelector([selectAuth], (auth) => auth?.tokens);
 
@@ -36,4 +41,10 @@ export const selectAccessToken = createSelector(
 export const selectRefreshToken = createSelector(
   [selectTokens],
   (tokens) => tokens?.refresh.token
+);
+
+//----------deviceId--------------------------------------
+export const selectDeviceId = createSelector(
+  [selectAuth],
+  (auth) => auth?.deviceId
 );

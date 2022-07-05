@@ -30,17 +30,20 @@ import OrderHistory from "./components/OrderHistory";
 import HomeLogin from "./pages/UserScreen/HomeLogin";
 import HomeRegister from "./pages/UserScreen/HomeRegister";
 import HomeForgot from "./pages/UserScreen/HomeForgot";
+import HomeVerify from "./pages/UserScreen/HomeVerify";
 
 import {
   selectRole,
   selectAccessToken,
   selectLoading,
+  selectIsEmailVerified,
 } from "./redux/auth/selector";
 
 function App() {
   const role = useSelector(selectRole);
   const accessToken = useSelector(selectAccessToken);
   const loading = useSelector(selectLoading);
+  const isEmailVerified = useSelector(selectIsEmailVerified);
 
   return (
     <Router>
@@ -49,11 +52,18 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route
-              element={<RedirectRole accessToken={accessToken} role={role} />}
+              element={
+                <RedirectRole
+                  accessToken={accessToken}
+                  role={role}
+                  isEmailVerified={isEmailVerified}
+                />
+              }
             >
               <Route path="/login" element={<HomeLogin />} />
               <Route path="/register" element={<HomeRegister />} />
               <Route path="/forgot" element={<HomeForgot />} />
+              <Route path="/verify" element={<HomeVerify />} />
             </Route>
 
             <Route element={<UserRole accessToken={accessToken} role={role} />}>

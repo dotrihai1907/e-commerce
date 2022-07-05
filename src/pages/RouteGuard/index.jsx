@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-export const RedirectRole = ({ role, accessToken }) => {
-  if (accessToken && role === "user") {
+export const RedirectRole = ({ role, accessToken, isEmailVerified }) => {
+  if (accessToken && role === "user" && isEmailVerified) {
     return <Navigate to="/" />;
   }
   if (accessToken && role === "admin") {
@@ -23,4 +23,3 @@ export const AdminRole = ({ role, accessToken }) => {
   }
   return <Outlet />;
 };
- 

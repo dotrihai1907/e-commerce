@@ -54,7 +54,10 @@ function Forgot() {
             placeholder="Code"
             className="absolute pl-[9px] top-[132px] left-[11.65px] input focus:outline-none"
           />
-          <button className="absolute hover:opacity-80 top-[177px] left-[11.65px] w-[296px] bg-[#FFD333] rounded-[5px] h-[37px] font-[700] text-[24px] leading-[28.13px]">
+          <button
+            onClick={handleChange}
+            className="absolute hover:opacity-80 top-[177px] left-[11.65px] w-[296px] bg-[#FFD333] rounded-[5px] h-[37px] font-[700] text-[24px] leading-[28.13px]"
+          >
             Recover Password
           </button>
           <div
