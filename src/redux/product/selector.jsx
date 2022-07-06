@@ -16,10 +16,16 @@ export const selectCategories = createSelector(
   (productSlice) => productSlice?.categories
 );
 
+// ------------------------------
+
+export const selectCategory = createSelector(
+  [selectProductReducer],
+  (productSlice) => productSlice?.category
+);
+
 // ----------------------------------------------------
 
 export const selectProductsByCategory = createSelector(
   [selectProductReducer],
   (productSlice) => productSlice?.productsByCategory
 );
-

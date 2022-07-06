@@ -1,0 +1,52 @@
+.content {
+  padding: 11px 144px 84px 144px;
+  //----------------------------
+  .introduction {
+    display: flex;
+  }
+  //----------------------------
+  .benefit {
+    display: flex;
+    justify-content: space-between;
+  }
+  //---------------------------
+  .banner {
+    display: flex;
+    position: relative;
+    width: 1151px;
+    height: 43px;
+    margin-top: 19px;
+    line-height: 43px;
+    font-family: "Arial";
+    font-style: normal;
+    font-weight: 700;
+    //------------------------
+    .textBanner {
+      font-size: 22px;
+      margin-left: 28px;
+    }
+    //---------------------------
+    .buttonBanner {
+      position: absolute;
+      box-sizing: border-box;
+      width: 131px;
+      height: 31px;
+      line-height: 31px;
+      border: 1px solid #f0e36a;
+      font-size: 16px;
+      border-radius: 56px;
+      text-align: center;
+      right: 20px;
+      margin-top: 6px;
+      &:hover {
+        color: #f0e36a;
+        background-color: white;
+      }
+    }
+  }
+  //------------------------
+  .productCard {
+    display: flex;
+    justify-content: space-between;
+  }
+}

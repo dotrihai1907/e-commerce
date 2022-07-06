@@ -15,6 +15,7 @@ import HomeLogin from "./pages/UserScreen/HomeLogin";
 import HomeRegister from "./pages/UserScreen/HomeRegister";
 import HomeForgot from "./pages/UserScreen/HomeForgot";
 import HomeVerify from "./pages/UserScreen/HomeVerify";
+import HomeLogged from "./pages/UserScreen/HomeLogged";
 import ProductsByCategory from "./pages/UserScreen/ProductsByCategory";
 
 import Admin from "./pages/AdminScreen/Admin";
@@ -63,14 +64,14 @@ function App() {
               <Route path="/register" element={<HomeRegister />} />
               <Route path="/forgot" element={<HomeForgot />} />
               <Route path="/verify" element={<HomeVerify />} />
+            </Route>
+
+            <Route element={<UserRole accessToken={accessToken} role={role} />}>
+              <Route path="/logged" element={<HomeLogged />} />
               <Route
                 path="/products-by-category"
                 element={<ProductsByCategory />}
               />
-            </Route>
-
-            {/* <Route element={<UserRole accessToken={accessToken} role={role} />}> */}
-            <Route element={<Navigation />}>
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/product-detail" element={<ProductDetail />} />
               <Route path="/shopping-cart" element={<ShoppingCart />} />
@@ -82,7 +83,6 @@ function App() {
                 />
               </Route>
             </Route>
-            {/* </Route> */}
 
             <Route
               element={<AdminRole accessToken={accessToken} role={role} />}

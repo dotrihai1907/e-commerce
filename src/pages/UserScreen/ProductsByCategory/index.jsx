@@ -10,11 +10,14 @@ import { useSelector } from "react-redux";
 
 import TopBar from "../../../components/TopBar";
 
-import { selectProductsByCategory } from "../../../redux/product/selector";
+import {
+  selectProductsByCategory,
+  selectCategory,
+} from "../../../redux/product/selector";
 
 function ProductsByCategory() {
-  const productsByCategory = useSelector(selectProductsByCategory);
-  const category = productsByCategory[0].category;
+  const category = useSelector(selectCategory);
+  const productsByCategory = useSelector(selectProductsByCategory) ?? [];
 
   return (
     <div>
@@ -22,7 +25,7 @@ function ProductsByCategory() {
       <div className={styles.container}>
         <Breadcrumb separator=">" className={styles.navTab}>
           <Breadcrumb.Item>
-            <NavLink to="/" className={styles.back}>
+            <NavLink to="/logged" className={styles.back}>
               Home
             </NavLink>
           </Breadcrumb.Item>

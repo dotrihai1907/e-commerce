@@ -1,5 +1,4 @@
 import styles from "./TopBar.module.scss";
-import style_less from "./TopBar.module.less";
 import "antd/dist/antd.css";
 
 import Cart from "../../assets/vectors/Cart.png";

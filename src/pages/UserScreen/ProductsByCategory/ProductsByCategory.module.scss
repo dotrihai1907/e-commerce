@@ -31,7 +31,6 @@ li {
   }
   .list {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     .card {
       box-sizing: border-box;
@@ -41,6 +40,7 @@ li {
       width: 280px;
       height: 395px;
       margin-top: 19px;
+      margin-right: 8px;
       //------------------------
       .photoCard {
         width: 233.18px;

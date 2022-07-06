@@ -5,6 +5,7 @@ import { loading, loadingDone } from "../auth/reducer";
 import {
   getAllCategoriesSuccess,
   getProductsByCategorySuccess,
+  getCategorySuccess,
 } from "./reducer";
 
 export const getAllCategories = () => async (dispatch) => {
@@ -23,10 +24,10 @@ export const getAllCategories = () => async (dispatch) => {
 
 export const getProductsByCategory = (category) => async (dispatch) => {
   dispatch(loading());
+  dispatch(getCategorySuccess(category));
   try {
     const { data } = await axios.get(`/v1/products?category=${category}`);
     dispatch(getProductsByCategorySuccess(data.data.result));
-    console.log(data.data.result);
   } catch (error) {
   } finally {
     dispatch(loadingDone());
