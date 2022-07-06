@@ -6,12 +6,16 @@ import { Spin } from "antd";
 
 import { RedirectRole, UserRole, AdminRole } from "./pages/RouteGuard";
 
-import Navigation from "./pages/UserScreen/Navigation";
 import Home from "./pages/UserScreen/Home";
 import Checkout from "./pages/UserScreen/Checkout";
 import ProductDetail from "./pages/UserScreen/ProductDetail";
 import ShoppingCart from "./pages/UserScreen/ShoppingCart";
 import UserDetail from "./pages/UserScreen/UserDetail";
+import HomeLogin from "./pages/UserScreen/HomeLogin";
+import HomeRegister from "./pages/UserScreen/HomeRegister";
+import HomeForgot from "./pages/UserScreen/HomeForgot";
+import HomeVerify from "./pages/UserScreen/HomeVerify";
+import ProductsByCategory from "./pages/UserScreen/ProductsByCategory";
 
 import Admin from "./pages/AdminScreen/Admin";
 import OrderDetail from "./pages/AdminScreen/OrderDetail";
@@ -26,11 +30,6 @@ import UserList from "./pages/AdminScreen/UserList";
 
 import MyProfile from "./components/MyProfile";
 import OrderHistory from "./components/OrderHistory";
-
-import HomeLogin from "./pages/UserScreen/HomeLogin";
-import HomeRegister from "./pages/UserScreen/HomeRegister";
-import HomeForgot from "./pages/UserScreen/HomeForgot";
-import HomeVerify from "./pages/UserScreen/HomeVerify";
 
 import {
   selectRole,
@@ -64,9 +63,14 @@ function App() {
               <Route path="/register" element={<HomeRegister />} />
               <Route path="/forgot" element={<HomeForgot />} />
               <Route path="/verify" element={<HomeVerify />} />
+              <Route
+                path="/products-by-category"
+                element={<ProductsByCategory />}
+              />
             </Route>
 
-            <Route element={<UserRole accessToken={accessToken} role={role} />}>
+            {/* <Route element={<UserRole accessToken={accessToken} role={role} />}> */}
+            <Route element={<Navigation />}>
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/product-detail" element={<ProductDetail />} />
               <Route path="/shopping-cart" element={<ShoppingCart />} />
@@ -78,6 +82,7 @@ function App() {
                 />
               </Route>
             </Route>
+            {/* </Route> */}
 
             <Route
               element={<AdminRole accessToken={accessToken} role={role} />}

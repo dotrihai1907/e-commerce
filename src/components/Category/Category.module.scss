@@ -12,8 +12,8 @@ li {
   overflow: hidden;
 }
 
-.category {
-  height: 628px;
+.categoryList {
+  min-height: 628px;
   position: relative;
   width: 280px;
   font-family: "Arial";
@@ -45,7 +45,7 @@ li {
     cursor: pointer;
     //------------------------
     .list {
-      .item {
+      .category {
         padding-left: 18.93px;
         position: relative;
         display: flex;
