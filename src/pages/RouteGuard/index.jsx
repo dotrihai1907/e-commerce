@@ -4,6 +4,9 @@ export const RedirectRole = ({ role, accessToken, isEmailVerified }) => {
   if (accessToken && role === "user" && isEmailVerified) {
     return <Navigate to="/logged" />;
   }
+  if (accessToken && role === "user" && !isEmailVerified) {
+    return <Navigate to="/" />;
+  }
   if (accessToken && role === "admin") {
     return <Navigate to="/admin" />;
   }
