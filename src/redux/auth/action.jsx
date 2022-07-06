@@ -1,7 +1,13 @@
 import "antd/dist/antd.css";
 import { Modal } from "antd";
 import axios from "../../api/axios";
-import { loading, loadingDone, loginSuccess } from "./reducer";
+import {
+  loading,
+  loadingDone,
+  loginSuccess,
+  refreshSuccess,
+  logoutSuccess,
+} from "./reducer";
 
 export const register = (username, email, password) => async (dispatch) => {
   dispatch(loading());
@@ -80,6 +86,31 @@ export const verifyEmail = (token, deviceId) => async (dispatch) => {
     Modal.error({
       title: "Verify email failed",
       content: error.message,
+    });
+  } finally {
+    dispatch(loadingDone());
+  }
+};
+
+export const refresh = (refreshToken, deviceId) => async (dispatch) => {
+  const { data } = await axios.post("/v1/auth/refresh-tokens", {
+    refreshToken,
+    deviceId,
+  });
+  dispatch(refreshSuccess(data.data));
+};
+
+export const logout = (refreshToken, deviceId) => async (dispatch) => {
+  dispatch(loading());
+  try {
+    await axios.post("/v1/auth/logout", {
+      refreshToken,
+      deviceId,
+    });
+    dispatch(logoutSuccess());
+  } catch (error) {
+    Modal.error({
+      title: "Logout failed",
     });
   } finally {
     dispatch(loadingDone());

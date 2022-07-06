@@ -1,8 +1,11 @@
 import "./App.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { Spin } from "antd";
+
+import tokenExpried from "./api/tokenExpired";
 
 import { RedirectRole, UserRole, AdminRole } from "./pages/RouteGuard";
 
@@ -38,13 +41,29 @@ import {
   selectAccessToken,
   selectLoading,
   selectIsEmailVerified,
+  selectRefreshToken,
+  selectDeviceId,
 } from "./redux/auth/selector";
+
+import { refresh } from "./redux/auth/action";
 
 function App() {
   const role = useSelector(selectRole);
   const accessToken = useSelector(selectAccessToken);
   const loading = useSelector(selectLoading);
   const isEmailVerified = useSelector(selectIsEmailVerified);
+  const refreshToken = useSelector(selectRefreshToken);
+  const deviceId = useSelector(selectDeviceId);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (accessToken && refreshToken) {
+      tokenExpried(accessToken, () => {
+        dispatch(refresh(refreshToken, deviceId));
+      });
+    }
+  }, [accessToken, refreshToken]);
 
   return (
     <Router>
@@ -73,7 +92,10 @@ function App() {
                 path="/products-by-category"
                 element={<ProductsByCategory />}
               />
-              <Route path="products-by-search" element={<ProductsBySearch />} />
+              <Route
+                path="/products-by-search"
+                element={<ProductsBySearch />}
+              />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/product-detail" element={<ProductDetail />} />
               <Route path="/shopping-cart" element={<ShoppingCart />} />

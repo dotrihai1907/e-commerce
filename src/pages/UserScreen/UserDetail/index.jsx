@@ -10,7 +10,7 @@ const tabs = ["My Profile", "Order History", "Logout"];
 function UserDetail() {
   const [type, setType] = useState();
   return (
-    <div class={styles.container}>
+    <div className={styles.container}>
       <Breadcrumb separator=">" className={styles.navTab}>
         <Breadcrumb.Item>
           <NavLink to="/" className={styles.home}>
