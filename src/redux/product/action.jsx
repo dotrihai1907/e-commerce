@@ -6,6 +6,8 @@ import {
   getAllCategoriesSuccess,
   getProductsByCategorySuccess,
   getCategorySuccess,
+  getKeywordSuccess,
+  getProductsBySearchSuccess,
 } from "./reducer";
 
 export const getAllCategories = () => async (dispatch) => {
@@ -28,6 +30,18 @@ export const getProductsByCategory = (category) => async (dispatch) => {
   try {
     const { data } = await axios.get(`/v1/products?category=${category}`);
     dispatch(getProductsByCategorySuccess(data.data.result));
+  } catch (error) {
+  } finally {
+    dispatch(loadingDone());
+  }
+};
+
+export const getProductsBySearch = (keyword) => async (dispatch) => {
+  dispatch(loading());
+  dispatch(getKeywordSuccess(keyword));
+  try {
+    const { data } = await axios.get(`/v1/search?keyword=${keyword}`);
+    dispatch(getProductsBySearchSuccess(data.data.products.result));
   } catch (error) {
   } finally {
     dispatch(loadingDone());

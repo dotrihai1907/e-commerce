@@ -6,18 +6,28 @@ import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { FiSearch, FiUser } from "react-icons/fi";
 import { Input, Badge, Avatar } from "antd";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import { selectAccessToken, selectAvatar } from "../../redux/auth/selector";
+import { getProductsBySearch } from "../../redux/product/action";
 
 function TopBar() {
+  const [keyword, setKeyword] = useState();
+
   const accessToken = useSelector(selectAccessToken);
   const avatar = useSelector(selectAvatar);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogin = () => {
     navigate("/login");
+  };
+
+  const handleSearch = () => {
+    dispatch(getProductsBySearch(keyword));
+    navigate("/products-by-search");
   };
 
   return (
@@ -39,10 +49,17 @@ function TopBar() {
           </div>
 
           <Input
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
             className={styles.input}
             placeholder="Search Items"
             bordered={false}
-            suffix={<FiSearch />}
+            suffix={
+              <FiSearch
+                onClick={handleSearch}
+                className="cursor-pointer hover:text-[#aa8604]"
+              />
+            }
             size="large"
           />
         </div>

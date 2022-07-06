@@ -17,6 +17,7 @@ import HomeForgot from "./pages/UserScreen/HomeForgot";
 import HomeVerify from "./pages/UserScreen/HomeVerify";
 import HomeLogged from "./pages/UserScreen/HomeLogged";
 import ProductsByCategory from "./pages/UserScreen/ProductsByCategory";
+import ProductsBySearch from "./pages/UserScreen/ProductsBySearch";
 
 import Admin from "./pages/AdminScreen/Admin";
 import OrderDetail from "./pages/AdminScreen/OrderDetail";
@@ -72,6 +73,7 @@ function App() {
                 path="/products-by-category"
                 element={<ProductsByCategory />}
               />
+              <Route path="products-by-search" element={<ProductsBySearch />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/product-detail" element={<ProductDetail />} />
               <Route path="/shopping-cart" element={<ShoppingCart />} />

@@ -7,6 +7,8 @@ const productSlice = createSlice({
     categories: null,
     category: null,
     productsByCategory: null,
+    keyword: null,
+    productsBySearch: null,
   },
   reducers: {
     getAllCategoriesSuccess: (state, action) => {
@@ -18,6 +20,12 @@ const productSlice = createSlice({
     getProductsByCategorySuccess: (state, action) => {
       state.productsByCategory = action.payload;
     },
+    getKeywordSuccess: (state, action) => {
+      state.keyword = action.payload;
+    },
+    getProductsBySearchSuccess: (state, action) => {
+      state.productsBySearch = action.payload;
+    },
   },
 });
 
@@ -25,6 +33,8 @@ export const {
   getAllCategoriesSuccess,
   getCategorySuccess,
   getProductsByCategorySuccess,
+  getKeywordSuccess,
+  getProductsBySearchSuccess,
 } = productSlice.actions;
 
 export default productSlice.reducer;

@@ -29,3 +29,17 @@ export const selectProductsByCategory = createSelector(
   [selectProductReducer],
   (productSlice) => productSlice?.productsByCategory
 );
+
+// ------------------------------------------------------
+
+export const selectKeyword = createSelector(
+  [selectProductReducer],
+  (productSlice) => productSlice?.keyword
+);
+
+// -----------------------------------------------------
+
+export const selectProductsBySearch = createSelector(
+  [selectProductReducer],
+  (productSlice) => productSlice?.productsBySearch
+);
