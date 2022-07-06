@@ -42,6 +42,7 @@
       .classify {
         display: flex;
         cursor: pointer;
+        //------------------------
         .iconCategories {
           color: #2e2d2d;
           width: 30.89px;
@@ -49,6 +50,9 @@
           margin-top: 12.46px;
           margin-left: 8px;
           margin-right: 3.15px;
+          &:hover {
+            color: #aa8604;
+          }
         }
         //------------------------
         .textCategories {
@@ -58,6 +62,9 @@
           color: #4b4b4b;
           width: 137px;
           border-right: 1px solid #6c6c6c;
+          &:hover {
+            color: #aa8604;
+          }
         }
       }
       //------------------------

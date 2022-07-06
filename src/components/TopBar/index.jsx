@@ -33,7 +33,7 @@ function TopBar() {
         <div className={styles.name}>Shop App</div>
 
         <div className={styles.searchBar}>
-          <div className={styles.classify}>
+          <div className={styles.classify} onClick={() => navigate("/logged")}>
             <HiOutlineMenuAlt1 className={styles.iconCategories} />
             <p className={styles.textCategories}>Categories</p>
           </div>
