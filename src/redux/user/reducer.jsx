@@ -9,9 +9,31 @@ const userSlice = createSlice({
     getProfileSuccess: (state, action) => {
       state.profile = action.payload;
     },
+    changeEmailSuccess: (state, action) => {
+      state.profile = action.payload;
+    },
+    changeUsernameSuccess: (state, action) => {
+      state.profile = action.payload;
+    },
+    changePasswordSuccess: (state, action) => {
+      state.profile = action.payload;
+    },
+    changeContactSuccess: (state, action) => {
+      state.profile = action.payload;
+    },
+    changeAvatarSuccess: (state, action) => {
+      state.profile = action.payload;
+    },
   },
 });
 
-export const { getProfileSuccess } = userSlice.actions;
+export const {
+  getProfileSuccess,
+  changeEmailSuccess,
+  changeUsernameSuccess,
+  changePasswordSuccess,
+  changeContactSuccess,
+  changeAvatarSuccess,
+} = userSlice.actions;
 
 export default userSlice.reducer;

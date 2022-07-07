@@ -12,7 +12,7 @@ import { getOrders } from "../../redux/orders/action";
 
 function OrderHistory() {
   const accessToken = useSelector(selectAccessToken);
-  const orders = useSelector(selectOrders);
+  const orders = useSelector(selectOrders) ?? [];
 
   const dispatch = useDispatch();
 

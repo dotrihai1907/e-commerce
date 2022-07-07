@@ -48,7 +48,7 @@
         }
       }
       //------------------------
-      .button {
+      .buttonEditProfile {
         width: 157px;
         height: 39px;
         background: #ffd333;
@@ -95,6 +95,65 @@
       line-height: 28px;
       display: flex;
       justify-content: center;
+    }
+  }
+}
+
+//-----------------------------
+.modal {
+  font-family: "Roboto";
+  .buttonModal {
+    box-sizing: border-box;
+    width: 70px;
+    height: 30px;
+    margin-left: 10px;
+    background: white;
+    border: 1px solid #bbbaba;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 30px;
+    &:hover {
+      border: 1px solid #bbbaba;
+      color: #5a5a5a;
+      background: #bbbaba;
+    }
+  }
+  //------------------------
+  .contentModal {
+    font-weight: 400;
+    //------------------------
+    .changeBox {
+      display: flex;
+      justify-content: space-between;
+      //------------------------
+      .inputChange {
+        background: #c4c4c4;
+        border-radius: 5px;
+        width: 280px;
+        height: 35px;
+        font-size: 16px;
+        color: #5a5a5a;
+        outline-style: none;
+        padding: 0px 10px;
+        margin-bottom: 7px;
+      }
+      //------------------------
+      .buttonChange {
+        margin: auto 0px;
+        padding: 0 10px;
+        height: 35px;
+        background: #ffd333;
+        border-radius: 5px;
+        font-size: 16px;
+        line-height: 35px;
+        color: #000000;
+        &:hover {
+          border: 1px solid #ffd333;
+          color: #ffd333;
+          background: white;
+        }
+      }
     }
   }
 }
