@@ -3,46 +3,45 @@ import styles from "./MyProfile.module.scss";
 
 import { Avatar, Table } from "antd";
 
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+
+import { selectAccessToken } from "../../redux/auth/selector";
+import { selectProfile } from "../../redux/user/selector";
+import { selectOrders } from "../../redux/orders/selector";
+
+import { getProfile } from "../../redux/user/action";
+import { getOrders } from "../../redux/orders/action";
+
 function MyProfile() {
-  const data = [
-    {
-      order: "#123",
-      date: "09/03/2022",
-      status: "Processing",
-      total: 120,
-    },
-    {
-      order: "#123",
-      date: "09/03/2022",
-      status: "Processing",
-      total: 120,
-    },
-    {
-      order: "#123",
-      date: "09/03/2022",
-      status: "Processing",
-      total: 120,
-    },
-    {
-      order: "#123",
-      date: "09/03/2022",
-      status: "Processing",
-      total: 120,
-    },
-    {
-      order: "#123",
-      date: "09/03/2022",
-      status: "Processing",
-      total: 120,
-    },
-  ];
+  const accessToken = useSelector(selectAccessToken);
+  const orders = useSelector(selectOrders);
+  const profile = useSelector(selectProfile);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProfile(accessToken));
+  }, [accessToken]);
+
+  useEffect(() => {
+    dispatch(getOrders(accessToken));
+  }, [accessToken]);
+
+  const data = orders.map((item) => ({
+    key: item.id,
+    order: item.id,
+    date: item.createdAt.slice(0, 10),
+    status: item.status,
+    total: item.totalPrice,
+  }));
 
   const columns = [
     {
       title: () => <p className={styles.titleColumns}>Order</p>,
       dataIndex: "order",
       key: "order",
-      render: (order) => <p className={styles.textColumns}>{order}</p>,
+      render: (order) => <p className={styles.textColumns}>#{order}</p>,
     },
     {
       title: () => <p className={styles.titleColumns}>Date</p>,
@@ -67,24 +66,24 @@ function MyProfile() {
   return (
     <div className={styles.content}>
       <div className={styles.userInfo}>
-        <Avatar size={128} className={styles.avatar} />
+        <Avatar src={profile.avatar} size={128} className={styles.avatar} />
 
         <div className={styles.detail}>
-          <div className={styles.name}>Ami</div>
+          <div className={styles.name}>{profile.username}</div>
 
           <div className={styles.text}>
             <p className={styles.first}>Email:</p>
-            <p>ami@mail.com</p>
+            <p>{profile.email}</p>
           </div>
 
           <div className={styles.text}>
             <p className={styles.first}>Address:</p>
-            <p>test 115302, Hanoi</p>
+            <p>{profile.address ?? "Milky Way Galaxy"}</p>
           </div>
 
           <div className={styles.text}>
             <p className={styles.first}>Phone:</p>
-            <p>+38 972 588-42-36</p>
+            <p>{profile.contact ?? " "}</p>
           </div>
 
           <button className={styles.button}>Edit Profile</button>

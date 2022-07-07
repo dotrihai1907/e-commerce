@@ -14,10 +14,14 @@ import { encryptTransform } from "redux-persist-transform-encrypt";
 import storage from "redux-persist/lib/storage";
 import authReducer from "./auth/reducer";
 import productReducer from "./product/reducer";
+import userReducer from "./user/reducer";
+import ordersReducer from "./orders/reducer";
 
 const reducer = combineReducers({
   authentication: authReducer,
   productReducer,
+  userReducer,
+  ordersReducer,
 });
 
 const persistConfig = {
