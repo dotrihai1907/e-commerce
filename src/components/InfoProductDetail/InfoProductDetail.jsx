@@ -1,5 +1,5 @@
 import { Radio } from "antd";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BsCartPlus } from "react-icons/bs";
 import style_css from "./InfoProductDetail.module.css";
 import style_less from "./InfoProductDetail.module.less";
