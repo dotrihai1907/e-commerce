@@ -56,6 +56,7 @@ input::-webkit-inner-spin-button {
   font-weight: 700;
   font-size: 40px;
   line-height: 47px;
+  text-transform: uppercase;
 
   display: flex;
   align-items: center;
@@ -93,7 +94,7 @@ input::-webkit-inner-spin-button {
   position: absolute;
   content: "|";
   top: 0px;
-  right: 100px;
+  right: 85px;
   width: 5px;
   height: 19px;
   color: #000;
@@ -102,7 +103,7 @@ input::-webkit-inner-spin-button {
   position: absolute;
   content: "|";
   top: 0px;
-  right: -15px;
+  right: -20px;
   width: 5px;
   height: 19px;
   color: #000;

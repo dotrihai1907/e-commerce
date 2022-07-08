@@ -16,12 +16,14 @@ import authReducer from "./auth/reducer";
 import productReducer from "./product/reducer";
 import userReducer from "./user/reducer";
 import ordersReducer from "./orders/reducer";
+import cartReducer from "./cart/reducer";
 
 const reducer = combineReducers({
   authentication: authReducer,
   productReducer,
   userReducer,
   ordersReducer,
+  cartReducer,
 });
 
 const persistConfig = {

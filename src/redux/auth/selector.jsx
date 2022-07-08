@@ -30,6 +30,8 @@ export const selectIsEmailVerified = createSelector(
   (user) => user?.isEmailVerified
 );
 
+export const selectUserId = createSelector([selectUser], (user) => user?.id);
+
 //------------tokens------------------------------
 const selectTokens = createSelector([selectAuth], (auth) => auth?.tokens);
 
