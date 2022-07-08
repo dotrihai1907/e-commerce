@@ -3,12 +3,24 @@ import { Modal } from "antd";
 import axios from "../../api/axios";
 import { loading, loadingDone } from "../auth/reducer";
 import {
+  getAllProductsSuccess,
   getAllCategoriesSuccess,
   getProductsByCategorySuccess,
   getCategorySuccess,
   getKeywordSuccess,
   getProductsBySearchSuccess,
 } from "./reducer";
+
+export const getAllProducts = () => async (dispatch) => {
+  dispatch(loading());
+  try {
+    const { data } = await axios.get("/v1/products?size=500");
+    dispatch(getAllProductsSuccess(data.data.result));
+  } catch (error) {
+  } finally {
+    dispatch(loadingDone());
+  }
+};
 
 export const getAllCategories = () => async (dispatch) => {
   dispatch(loading());

@@ -11,6 +11,9 @@ const productSlice = createSlice({
     productsBySearch: null,
   },
   reducers: {
+    getAllProductsSuccess: (state, action) => {
+      state.products = action.payload;
+    },
     getAllCategoriesSuccess: (state, action) => {
       state.categories = action.payload;
     },
@@ -30,6 +33,7 @@ const productSlice = createSlice({
 });
 
 export const {
+  getAllProductsSuccess,
   getAllCategoriesSuccess,
   getCategorySuccess,
   getProductsByCategorySuccess,
