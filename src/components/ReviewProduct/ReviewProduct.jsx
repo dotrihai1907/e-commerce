@@ -4,25 +4,19 @@ import style_less from "./ReviewProdcut.module.less";
 import { Pagination, Tabs, Rate } from "antd";
 const { TabPane } = Tabs;
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 
 import { selectProduct } from "../../redux/product/selector";
 import { selectAccessToken } from "../../redux/auth/selector";
 
-import { createReviewProduct, getProduct } from "../../redux/product/action";
+import { createReviewProduct } from "../../redux/product/action";
 
 export default function ReviewProduct() {
   const product = useSelector(selectProduct) ?? {};
   const reviews = product.reviews.result;
   const id = product.product.id;
-
-  const [reload, setReload] = useState(false);
-
-  useEffect(() => {
-    dispatch(getProduct(id));
-  }, [reload]);
 
   const accessToken = useSelector(selectAccessToken);
 
@@ -38,16 +32,12 @@ export default function ReviewProduct() {
       productId: id,
     };
     dispatch(createReviewProduct(accessToken, id, review));
-    setReload((prev) => !prev);
   };
 
-  const onChange = (key) => {
-    console.log(key);
-  };
   return (
     <div className={style_css.wrapper_review}>
       <div className={style_less.style_reviewProduct}>
-        <Tabs defaultActiveKey="1" onChange={onChange}>
+        <Tabs defaultActiveKey="1">
           <TabPane tab="Description" key="1">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis
             facilis dolorem praesentium laborum provident voluptate ipsa

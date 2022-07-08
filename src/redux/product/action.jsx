@@ -79,8 +79,11 @@ export const createReviewProduct =
   (accessToken, id, review) => async (dispatch) => {
     dispatch(loading());
     try {
-      const { data } = await axios.post(`/v1/products/${id}/reviews`, review, {
+      await axios.post(`/v1/products/${id}/reviews`, review, {
         headers: { Authorization: "Bearer " + accessToken },
+      });
+      Modal.success({
+        title: "Create review successfully",
       });
     } catch (error) {
       Modal.error({

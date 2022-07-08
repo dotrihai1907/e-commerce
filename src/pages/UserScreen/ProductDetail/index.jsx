@@ -34,7 +34,7 @@ export default function ProductDetail() {
         <div className={style_css.wrapper_breadcrumb}>
           <Breadcrumb separator=">" className={style_less.style_productDetail}>
             <Breadcrumb.Item>
-              <a href="/" className={style_css.breadcrumb}>
+              <a href="/logged" className={style_css.breadcrumb}>
                 Home
               </a>
             </Breadcrumb.Item>
