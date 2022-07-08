@@ -5,11 +5,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import { Col, notification, Button } from "antd";
+import { Col, Rate } from "antd";
+import { BsCartPlus } from "react-icons/bs";
+
 import Category from "../Category";
 import CarouselPhotos from "../CarouselPhotos";
 import BenefitCoupon from "../BenefitCoupon";
-import ProductCard from "../ProductCard";
 
 import { selectProducts } from "../../redux/product/selector";
 
@@ -27,32 +28,15 @@ function ContentHome() {
 
   const [numberShow, setNumberShow] = useState(4);
 
-  const productsShow = bestSellers?.slice(0, numberShow);
-
   const handleShowMore = () => {
     setNumberShow((prev) => prev + 8);
   };
 
-  const key = `open${Date.now()}`;
+  const productsShow = bestSellers?.slice(0, numberShow);
 
   useEffect(() => {
     dispatch(getAllProducts());
   }, []);
-
-  const handleChange = () => {
-    dispatch(sendVerificationEmail(accessToken, deviceId));
-    navigate("/verify");
-    notification.close(key);
-  };
-
-  const btn = (
-    <Button
-      onClick={handleChange}
-      className="bg-[#FFD333] font-roboto rounded-[5px] border-transparent hover:bg-white hover:text-[#ffd333] hover:border-[#ffd333]"
-    >
-      Verify
-    </Button>
-  );
 
   return (
     <div className={styles.content}>
@@ -79,12 +63,38 @@ function ContentHome() {
         </button>
       </div>
 
-      <div className={styles.productCard}>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-      </div>
+      <ul className={styles.list}>
+        {productsShow.map((product) => (
+          <li key={product.id} className={styles.card}>
+            <img
+              src={product.images[0].url}
+              alt={product.name}
+              className={styles.photoCard}
+            />
+
+            <div className={styles.productDescription}>
+              <p className={styles.nameProduct}>{product.name}</p>
+              <p className={styles.idProduct}>ID: {product.id}</p>
+
+              <div className={styles.detail}>
+                <div className={styles.rate}>
+                  <Rate disabled defaultValue={Number(product.rating)} />
+                </div>
+                <div className={styles.sale}>50% Off</div>
+              </div>
+
+              <div className={styles.cart}>
+                <div className={styles.price}>$ {product.price}</div>
+                <BsCartPlus className={styles.iconCart} />
+              </div>
+
+              <div className={styles.available}>
+                {product.countInStock > 0 ? "Available" : "Sold Out"}
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
