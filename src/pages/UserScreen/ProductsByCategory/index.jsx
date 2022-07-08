@@ -6,7 +6,8 @@ import { Rate } from "antd";
 import { BsCartPlus } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import TopBar from "../../../components/TopBar";
 
@@ -15,9 +16,19 @@ import {
   selectCategory,
 } from "../../../redux/product/selector";
 
+import { getProduct } from "../../../redux/product/action";
+
 function ProductsByCategory() {
   const category = useSelector(selectCategory);
   const productsByCategory = useSelector(selectProductsByCategory) ?? [];
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleClick = (id) => {
+    dispatch(getProduct(id));
+    navigate("/product-detail");
+  };
 
   return (
     <div>
@@ -37,7 +48,11 @@ function ProductsByCategory() {
 
         <ul className={styles.list}>
           {productsByCategory.map((product) => (
-            <li key={product.id} className={styles.card}>
+            <li
+              key={product.id}
+              className={styles.card}
+              onClick={() => handleClick(product.id)}
+            >
               <img
                 src={product.images[0].url}
                 alt={product.name}
