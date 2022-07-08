@@ -82,7 +82,7 @@ function MyProfile() {
   const data = orders.map((item) => ({
     key: item.id,
     order: item.id,
-    date: item.createdAt.slice(0, 10),
+    date: item.createdAt.slice(0, 10).split("-").reverse().join("/"),
     status: item.status,
     total: item.totalPrice,
   }));

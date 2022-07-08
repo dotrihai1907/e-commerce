@@ -1,7 +1,9 @@
 import React from "react";
 import style_css from "./ReviewProduct.module.css";
 import style_less from "./ReviewProdcut.module.less";
-import { Pagination, Tabs, Rate } from "antd";
+import { Tabs, Rate } from "antd";
+import { RiArrowRightSLine } from "react-icons/ri";
+import { RiArrowLeftSLine } from "react-icons/ri";
 const { TabPane } = Tabs;
 
 import { useState } from "react";
@@ -34,6 +36,24 @@ export default function ReviewProduct() {
     dispatch(createReviewProduct(accessToken, id, review));
   };
 
+  const [first, setFirst] = useState(0);
+  const [limit, setLimit] = useState(3);
+
+  let [num, setNum] = useState(1);
+  let [cur, setCur] = useState(1);
+  const pages = [
+    { page: num },
+    { page: num + 1 },
+    { page: num + 2 },
+    { page: num + 3 },
+  ];
+  const next = () => {
+    setNum(++num);
+  };
+  const back = () => {
+    num > 1 && setNum(--num);
+  };
+
   return (
     <div className={style_css.wrapper_review}>
       <div className={style_less.style_reviewProduct}>
@@ -54,9 +74,8 @@ export default function ReviewProduct() {
             <div className={style_css.wrapper_review}>
               <h2 className={style_css.heading_review}>Customer Reviews</h2>
               {/* ------------------------------------------- comment */}
-
               <ul>
-                {reviews.map((review, index) => (
+                {reviews.slice(first, limit).map((review, index) => (
                   <li key={index}>
                     <div className="flex mt-[20px] border-b-[2px] border-[#D8D8D8]">
                       <div className="flex-[1_1_8%] mx-[13px] mt-[13px]">
@@ -84,7 +103,11 @@ export default function ReviewProduct() {
                             {review.content}
                           </p>
                           <span className="font-bold text-[#5A5A5A] text-3 leading-[14px] not-italic">
-                            {review.createdAt.slice(0, 10)}
+                            {review.createdAt
+                              .slice(0, 10)
+                              .split("-")
+                              .reverse()
+                              .join("/")}
                           </span>
                         </div>
                       </div>
@@ -93,16 +116,46 @@ export default function ReviewProduct() {
                 ))}
               </ul>
 
-              <div className="flex justify-center">
-                <Pagination
-                  defaultCurrent={1}
-                  total={50}
-                  className={style_less.style_reviewProduct}
-                />
+              <div className="flex justify-center mt-[8px] absolute top-[475px] left-[40%]">
+                <button
+                  onClick={back}
+                  className="w-[32px] h-[32px] text-center  text-[14px] font-bold font-sans bg-[#DFE3E8] rounded-[4px] flex justify-center align-middle hover:bg-[#919EAB] hover:text-[#FFD333] "
+                >
+                  <RiArrowLeftSLine size={20} className="my-auto" />
+                </button>
+
+                {pages.map((item, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setCur(item.page);
+                      if (item.page > 1) {
+                        setFirst(3 * item.page - 3);
+                        setLimit(3 * item.page);
+                      } else if (item.page === 1) {
+                        setFirst(0);
+                        setLimit(3);
+                      }
+                    }}
+                    className={`w-[32px] h-[32px] ml-[8px] text-center text-[14px] font-bold font-sans bg-[#DFE3E8] rounded-[4px] ${
+                      cur === item.page && " bg-yellow-400"
+                    }`}
+                  >
+                    {item.page}
+                  </button>
+                ))}
+
+                <button
+                  onClick={next}
+                  className="w-[32px] h-[32px] ml-[8px] text-center  text-[14px] font-bold font-sans bg-[#DFE3E8] rounded-[4px]  hover:bg-[#919EAB] hover:text-[#FFD333] flex justify-center align-middle"
+                >
+                  <RiArrowRightSLine size={20} className="my-auto" />
+                </button>
               </div>
             </div>
           </TabPane>
         </Tabs>
+
         <div className={style_css.write_review}>
           <h2 className="font-bold text-[28px] leading-8 text-[#000]">
             Write Review

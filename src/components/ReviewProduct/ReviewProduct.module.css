@@ -2,6 +2,7 @@
 .wrapper_review {
   /* margin-top: 20px; */
   margin: 16px 0;
+  position: relative;
 }
 .heading_review {
   font-family: "Roboto";
