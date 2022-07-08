@@ -43,3 +43,10 @@ export const selectProductsBySearch = createSelector(
   [selectProductReducer],
   (productSlice) => productSlice?.productsBySearch
 );
+
+// ------------------------------
+
+export const selectProduct = createSelector(
+  [selectProductReducer],
+  (productSlice) => productSlice?.product
+);

@@ -9,6 +9,7 @@ import {
   getCategorySuccess,
   getKeywordSuccess,
   getProductsBySearchSuccess,
+  getProductSuccess,
 } from "./reducer";
 
 export const getAllProducts = () => async (dispatch) => {
@@ -55,6 +56,20 @@ export const getProductsBySearch = (keyword) => async (dispatch) => {
     const { data } = await axios.get(`/v1/search?keyword=${keyword}`);
     dispatch(getProductsBySearchSuccess(data.data.products.result));
   } catch (error) {
+  } finally {
+    dispatch(loadingDone());
+  }
+};
+
+export const getProduct = (id) => async (dispatch) => {
+  dispatch(loading());
+  try {
+    const { data } = await axios.get(`/v1/products/${id}`);
+    dispatch(getProductSuccess(data.data));
+  } catch (error) {
+    Modal.error({
+      title: "Get Product Failed",
+    });
   } finally {
     dispatch(loadingDone());
   }

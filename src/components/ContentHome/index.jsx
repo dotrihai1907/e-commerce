@@ -14,7 +14,7 @@ import BenefitCoupon from "../BenefitCoupon";
 
 import { selectProducts } from "../../redux/product/selector";
 
-import { getAllProducts } from "../../redux/product/action";
+import { getAllProducts, getProduct } from "../../redux/product/action";
 
 function ContentHome() {
   const dispatch = useDispatch();
@@ -37,6 +37,11 @@ function ContentHome() {
   useEffect(() => {
     dispatch(getAllProducts());
   }, []);
+
+  const handleGetProductDetail = (id) => {
+    dispatch(getProduct(id));
+    navigate("/product-detail");
+  };
 
   return (
     <div className={styles.content}>
@@ -65,7 +70,11 @@ function ContentHome() {
 
       <ul className={styles.list}>
         {productsShow.map((product) => (
-          <li key={product.id} className={styles.card}>
+          <li
+            key={product.id}
+            className={styles.card}
+            onClick={() => handleGetProductDetail(product.id)}
+          >
             <img
               src={product.images[0].url}
               alt={product.name}
