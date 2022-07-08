@@ -50,3 +50,5 @@ export const selectProduct = createSelector(
   [selectProductReducer],
   (productSlice) => productSlice?.product
 );
+
+// ------------------------------

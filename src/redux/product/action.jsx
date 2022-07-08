@@ -74,3 +74,20 @@ export const getProduct = (id) => async (dispatch) => {
     dispatch(loadingDone());
   }
 };
+
+export const createReviewProduct =
+  (accessToken, id, review) => async (dispatch) => {
+    dispatch(loading());
+    try {
+      const { data } = await axios.post(`/v1/products/${id}/reviews`, review, {
+        headers: { Authorization: "Bearer " + accessToken },
+      });
+    } catch (error) {
+      Modal.error({
+        title: "Create review failed",
+        content: "You can only rate the product once",
+      });
+    } finally {
+      dispatch(loadingDone());
+    }
+  };
