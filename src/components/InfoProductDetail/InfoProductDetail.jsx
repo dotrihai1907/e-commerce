@@ -1,18 +1,19 @@
 import { Radio } from "antd";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BsCartPlus } from "react-icons/bs";
 import style_css from "./InfoProductDetail.module.css";
 import style_less from "./InfoProductDetail.module.less";
 import { Rate } from "antd";
 
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { selectProduct } from "../../redux/product/selector";
 import { selectCarts } from "../../redux/cart/selector";
 import { selectUserId } from "../../redux/auth/selector";
 import { selectAccessToken } from "../../redux/auth/selector";
 
-import { createCart, createItem } from "../../redux/cart/action";
+import { createCart, createItem, getCartById } from "../../redux/cart/action";
 
 export default function InfoProductDetail() {
   const product = useSelector(selectProduct) ?? {};
@@ -28,6 +29,7 @@ export default function InfoProductDetail() {
 
   const [value, setValue] = useState(1);
   const [quantity, setQuantity] = useState(1);
+  const [flag, setFlag] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -52,11 +54,16 @@ export default function InfoProductDetail() {
     }
   };
 
-  const carts = useSelector(selectCarts);
+  const carts = useSelector(selectCarts) ?? [];
   const cartId = carts[0].cart.id;
 
   const userId = useSelector(selectUserId);
   const accessToken = useSelector(selectAccessToken);
+  
+  useEffect(() => {
+    dispatch(getCartById(accessToken, cartId));
+  }, [accessToken, cartId, flag]);
+
 
   const handleAddToCart = () => {
     const cartItem = {
@@ -84,8 +91,12 @@ export default function InfoProductDetail() {
 
     if (carts.length === 0) {
       dispatch(createCart(accessToken, cartItem));
+      dispatch(getCartById(accessToken, cartId));
+      setFlag(!flag);
     } else if (carts.length >= 1) {
       dispatch(createItem(accessToken, item));
+      dispatch(getCartById(accessToken, cartId));
+      setFlag(!flag);
     }
   };
 

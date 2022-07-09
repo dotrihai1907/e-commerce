@@ -8,7 +8,7 @@ import { Input, Badge, Avatar, Popover } from "antd";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import {
   selectAccessToken,
@@ -16,9 +16,12 @@ import {
   selectRefreshToken,
   selectDeviceId,
 } from "../../redux/auth/selector";
+import { selectCartById, selectCarts } from "../../redux/cart/selector";
 
 import { getProductsBySearch } from "../../redux/product/action";
 import { logout } from "../../redux/auth/action";
+import { getCartById } from "../../redux/cart/action";
+import CartPopup from "../CartPopup";
 
 function TopBar() {
   const [keyword, setKeyword] = useState();
@@ -30,6 +33,16 @@ function TopBar() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const cartById = useSelector(selectCartById) ?? {};
+  const items = cartById.items ?? [];
+
+  const carts = useSelector(selectCarts) ?? [];
+  const idCart = carts[0]?.cart.id;
+
+  useEffect(() => {
+    dispatch(getCartById(accessToken, idCart));
+  }, [accessToken, idCart]);
 
   const handleLogin = () => {
     navigate("/login");
@@ -44,7 +57,7 @@ function TopBar() {
     dispatch(logout(refreshToken, deviceId));
   };
 
-  const content = () => (
+  const avatarPopup = () => (
     <div className={styles.textPopover}>
       <p
         className={styles.text}
@@ -62,6 +75,10 @@ function TopBar() {
         Logout
       </p>
     </div>
+  );
+
+  const emptyPopup = () => (
+    <div className={styles.emptyPopup}>Your shopping cart is empty!</div>
   );
 
   return (
@@ -98,23 +115,32 @@ function TopBar() {
           />
         </div>
 
-        <Badge
-          className={styles.badge}
-          count={
-            <div className="bg-white text-[#8C7211] w-[27px] h-[25.24px] rounded-[50%] text-center leading-[25.24px] ">
-              2
-            </div>
-          }
+        <Popover
+          placement="bottomRight"
+          trigger="click"
+          content={items.length >= 1 ? <CartPopup /> : emptyPopup}
         >
-          <img src={Cart} alt="Cart" className={styles.cart} />
-        </Badge>
+          <Badge
+            className={styles.badge}
+            count={
+              items.length >= 1 ? (
+                <div className="bg-white text-[#8C7211] w-[27px] h-[25.24px] rounded-[50%] text-center leading-[25.24px] ">
+                  {items.length}
+                </div>
+              ) : (
+                0
+              )
+            }
+          >
+            <img src={Cart} alt="Cart" className={styles.cart} />
+          </Badge>
+        </Popover>
 
         {accessToken ? (
           <Popover
-            className={styles.popover}
             placement="bottomRight"
             trigger="click"
-            content={content}
+            content={avatarPopup}
           >
             <Avatar size={49} src={avatar} className={styles.avatar} />
           </Popover>

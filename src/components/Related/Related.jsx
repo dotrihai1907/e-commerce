@@ -27,7 +27,6 @@ export default function Related() {
   }, []);
 
   const productsRelated = useSelector(selectProductsByCategory) ?? [];
-  console.log(productsRelated);
 
   const ref = useRef(null);
   const scroll = (scrollOffset) => {
@@ -80,9 +79,7 @@ export default function Related() {
                   />
                 </div>
                 <div className={style_css.product}>
-                  <h3 className="font-bold text-[32px] leading-[37px]">
-                    {related.name}
-                  </h3>
+                  <h3 className={style_css.name}>{related.name}</h3>
                   <span className="font-bold text-[18px] leading-[21px]">
                     ID: {related.id}
                   </span>

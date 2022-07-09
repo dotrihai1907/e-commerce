@@ -47,3 +47,18 @@
 .wrapper_item_product::-webkit-scrollbar {
   width: 0;
 }
+
+.name {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 37px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.name:hover {
+  overflow: visible;
+  font-size: 20px;
+  transition: all 0.5s;
+  text-align: center;
+}
