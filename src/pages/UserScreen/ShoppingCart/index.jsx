@@ -4,23 +4,60 @@ import styles from "./ShoppingCart.module.scss";
 import { Breadcrumb, Table } from "antd";
 
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import TopBar from "../../../components/TopBar";
 
-function ShoppingCart() {
-  const [quantity, setQuantity] = useState(1);
+import { selectCartById } from "../../../redux/cart/selector";
+import { selectAccessToken } from "../../../redux/auth/selector";
 
-  const data = [
-    {
-      key: 0,
-      image: "http://chupanhnoithat.vn/upload/images/asdawdw.jpg",
-      product: "Adidas Shoes",
-      price: 120.0,
-      quantity: quantity,
-      total: 120.0,
-    },
-  ];
+import {
+  getCartById,
+  updateItem,
+  deleteItem,
+} from "../../../redux/cart/action";
+
+function ShoppingCart() {
+  const accessToken = useSelector(selectAccessToken);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const cartById = useSelector(selectCartById) ?? {};
+  const idCart = cartById.cart?.id;
+  const items = cartById.items ?? [];
+
+  const data = items.map((item) => ({
+    key: item.id,
+    image: item.itemCartInfo.images[0].url,
+    product: item.itemCartInfo.name,
+    price: item.price,
+    quantity: item.quantity,
+    total: item.quantity * item.price,
+  }));
+
+  const subtotal = data.reduce((result, data) => result + data.total, 0);
+  const shipping = data.length * 10;
+
+  const handleIncreaseQuantity = (quantity, data) => {
+    quantity += 1;
+    const idItem = data.key;
+    dispatch(updateItem(accessToken, idItem, quantity));
+    dispatch(getCartById(accessToken, idCart));
+  };
+
+  const handleDecreaseQuantity = (quantity, data) => {
+    const idItem = data.key;
+    if (quantity > 1) {
+      quantity -= 1;
+      dispatch(updateItem(accessToken, idItem, quantity));
+      dispatch(getCartById(accessToken, idCart));
+    } else {
+      dispatch(deleteItem(accessToken, idItem));
+      dispatch(getCartById(accessToken, idCart));
+    }
+  };
 
   const columns = [
     {
@@ -41,18 +78,18 @@ function ShoppingCart() {
     {
       title: () => <p className={styles.titleTable}>Quantity</p>,
       dataIndex: "quantity",
-      render: (quantity) => (
+      render: (quantity, data) => (
         <div className={styles.box}>
           <div
             className={styles.modify}
-            onClick={() => setQuantity((prev) => prev - 1)}
+            onClick={() => handleDecreaseQuantity(quantity, data)}
           >
             -
           </div>
           <div className={styles.quantity}>{quantity}</div>
           <div
             className={styles.modify}
-            onClick={() => setQuantity((next) => next + 1)}
+            onClick={() => handleIncreaseQuantity(quantity, data)}
           >
             +
           </div>
@@ -67,55 +104,63 @@ function ShoppingCart() {
   ];
 
   return (
-    <div className={styles.container}>
-      <Breadcrumb separator=">" className={styles.navTab}>
-        <Breadcrumb.Item>
-          <NavLink to="/" className={styles.home}>
-            Home
-          </NavLink>
-        </Breadcrumb.Item>
-        <Breadcrumb.Item className={styles.shoppingCart}>
-          Shopping Cart
-        </Breadcrumb.Item>
-      </Breadcrumb>
+    <div>
+      <TopBar />
+      <div className={styles.container}>
+        <Breadcrumb separator=">" className={styles.navTab}>
+          <Breadcrumb.Item>
+            <NavLink to="/" className={styles.home}>
+              Home
+            </NavLink>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item className={styles.shoppingCart}>
+            Shopping Cart
+          </Breadcrumb.Item>
+        </Breadcrumb>
 
-      <div className={styles.title}>Shopping Cart</div>
+        <div className={styles.title}>Shopping Cart</div>
 
-      <Table
-        className={styles.table}
-        dataSource={data}
-        columns={columns}
-        bordered={false}
-        pagination={false}
-      />
+        <Table
+          className={styles.table}
+          dataSource={data}
+          columns={columns}
+          bordered={false}
+          pagination={false}
+        />
 
-      <div className={styles.checkout}>
-        <div className={styles.coupon}>
-          <input placeholder="Coupon Code" className={styles.couponInput} />
-          <button className={styles.couponButton}>Apply Coupon</button>
-        </div>
-
-        <div className={styles.cartTotals}>
-          <div className={styles.firstCart}>Cart Totals</div>
-
-          <div className={styles.mainCart}>
-            <div className={styles.subtotal}>
-              <p className={styles.textSubtotal}>Subtotal</p>
-              <p className={styles.numSubtotal}>${data[0].total}</p>
-            </div>
-
-            <div className={styles.shipping}>
-              <p className={styles.textShipping}>Shipping</p>
-              <p className={styles.numShipping}>$20.00</p>
-            </div>
-
-            <div className={styles.total}>
-              <p className={styles.textTotal}>Total</p>
-              <p className={styles.numTotal}>$140.00</p>
-            </div>
+        <div className={styles.checkout}>
+          <div className={styles.coupon}>
+            <input placeholder="Coupon Code" className={styles.couponInput} />
+            <button className={styles.couponButton}>Apply Coupon</button>
           </div>
 
-          <button className={styles.finalcart}>Proceed to checkout</button>
+          <div className={styles.cartTotals}>
+            <div className={styles.firstCart}>Cart Totals</div>
+
+            <div className={styles.mainCart}>
+              <div className={styles.subtotal}>
+                <p className={styles.textSubtotal}>Subtotal</p>
+                <p className={styles.numSubtotal}>${subtotal}</p>
+              </div>
+
+              <div className={styles.shipping}>
+                <p className={styles.textShipping}>Shipping</p>
+                <p className={styles.numShipping}>${shipping}</p>
+              </div>
+
+              <div className={styles.total}>
+                <p className={styles.textTotal}>Total</p>
+                <p className={styles.numTotal}>${subtotal + shipping}</p>
+              </div>
+            </div>
+
+            <button
+              onClick={() => navigate("/checkout")}
+              className={styles.finalcart}
+            >
+              Proceed to checkout
+            </button>
+          </div>
         </div>
       </div>
     </div>

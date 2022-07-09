@@ -84,3 +84,24 @@ export const deleteItem = (accessToken, idItem) => async (dispatch) => {
     dispatch(loadingDone());
   }
 };
+
+export const updateItem =
+  (accessToken, idItem, quantity) => async (dispatch) => {
+    dispatch(loading());
+    try {
+      await axios.patch(
+        `/v1/cart/manage-item/${idItem}`,
+        { quantity },
+        {
+          headers: { Authorization: "Bearer " + accessToken },
+        }
+      );
+    } catch (error) {
+      Modal.error({
+        title: "Error updating item",
+        content: error.message,
+      });
+    } finally {
+      dispatch(loadingDone());
+    }
+  };
