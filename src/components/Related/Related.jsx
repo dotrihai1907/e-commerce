@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Related() {
   const product = useSelector(selectProduct) ?? {};
-  const category = product.product.category;
+  const category = product.product?.category;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

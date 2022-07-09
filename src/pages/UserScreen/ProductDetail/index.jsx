@@ -16,8 +16,8 @@ import { getProductsByCategory } from "../../../redux/product/action";
 
 export default function ProductDetail() {
   const product = useSelector(selectProduct) ?? {};
-  const category = product.product.category;
-  const name = product.product.name;
+  const category = product.product?.category;
+  const name = product.product?.name;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

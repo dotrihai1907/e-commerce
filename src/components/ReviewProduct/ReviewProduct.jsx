@@ -17,8 +17,8 @@ import { createReviewProduct } from "../../redux/product/action";
 
 export default function ReviewProduct() {
   const product = useSelector(selectProduct) ?? {};
-  const reviews = product.reviews.result;
-  const id = product.product.id;
+  const reviews = product?.reviews?.result;
+  const id = product?.product?.id;
 
   const accessToken = useSelector(selectAccessToken);
 

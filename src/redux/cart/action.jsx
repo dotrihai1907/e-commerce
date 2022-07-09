@@ -6,6 +6,7 @@ import {
   createCartSuccess,
   getCartByIdSuccess,
   deleteItemSuccess,
+  deleteCartSuccess,
 } from "./reducer";
 
 // add new cart and add item to cart
@@ -64,6 +65,7 @@ export const getCartById = (accessToken, idCart) => async (dispatch) => {
 
 //-----------delete item by id item--------------------
 export const deleteItem = (accessToken, idItem) => async (dispatch) => {
+  console.log(accessToken, idItem);
   dispatch(loading());
   try {
     const { data } = await axios.delete(`/v1/cart/manage-item/${idItem}`, {
@@ -80,6 +82,7 @@ export const deleteItem = (accessToken, idItem) => async (dispatch) => {
   }
 };
 
+//------------------update item--------------------
 export const updateItem =
   (accessToken, idItem, quantity) => async (dispatch) => {
     dispatch(loading());
@@ -100,3 +103,17 @@ export const updateItem =
       dispatch(loadingDone());
     }
   };
+
+//---------------delete cart-----------------------
+export const deleteCart = (accessToken, cartId) => async (dispatch) => {
+  dispatch(loading());
+  try {
+    await axios.delete(`/v1/cart/${cartId}`, {
+      headers: { Authorization: "Bearer " + accessToken },
+    });
+    dispatch(deleteCartSuccess());
+  } catch (error) {
+  } finally {
+    dispatch(loadingDone());
+  }
+};

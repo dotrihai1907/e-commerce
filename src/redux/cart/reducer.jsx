@@ -21,10 +21,19 @@ const cartSlice = createSlice({
       );
       state.cartById = newCartById;
     },
+    deleteCartSuccess: (state) => {
+      state.cart = null;
+      state.cartId = null;
+      cartById = null;
+    },
   },
 });
 
-export const { createCartSuccess, getCartByIdSuccess, deleteItemSuccess } =
-  cartSlice.actions;
+export const {
+  createCartSuccess,
+  getCartByIdSuccess,
+  deleteItemSuccess,
+  deleteCartSuccess,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -5,23 +5,22 @@ import { Breadcrumb, Table, Radio, Modal } from "antd";
 
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import TopBar from "../../../components/TopBar";
 
-import { selectCartById } from "../../../redux/cart/selector";
+import { selectCartById, selectCartId } from "../../../redux/cart/selector";
 import { selectAccessToken } from "../../../redux/auth/selector";
 import { selectProfile } from "../../../redux/user/selector";
 
 import { getProfile } from "../../../redux/user/action";
 import { createOrder } from "../../../redux/orders/action";
+import { deleteCart, getCartById } from "../../../redux/cart/action";
 
 function Checkout() {
   const accessToken = useSelector(selectAccessToken);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   //-----------------profile--------------
   const profile = useSelector(selectProfile) ?? {};
@@ -54,6 +53,7 @@ function Checkout() {
   //------------cart----------------------
 
   const cartById = useSelector(selectCartById) ?? {};
+  const cartId = useSelector(selectCartId);
   const items = cartById.items ?? [];
   const userId = cartById.cart.userId;
 
@@ -96,6 +96,7 @@ function Checkout() {
       itemArr,
     };
     dispatch(createOrder(accessToken, newOrder));
+    // dispatch(deleteCart(accessToken, cartId));
   };
 
   //---------------------------------------------

@@ -27,6 +27,9 @@ export const createOrder = (accessToken, newOrder) => async (dispatch) => {
     await axios.post("/v1/orders", newOrder, {
       headers: { Authorization: "Bearer " + accessToken },
     });
+    Modal.success({
+      title: "Create new order successfully",
+    });
   } catch (error) {
     Modal.error({
       title: "Create new order failed",

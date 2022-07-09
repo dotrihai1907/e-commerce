@@ -16,15 +16,15 @@ import { createCart, createItem, getCartById } from "../../redux/cart/action";
 
 export default function InfoProductDetail() {
   const product = useSelector(selectProduct) ?? {};
-  const name = product.product.name;
-  const image = product.product.images[0].url;
-  const rating = product.product.rating;
-  const numOfReviews = product.product.numOfReviews;
-  const description = product.product.description;
-  const countInStock = product.product.countInStock;
-  const brand = product.product.brand;
-  const price = product.product.price;
-  const id = product.product.id;
+  const name = product.product?.name;
+  const image = product.product?.images[0].url;
+  const rating = product.product?.rating;
+  const numOfReviews = product.product?.numOfReviews;
+  const description = product.product?.description;
+  const countInStock = product.product?.countInStock;
+  const brand = product.product?.brand;
+  const price = product.product?.price;
+  const id = product.product?.id;
 
   const [value, setValue] = useState(1);
   const [quantity, setQuantity] = useState(1);

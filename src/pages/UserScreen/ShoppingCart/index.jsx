@@ -12,6 +12,8 @@ import TopBar from "../../../components/TopBar";
 import { selectCartById } from "../../../redux/cart/selector";
 import { selectAccessToken } from "../../../redux/auth/selector";
 
+import { useEffect, useState } from "react";
+
 import {
   getCartById,
   updateItem,
@@ -23,6 +25,12 @@ function ShoppingCart() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [flag, setFlag] = useState(false);
+
+  useEffect(() => {
+    dispatch(getCartById(accessToken, idCart));
+  }, [flag]);
 
   const cartById = useSelector(selectCartById) ?? {};
   const idCart = cartById.cart?.id;
@@ -44,7 +52,7 @@ function ShoppingCart() {
     quantity += 1;
     const idItem = data.key;
     dispatch(updateItem(accessToken, idItem, quantity));
-    dispatch(getCartById(accessToken, idCart));
+    setFlag(!flag);
   };
 
   const handleDecreaseQuantity = (quantity, data) => {
@@ -52,10 +60,10 @@ function ShoppingCart() {
     if (quantity > 1) {
       quantity -= 1;
       dispatch(updateItem(accessToken, idItem, quantity));
-      dispatch(getCartById(accessToken, idCart));
+      setFlag(!flag);
     } else {
       dispatch(deleteItem(accessToken, idItem));
-      dispatch(getCartById(accessToken, idCart));
+      setFlag(!flag);
     }
   };
 
