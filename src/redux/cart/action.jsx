@@ -4,7 +4,6 @@ import axios from "../../api/axios";
 import { loading, loadingDone } from "../auth/reducer";
 import {
   createCartSuccess,
-  createItemSuccess,
   getCartByIdSuccess,
   deleteItemSuccess,
 } from "./reducer";
@@ -18,11 +17,12 @@ export const createCart = (accessToken, cartItem) => async (dispatch) => {
     });
     dispatch(createCartSuccess(data.data));
     Modal.success({
-      title: "The product has been added to cart",
+      title: "Create Cart Successfully",
     });
   } catch (error) {
     Modal.error({
       title: "Create Cart Failed",
+      content: error.message,
     });
   } finally {
     dispatch(loadingDone());
@@ -33,10 +33,9 @@ export const createCart = (accessToken, cartItem) => async (dispatch) => {
 export const createItem = (accessToken, item) => async (dispatch) => {
   dispatch(loading());
   try {
-    const { data } = await axios.post("/v1/cart/create-item", item, {
+    await axios.post("/v1/cart/create-item", item, {
       headers: { Authorization: "Bearer " + accessToken },
     });
-    dispatch(createItemSuccess(data.data));
     Modal.success({
       title: "The product has been added to cart",
     });
@@ -58,10 +57,6 @@ export const getCartById = (accessToken, idCart) => async (dispatch) => {
     });
     dispatch(getCartByIdSuccess(data.data));
   } catch (error) {
-    Modal.error({
-      title: "Get Cart Failed",
-      content: error.message,
-    });
   } finally {
     dispatch(loadingDone());
   }

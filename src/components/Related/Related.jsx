@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import { FaStar } from "react-icons/fa";
 import { BsCartPlus } from "react-icons/bs";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import style_css from "./Related.module.css";

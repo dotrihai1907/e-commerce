@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { selectCartById, selectCarts } from "../../redux/cart/selector";
+import { selectCartById, selectCartId } from "../../redux/cart/selector";
 import { selectAccessToken } from "../../redux/auth/selector";
 
 import { getCartById, deleteItem } from "../../redux/cart/action";
@@ -17,8 +17,7 @@ function CartPopup() {
 
   const accessToken = useSelector(selectAccessToken);
 
-  const carts = useSelector(selectCarts) ?? [];
-  const idCart = carts[0]?.cart.id;
+  const idCart = useSelector(selectCartId);
 
   const cartById = useSelector(selectCartById) ?? {};
   const items = cartById.items ?? [];

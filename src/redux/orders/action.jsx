@@ -19,3 +19,20 @@ export const getOrders = (accessToken) => async (dispatch) => {
     dispatch(loadingDone());
   }
 };
+
+export const createOrder = (accessToken, newOrder) => async (dispatch) => {
+  dispatch(loading());
+  console.log(accessToken, newOrder);
+  try {
+    await axios.post("/v1/orders", newOrder, {
+      headers: { Authorization: "Bearer " + accessToken },
+    });
+  } catch (error) {
+    Modal.error({
+      title: "Create new order failed",
+      content: error.message,
+    });
+  } finally {
+    dispatch(loadingDone());
+  }
+};

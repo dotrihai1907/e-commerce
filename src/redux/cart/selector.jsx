@@ -2,10 +2,16 @@ import { createSelector } from "reselect";
 
 const selectCartReducer = (state) => state.cartReducer;
 
-//-----------all carts-----------------
-export const selectCarts = createSelector(
+//----------- carts-----------------
+export const selectCart = createSelector(
   [selectCartReducer],
-  (cartSlice) => cartSlice?.carts
+  (cartSlice) => cartSlice?.cart
+);
+
+//-----------idCart---------------
+export const selectCartId = createSelector(
+  [selectCartReducer],
+  (cartSlice) => cartSlice?.cartId
 );
 
 //-------------by ID cart-----------------

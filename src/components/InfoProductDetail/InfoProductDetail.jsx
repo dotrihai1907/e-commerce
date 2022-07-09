@@ -6,10 +6,9 @@ import style_less from "./InfoProductDetail.module.less";
 import { Rate } from "antd";
 
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 import { selectProduct } from "../../redux/product/selector";
-import { selectCarts } from "../../redux/cart/selector";
+import { selectCartId, selectCart } from "../../redux/cart/selector";
 import { selectUserId } from "../../redux/auth/selector";
 import { selectAccessToken } from "../../redux/auth/selector";
 
@@ -54,16 +53,15 @@ export default function InfoProductDetail() {
     }
   };
 
-  const carts = useSelector(selectCarts) ?? [];
-  const cartId = carts[0].cart.id;
+  const cartId = useSelector(selectCartId);
+  const cart = useSelector(selectCart) ?? [];
 
   const userId = useSelector(selectUserId);
   const accessToken = useSelector(selectAccessToken);
-  
+
   useEffect(() => {
     dispatch(getCartById(accessToken, cartId));
   }, [accessToken, cartId, flag]);
-
 
   const handleAddToCart = () => {
     const cartItem = {
@@ -89,11 +87,11 @@ export default function InfoProductDetail() {
       total: quantity * price,
     };
 
-    if (carts.length === 0) {
+    if (!cartId) {
       dispatch(createCart(accessToken, cartItem));
       dispatch(getCartById(accessToken, cartId));
       setFlag(!flag);
-    } else if (carts.length >= 1) {
+    } else if (cartId) {
       dispatch(createItem(accessToken, item));
       dispatch(getCartById(accessToken, cartId));
       setFlag(!flag);

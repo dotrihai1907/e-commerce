@@ -16,7 +16,7 @@ import {
   selectRefreshToken,
   selectDeviceId,
 } from "../../redux/auth/selector";
-import { selectCartById, selectCarts } from "../../redux/cart/selector";
+import { selectCartById, selectCartId } from "../../redux/cart/selector";
 
 import { getProductsBySearch } from "../../redux/product/action";
 import { logout } from "../../redux/auth/action";
@@ -37,8 +37,7 @@ function TopBar() {
   const cartById = useSelector(selectCartById) ?? {};
   const items = cartById.items ?? [];
 
-  const carts = useSelector(selectCarts) ?? [];
-  const idCart = carts[0]?.cart.id;
+  const idCart = useSelector(selectCartId);
 
   useEffect(() => {
     dispatch(getCartById(accessToken, idCart));
