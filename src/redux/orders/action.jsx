@@ -2,7 +2,7 @@ import "antd/dist/antd.css";
 import { Modal } from "antd";
 import axios from "../../api/axios";
 import { loading, loadingDone } from "../auth/reducer";
-import { getOrdersSuccess } from "./reducer";
+import { getOrdersSuccess, getAmountOrdersByAdminSuccess } from "./reducer";
 
 export const getOrders = (accessToken) => async (dispatch) => {
   dispatch(loading());
@@ -35,6 +35,19 @@ export const createOrder = (accessToken, newOrder) => async (dispatch) => {
       title: "Create new order failed",
       content: error.message,
     });
+  } finally {
+    dispatch(loadingDone());
+  }
+};
+
+export const getAmountOrdersByAdmin = (accessToken) => async (dispatch) => {
+  dispatch(loading());
+  try {
+    const { data } = await axios.get("/v1/orders", {
+      headers: { Authorization: "Bearer " + accessToken },
+    });
+    dispatch(getAmountOrdersByAdminSuccess(data.data.orders.total));
+  } catch (error) {
   } finally {
     dispatch(loadingDone());
   }

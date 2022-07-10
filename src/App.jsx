@@ -23,6 +23,7 @@ import ProductsByCategory from "./pages/UserScreen/ProductsByCategory";
 import ProductsBySearch from "./pages/UserScreen/ProductsBySearch";
 
 import Admin from "./pages/AdminScreen/Admin";
+import IndexAdmin from "./pages/AdminScreen/IndexAdmin";
 import OrderDetail from "./pages/AdminScreen/OrderDetail";
 import OrderList from "./pages/AdminScreen/OrderList";
 import ProductCreate from "./pages/AdminScreen/ProductCreate";
@@ -112,6 +113,7 @@ function App() {
               element={<AdminRole accessToken={accessToken} role={role} />}
             >
               <Route path="/admin" element={<Admin />}>
+                <Route index element={<IndexAdmin />} />
                 <Route path="/admin/order-detail" element={<OrderDetail />} />
                 <Route path="/admin/order-list" element={<OrderList />} />
                 <Route

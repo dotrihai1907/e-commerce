@@ -9,6 +9,11 @@ export const selectProducts = createSelector(
   (productSlice) => productSlice?.products
 );
 
+export const selectAmountProducts = createSelector(
+  [selectProducts],
+  (products) => products?.total
+);
+
 // ----------------------------------------------------
 
 export const selectCategories = createSelector(

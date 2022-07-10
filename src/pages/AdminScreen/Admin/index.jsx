@@ -26,7 +26,6 @@ function Admin() {
   const [type, setType] = useState();
   const [hide, setHide] = useState(false);
   const [expand, setExpand] = useState(false);
-  const DucDepTrai = true;
 
   const handleClickProduct = () => {
     setHiddenProduct((prev) => !prev);

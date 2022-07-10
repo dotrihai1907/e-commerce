@@ -15,8 +15,8 @@ import {
 export const getAllProducts = () => async (dispatch) => {
   dispatch(loading());
   try {
-    const { data } = await axios.get("/v1/products?size=500");
-    dispatch(getAllProductsSuccess(data.data.result));
+    const { data } = await axios.get("/v1/products?size=1000");
+    dispatch(getAllProductsSuccess(data.data));
   } catch (error) {
   } finally {
     dispatch(loadingDone());

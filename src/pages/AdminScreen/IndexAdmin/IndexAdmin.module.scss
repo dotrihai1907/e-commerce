@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  padding: 70px;
+  font-family: "Roboto";
+  font-weight: 700;
+  font-style: normal;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  //------------------------
+  .box {
+    display: flex;
+    width: 40%;
+    height: 200px;
+    margin-bottom: 50px;
+    background: rgb(53, 62, 62);
+    background: linear-gradient(
+      31deg,
+      rgba(53, 62, 62, 1) 0%,
+      rgba(255, 211, 51, 1) 100%
+    );
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+      rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    border-radius: 10px;
+    color: whitesmoke;
+  }
+  //------------------------
+  .icon {
+    display: flex;
+    width: 40%;
+    font-size: 100px;
+    margin: auto;
+    justify-content: center;
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+    //----------------------
+    .number {
+      font-size: 76px;
+      margin: 0px auto;
+      line-height: 76px;
+    }
+    //------------------------
+    .info {
+      font-size: 24px;
+      margin: 0px auto;
+      line-height: 24px;
+    }
+  }
+}

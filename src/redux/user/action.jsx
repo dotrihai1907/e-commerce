@@ -9,6 +9,8 @@ import {
   changePasswordSuccess,
   changeContactSuccess,
   changeAvatarSuccess,
+  getAllAdminsSuccess,
+  getAllUsersSuccess,
 } from "./reducer";
 
 export const getProfile = (accessToken) => async (dispatch) => {
@@ -147,6 +149,35 @@ export const changeAvatar = (accessToken, avatar) => async (dispatch) => {
       title: "Change avatar failed",
       content: error.message,
     });
+  } finally {
+    dispatch(loadingDone());
+  }
+};
+
+export const getAllAdmins = (accessToken) => async (dispatch) => {
+  dispatch(loading());
+  try {
+    const { data } = await axios.get(`/v1/users?role=admin&size=1000`, {
+      headers: { Authorization: "Bearer " + accessToken },
+    });
+    dispatch(getAllAdminsSuccess(data.data));
+  } catch (error) {
+    Modal.error({
+      content: error.message,
+    });
+  } finally {
+    dispatch(loadingDone());
+  }
+};
+
+export const getAllUsers = (accessToken) => async (dispatch) => {
+  dispatch(loading());
+  try {
+    const { data } = await axios.get(`/v1/users?role=user&size=1000`, {
+      headers: { Authorization: "Bearer " + accessToken },
+    });
+    dispatch(getAllUsersSuccess(data.data));
+  } catch (error) {
   } finally {
     dispatch(loadingDone());
   }

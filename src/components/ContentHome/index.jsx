@@ -20,7 +20,7 @@ function ContentHome() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const products = useSelector(selectProducts) ?? [];
+  const products = useSelector(selectProducts)?.result ?? [];
 
   const bestSellers = products.filter(
     (product) => Number(product.rating) === 5
