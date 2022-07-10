@@ -15,10 +15,22 @@ import {
 import { RiMenu2Fill, RiSearchLine } from "react-icons/ri";
 import { FaBell } from "react-icons/fa";
 
-import { Input, Badge, Avatar } from "antd";
+import { Input, Badge, Avatar, Popover } from "antd";
 
-import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+
+import { useSelector, useDispatch } from "react-redux";
+
+import { selectProfile } from "../../../redux/user/selector";
+import {
+  selectAccessToken,
+  selectRefreshToken,
+  selectDeviceId,
+} from "../../../redux/auth/selector";
+
+import { getProfile } from "../../../redux/user/action";
+import { logout } from "../../../redux/auth/action";
 
 function Admin() {
   const [hiddenProduct, setHiddenProduct] = useState(true);
@@ -26,6 +38,20 @@ function Admin() {
   const [type, setType] = useState();
   const [hide, setHide] = useState(false);
   const [expand, setExpand] = useState(false);
+
+  const accessToken = useSelector(selectAccessToken);
+  const refreshToken = useSelector(selectRefreshToken);
+  const deviceId = useSelector(selectDeviceId);
+
+  const profile = useSelector(selectProfile) ?? {};
+  const avatar = profile.avatar ?? "https://joeschmoe.io/api/v1/random";
+
+  useEffect(() => {
+    dispatch(getProfile(accessToken));
+  }, []);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleClickProduct = () => {
     setHiddenProduct((prev) => !prev);
@@ -48,6 +74,46 @@ function Admin() {
     setExpand((prev) => !prev);
   };
 
+  const handleClickDashboard = () => {
+    setType("Dashboard");
+    navigate("/admin");
+  };
+
+  const handleClickProductList = () => {
+    setType("Product List");
+    navigate("/admin/product-list");
+  };
+
+  const handleClickAddProduct = () => {
+    setType("Add Product");
+    navigate("/admin/product-create");
+  };
+
+  const handleClickUserList = () => {
+    setType("User List");
+    navigate("/admin/user-list");
+  };
+
+  const handleClickAddUser = () => {
+    setType("Add User");
+    navigate("/admin/user-create");
+  };
+
+  const handleClickOrders = () => {
+    setType("Orders");
+    navigate("/admin/order-list");
+  };
+
+  const handleLogout = () => {
+    dispatch(logout(refreshToken, deviceId));
+  };
+
+  const adminPopup = () => (
+    <div onClick={handleLogout} className={styles.logoutPopup}>
+      Logout
+    </div>
+  );
+
   return (
     <div className={styles.dashboard}>
       <div className={classNavigation}>
@@ -62,7 +128,7 @@ function Admin() {
           <ul className={styles.list}>
             <li
               className={styles.item}
-              onClick={() => setType("Dashboard")}
+              onClick={handleClickDashboard}
               style={type === "Dashboard" ? { backgroundColor: "#FFD333" } : {}}
             >
               <MdDashboard className={styles.icon} />
@@ -83,7 +149,7 @@ function Admin() {
                 <ul>
                   <li
                     className={styles.subitem}
-                    onClick={() => setType("Product List")}
+                    onClick={handleClickProductList}
                     style={
                       type === "Product List"
                         ? { backgroundColor: "#FFD333" }
@@ -94,7 +160,7 @@ function Admin() {
                   </li>
                   <li
                     className={styles.subitem}
-                    onClick={() => setType("Add Product")}
+                    onClick={handleClickAddProduct}
                     style={
                       type === "Add Product"
                         ? { backgroundColor: "#FFD333" }
@@ -121,7 +187,7 @@ function Admin() {
                 <ul>
                   <li
                     className={styles.subitem}
-                    onClick={() => setType("User List")}
+                    onClick={handleClickUserList}
                     style={
                       type === "User List" ? { backgroundColor: "#FFD333" } : {}
                     }
@@ -130,7 +196,7 @@ function Admin() {
                   </li>
                   <li
                     className={styles.subitem}
-                    onClick={() => setType("Add User")}
+                    onClick={handleClickAddUser}
                     style={
                       type === "Add User" ? { backgroundColor: "#FFD333" } : {}
                     }
@@ -143,7 +209,7 @@ function Admin() {
 
             <li
               className={styles.item}
-              onClick={() => setType("Orders")}
+              onClick={handleClickOrders}
               style={type === "Orders" ? { backgroundColor: "#FFD333" } : {}}
             >
               <FiShoppingCart className={styles.icon} />
@@ -189,13 +255,15 @@ function Admin() {
             <FaBell className={styles.iconNotify} />
           </Badge>
 
-          <div className={styles.admin}>
-            <Avatar shape="square" className={styles.avatar} />
-            <div className={styles.info}>
-              <p className={styles.name}>Do Tri Hai</p>
-              <p className={styles.role}>Admin</p>
+          <Popover placement="bottom" trigger="click" content={adminPopup}>
+            <div className={styles.admin}>
+              <Avatar src={avatar} shape="square" className={styles.avatar} />
+              <div className={styles.info}>
+                <p className={styles.name}>Do Tri Hai</p>
+                <p className={styles.role}>Admin</p>
+              </div>
             </div>
-          </div>
+          </Popover>
         </div>
 
         <div className={styles.content}>

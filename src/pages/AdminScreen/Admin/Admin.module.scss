@@ -202,12 +202,19 @@ li {
         display: flex;
         position: absolute;
         left: 84.16%;
+        cursor: pointer;
         //------------------------------
         .avatar {
           position: absolute;
           width: 40px;
           height: 40px;
           top: 19px;
+          border-radius: 5px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+            rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+          &:hover {
+            border: 1px solid #ffd333;
+          }
         }
         //------------------------------
         .info {
@@ -233,5 +240,17 @@ li {
       height: 946px;
       background-color: #f5f7fa;
     }
+  }
+}
+
+.logoutPopup {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #868484;
+  cursor: pointer;
+  &:hover {
+    color: #ffd333;
   }
 }
