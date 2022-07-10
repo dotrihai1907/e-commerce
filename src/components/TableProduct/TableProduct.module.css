@@ -6,9 +6,7 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 20px;
-
   text-align: center;
-
   color: #000000;
 }
 .numberItem {
@@ -20,4 +18,57 @@
   background: #ffffff;
   border: 1px solid #929395;
   border-radius: 2px;
+}
+
+.title {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  color: #000000;
+}
+
+.id {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  color: #000000;
+  text-align: center;
+}
+.image {
+  width: 60px;
+  height: 60px;
+  box-shadow: 0.5px 0.5px 12px rgba(0, 0, 0, 0.25);
+  margin-right: 11px;
+}
+
+.price,
+.category,
+.brand,
+.name {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  color: #000000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.name:hover {
+  overflow: visible;
+  font-size: 20px;
+  transition: all 0.5s;
+  text-align: center;
+}
+
+.idProduct {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #929395;
 }

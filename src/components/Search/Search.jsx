@@ -21,6 +21,9 @@ export default function Search(props) {
         fontWeight: 400,
         marginTop: "4.31%",
         marginBottom: "3.01%",
+        display: "flex",
+        marginLeft: "auto",
+        marginRight: "auto",
       }}
       placeholder={props.placeholder}
     />

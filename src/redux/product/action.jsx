@@ -10,6 +10,7 @@ import {
   getKeywordSuccess,
   getProductsBySearchSuccess,
   getProductSuccess,
+  getQueryProductsSuccess,
 } from "./reducer";
 
 export const getAllProducts = () => async (dispatch) => {
@@ -87,6 +88,33 @@ export const createReviewProduct =
         title: "Create review failed",
         content: "You can only rate the product once",
       });
+    } finally {
+      dispatch(loadingDone());
+    }
+  };
+
+export const getQueryProducts = (size, page) => async (dispatch) => {
+  dispatch(loading());
+  try {
+    const { data } = await axios.get(`/v1/products?size=${size}&page=${page}`);
+    dispatch(getQueryProductsSuccess(data.data));
+  } catch (error) {
+  } finally {
+    dispatch(loadingDone());
+  }
+};
+
+export const deleteProductById =
+  (accessToken, idDelete) => async (dispatch) => {
+    dispatch(loading());
+    try {
+      await axios.delete(`/v1/products/${idDelete}`, {
+        headers: { Authorization: "Bearer " + accessToken },
+      });
+      Modal.success({
+        title: "Delete product successfully",
+      });
+    } catch (error) {
     } finally {
       dispatch(loadingDone());
     }

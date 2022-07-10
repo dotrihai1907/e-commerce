@@ -1,202 +1,227 @@
 import React from "react";
-import { Table } from "antd";
-import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
+import { Table, Rate, Modal } from "antd";
+import "antd/dist/antd.css";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
 import styles from "./TableProduct.module.less";
 import style_css from "./TableProduct.module.css";
-import { FaRegStar, FaStar } from "react-icons/fa";
-const data = [
-  {
-    id: "1",
-    ProductName: "John Brown",
-    brand: 98,
-    category: 60,
-    english: 70,
-  },
-  {
-    key: "2",
-    ProductName: "Jim Green",
-    brand: 98,
-    category: 66,
-    english: 89,
-  },
-  {
-    key: "3",
-    ProductName: "Joe Black",
-    brand: 98,
-    category: 90,
-    english: 70,
-  },
-  {
-    key: "4",
-    ProductName: "Jim Red",
-    brand: 88,
-    category: 99,
-    english: 89,
-  },
-  {
-    key: "5",
-    ProductName: "Jim Red",
-    brand: 88,
-    category: 99,
-    english: 89,
-  },
-];
+import styles_scss from "./TableProduct.module.scss";
 
-const columns = [
-  {
-    title: "ID",
-    dataIndex: "id",
-    sorter: {
-      compare: (a, b) => a.chinese - b.chinese,
-      multiple: 3,
-    },
-    render: () => {
-      return <p id="id">1</p>;
-    },
-  },
-  {
-    title: "Product",
-    dataIndex: "ProductName",
-    sorter: {
-      compare: (a, b) => a.chinese - b.chinese,
-      multiple: 3,
-    },
-    render: () => {
-      return (
-        <div className="flex product ">
-          <img
-            src="https://cdn.elly.vn/uploads/2021/04/21222457/tong-quan-thuong-hieu-giay-adidas.6.jpg"
-            alt="shoes"
-            className="w-[60px], h-[60px] mr-3"
-          />
-          <div className="flex flex-col justify-around">
-            <span className="text-xl leading-[23px] font-normal text-[#000] font-sans">
-              Adidas shoes
-            </span>
-            <span className="font-normal text-[18px] text-[#929395]">
-              ID: 123
-            </span>
-          </div>
-        </div>
-      );
-    },
-  },
-  {
-    title: "Brand",
-    dataIndex: "brand",
-    sorter: {
-      compare: (a, b) => a.math - b.math,
-      multiple: 2,
-    },
-    render: () => {
-      return <p>Adidas</p>;
-    },
-  },
-  {
-    title: "Category",
-    dataIndex: "category",
-    sorter: {
-      compare: (a, b) => a.english - b.english,
-      multiple: 1,
-    },
-    render: () => {
-      return <p>Sport shoes</p>;
-    },
-  },
-  {
-    title: "Stock",
-    dataIndex: "stock",
-    sorter: {
-      compare: (a, b) => a.english - b.english,
-      multiple: 1,
-    },
-    render: () => {
-      return <p>9 items</p>;
-    },
-  },
-  {
-    title: "Price",
-    dataIndex: "price",
-    sorter: {
-      compare: (a, b) => a.english - b.english,
-      multiple: 1,
-    },
-    render: () => {
-      return <p>$275</p>;
-    },
-  },
-  {
-    title: "Rating",
-    dataIndex: "rating",
-    sorter: {
-      compare: (a, b) => a.english - b.english,
-      multiple: 1,
-    },
-    render: () => {
-      return (
-        <div className="flex h-[17px]">
-          <FaStar style={{ color: "#FFD333", width: 16, height: 15 }} />
-          <FaStar style={{ color: "#FFD333", width: 16, height: 15 }} />
-          <FaStar style={{ color: "#FFD333", width: 16, height: 15 }} />
-          <FaRegStar style={{ color: "#FFD333", width: 16, height: 15 }} />
-          <FaRegStar style={{ color: "#FFD333", width: 16, height: 15 }} />
-        </div>
-      );
-    },
-  },
-  {
-    dataIndex: "action",
-    render: () => {
-      return (
-        <div className="flex">
-          <button>
-            <FiEdit
-              style={{
-                color: "#387B18",
-                width: 24,
-                height: 24,
-                marginRight: 12,
-              }}
-            />
-          </button>
-          <button>
-            <RiDeleteBinLine
-              style={{
-                color: "#F02020",
-                width: 24,
-                height: 24,
-              }}
-            />
-          </button>
-        </div>
-      );
-    },
-  },
-];
+import Search from "../Search/Search";
 
-// const onChange = (pagination, filters, sorter, extra) => {
-//   console.log("params", pagination, filters, sorter, extra);
-// };
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import {
+  selectQueryProducts,
+  selectAmountProducts,
+} from "../../redux/product/selector";
+import { selectAccessToken } from "../../redux/auth/selector";
+
+import {
+  getQueryProducts,
+  getAllProducts,
+  deleteProductById,
+} from "../../redux/product/action";
+
 export default function TableProduct() {
-  return (
-    <div style={{ position: "relative", width: "100%", height: "100%" }}>
-      <Table
-        style={{ width: "100%", backgroundColor: "#fff", height: "100%" }}
-        columns={columns}
-        dataSource={data}
-        // onChange={onChange}
-        className={styles.style_table}
-        pagination={{
-          pageSize: 5,
-          total: 25,
-        }}
-      />
-      <div style={{ position: "absolute", zIndex: 9, bottom: 45, right: 91 }}>
-        <span className={style_css.itemPerPage}>Items per page</span>
+  const queryProducts = useSelector(selectQueryProducts)?.result ?? [];
+  const amountProducts = useSelector(selectAmountProducts) ?? 0;
+  const accessToken = useSelector(selectAccessToken);
 
-        <input type="number" value={5} className={style_css.numberItem} />
+  const [size, setSize] = useState(5);
+  const [page, setPage] = useState(1);
+  const [isHidden, setIsHidden] = useState(false);
+  const [idDelete, setIdDelete] = useState();
+
+  const dispatch = useDispatch();
+  // const navigate = useNavigate();
+
+  //----------delete-------------
+  const handleConfirmDelete = (idProductDelete) => {
+    setIdDelete(idProductDelete);
+    setIsHidden(true);
+  };
+
+  const handleDelete = () => {
+    setIsHidden(false);
+    dispatch(deleteProductById(accessToken, idDelete));
+    dispatch(getQueryProducts(size, page));
+  };
+
+  const handleCancel = () => {
+    setIdDelete(null);
+    setIsHidden(false);
+  };
+
+  function ConfirmDelete() {
+    return (
+      <div className={styles_scss.delete}>
+        <div className={styles_scss.title}>Confirm Delete</div>
+        <hr className={styles_scss.firstDivider} />
+        <div className={styles_scss.content}>
+          Are you sure to delete product #{idDelete}?
+        </div>
+        <hr className={styles_scss.secondDivider} />
+        <button onClick={handleCancel} className={styles_scss.cancelButton}>
+          Cancel
+        </button>
+        <button onClick={handleDelete} className={styles_scss.deleteButton}>
+          Delete
+        </button>
+      </div>
+    );
+  }
+
+  //-----------------------------
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, []);
+
+  useEffect(() => {
+    dispatch(getQueryProducts(size, page));
+  }, [size, page]);
+
+  const data = queryProducts.map((product, index) => ({
+    key: product.id,
+    id: index + 1,
+    product: {
+      image: product?.images[0]?.url,
+      text: {
+        name: product.name,
+        idProduct: product.id,
+      },
+    },
+    brand: product.brand,
+    category: product.category,
+    stock: product.countInStock,
+    price: product.price,
+    rating: product.rating,
+  }));
+
+  const columns = [
+    {
+      title: () => <div className={style_css.title}>ID</div>,
+      dataIndex: "id",
+      sorter: (a, b) => a.id - b.id,
+      render: (id) => {
+        return <p className={style_css.id}>{id}</p>;
+      },
+    },
+    {
+      title: () => <div className={style_css.title}>Product</div>,
+      dataIndex: "product",
+      sorter: (a, b) => a.product.text.name.length - b.product.text.name.length,
+      sortDirections: ["descend", "ascend"],
+      render: (product) => {
+        return (
+          <div className="flex">
+            <img src={product.image} className={style_css.image} />
+            <div className="flex flex-col justify-around">
+              <span className={style_css.name}>{product.text.name}</span>
+              <span className={style_css.idProduct}>
+                ID: {product.text.idProduct}
+              </span>
+            </div>
+          </div>
+        );
+      },
+    },
+    {
+      title: () => <div className={style_css.title}>Brand</div>,
+      dataIndex: "brand",
+      sorter: (a, b) => a.brand.length - b.brand.length,
+      sortDirections: ["descend", "ascend"],
+      render: (brand) => {
+        return <p className={style_css.brand}>{brand}</p>;
+      },
+    },
+    {
+      title: () => <div className={style_css.title}>Category</div>,
+      dataIndex: "category",
+      sorter: (a, b) => a.category.length - b.category.length,
+      sortDirections: ["descend", "ascend"],
+      render: (category) => {
+        return <p className={style_css.category}>{category}</p>;
+      },
+    },
+    {
+      title: () => <div className={style_css.title}>Stock</div>,
+      dataIndex: "stock",
+      sorter: (a, b) => a.stock - b.stock,
+      render: (stock) => {
+        return <p>{stock > 0 ? `${stock} items` : "Out of stock"}</p>;
+      },
+    },
+    {
+      title: () => <div className={style_css.title}>Price</div>,
+      dataIndex: "price",
+      sorter: (a, b) => a.price - b.price,
+      render: (price) => {
+        return <p className={style_css.price}>${price}</p>;
+      },
+    },
+    {
+      title: () => <div className={style_css.title}>Rating</div>,
+      dataIndex: "rating",
+      sorter: (a, b) => a.rating - b.rating,
+      render: (rating) => <Rate disabled defaultValue={Number(rating)} />,
+    },
+    {
+      dataIndex: "product",
+      render: (product) => {
+        return (
+          <div className="flex">
+            <button>
+              <FiEdit
+                style={{
+                  color: "#387B18",
+                  width: 24,
+                  height: 24,
+                  marginRight: 12,
+                }}
+              />
+            </button>
+            <button onClick={() => handleConfirmDelete(product.text.idProduct)}>
+              <RiDeleteBinLine
+                style={{
+                  color: "#F02020",
+                  width: 24,
+                  height: 24,
+                }}
+              />
+            </button>
+          </div>
+        );
+      },
+    },
+  ];
+
+  return (
+    <div style={{ width: "100%" }}>
+      {isHidden && ConfirmDelete()}
+      <Search placeholder={"Search Product"} />
+      <div style={{ width: "100%", position: "relative" }}>
+        <Table
+          style={{ width: "100%", backgroundColor: "#fff", height: "100%" }}
+          columns={columns}
+          dataSource={data}
+          className={styles.style_table}
+          pagination={{
+            pageSize: Number(size),
+            total: Number(amountProducts),
+            onChange: (e) => setPage(e),
+          }}
+        />
+        <div className="absolute bottom-[20px] right-[31px]">
+          <span className={style_css.itemPerPage}>Items per page</span>
+          <input
+            type="number"
+            value={size}
+            onChange={(e) => setSize(e.target.value)}
+            className={style_css.numberItem}
+          />
+        </div>
       </div>
     </div>
   );
