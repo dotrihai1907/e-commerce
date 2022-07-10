@@ -45,6 +45,7 @@ function Admin() {
 
   const profile = useSelector(selectProfile) ?? {};
   const avatar = profile.avatar ?? "https://joeschmoe.io/api/v1/random";
+  const username = profile?.username;
 
   useEffect(() => {
     dispatch(getProfile(accessToken));
@@ -259,7 +260,7 @@ function Admin() {
             <div className={styles.admin}>
               <Avatar src={avatar} shape="square" className={styles.avatar} />
               <div className={styles.info}>
-                <p className={styles.name}>Do Tri Hai</p>
+                <p className={styles.name}>{username}</p>
                 <p className={styles.role}>Admin</p>
               </div>
             </div>

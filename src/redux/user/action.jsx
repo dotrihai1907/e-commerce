@@ -21,9 +21,6 @@ export const getProfile = (accessToken) => async (dispatch) => {
     });
     dispatch(getProfileSuccess(data.data.data));
   } catch (error) {
-    Modal.error({
-      title: "Error loading profile",
-    });
   } finally {
     dispatch(loadingDone());
   }

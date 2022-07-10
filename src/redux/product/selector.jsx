@@ -62,3 +62,10 @@ export const selectQueryProducts = createSelector(
   [selectProductReducer],
   (productSlice) => productSlice?.queryProducts
 );
+
+// ------------------------------
+
+export const selectIdProductUpdate = createSelector(
+  [selectProductReducer],
+  (productSlice) => productSlice?.idProductUpdate
+);

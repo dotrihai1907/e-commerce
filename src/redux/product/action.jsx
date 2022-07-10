@@ -11,6 +11,7 @@ import {
   getProductsBySearchSuccess,
   getProductSuccess,
   getQueryProductsSuccess,
+  getIdProductUpdateSuccess,
 } from "./reducer";
 
 export const getAllProducts = () => async (dispatch) => {
@@ -119,3 +120,7 @@ export const deleteProductById =
       dispatch(loadingDone());
     }
   };
+
+export const getIdProductUpdate = (idUpdate) => async (dispatch) => {
+  dispatch(getIdProductUpdateSuccess(idUpdate));
+};

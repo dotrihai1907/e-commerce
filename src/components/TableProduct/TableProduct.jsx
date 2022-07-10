@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Rate, Modal } from "antd";
+import { Table, Rate } from "antd";
 import "antd/dist/antd.css";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
@@ -11,6 +11,7 @@ import Search from "../Search/Search";
 
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import {
   selectQueryProducts,
@@ -22,6 +23,7 @@ import {
   getQueryProducts,
   getAllProducts,
   deleteProductById,
+  getIdProductUpdate,
 } from "../../redux/product/action";
 
 export default function TableProduct() {
@@ -35,7 +37,7 @@ export default function TableProduct() {
   const [idDelete, setIdDelete] = useState();
 
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   //----------delete-------------
   const handleConfirmDelete = (idProductDelete) => {
@@ -72,6 +74,13 @@ export default function TableProduct() {
       </div>
     );
   }
+
+  //----------update-------------------
+
+  const handleUpdate = (idUpdate) => {
+    dispatch(getIdProductUpdate(idUpdate));
+    navigate("/admin/product-edit");
+  };
 
   //-----------------------------
   useEffect(() => {
@@ -172,7 +181,7 @@ export default function TableProduct() {
       render: (product) => {
         return (
           <div className="flex">
-            <button>
+            <button onClick={() => handleUpdate(product.text.idProduct)}>
               <FiEdit
                 style={{
                   color: "#387B18",
