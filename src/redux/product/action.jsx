@@ -67,9 +67,6 @@ export const getProduct = (id) => async (dispatch) => {
     const { data } = await axios.get(`/v1/products/${id}`);
     dispatch(getProductSuccess(data.data));
   } catch (error) {
-    Modal.error({
-      title: "Get Product Failed",
-    });
   } finally {
     dispatch(loadingDone());
   }

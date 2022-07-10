@@ -75,7 +75,7 @@ export default function ReviewProduct() {
               <h2 className={style_css.heading_review}>Customer Reviews</h2>
               {/* ------------------------------------------- comment */}
               <ul>
-                {reviews.slice(first, limit).map((review, index) => (
+                {reviews?.slice(first, limit).map((review, index) => (
                   <li key={index}>
                     <div className="flex mt-[20px] border-b-[2px] border-[#D8D8D8]">
                       <div className="flex-[1_1_8%] mx-[13px] mt-[13px]">
@@ -104,7 +104,7 @@ export default function ReviewProduct() {
                           </p>
                           <span className="font-bold text-[#5A5A5A] text-3 leading-[14px] not-italic">
                             {review.createdAt
-                              .slice(0, 10)
+                              ?.slice(0, 10)
                               .split("-")
                               .reverse()
                               .join("/")}

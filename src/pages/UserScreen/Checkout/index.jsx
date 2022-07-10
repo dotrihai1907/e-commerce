@@ -9,13 +9,13 @@ import { useState, useEffect } from "react";
 
 import TopBar from "../../../components/TopBar";
 
-import { selectCartById, selectCartId } from "../../../redux/cart/selector";
+import { selectCartById } from "../../../redux/cart/selector";
 import { selectAccessToken } from "../../../redux/auth/selector";
 import { selectProfile } from "../../../redux/user/selector";
 
 import { getProfile } from "../../../redux/user/action";
 import { createOrder } from "../../../redux/orders/action";
-import { deleteCart, getCartById } from "../../../redux/cart/action";
+import { deleteItem, getCartById } from "../../../redux/cart/action";
 
 function Checkout() {
   const accessToken = useSelector(selectAccessToken);
@@ -53,9 +53,9 @@ function Checkout() {
   //------------cart----------------------
 
   const cartById = useSelector(selectCartById) ?? {};
-  const cartId = useSelector(selectCartId);
+  const idCart = cartById.cart?.id;
   const items = cartById.items ?? [];
-  const userId = cartById.cart.userId;
+  const userId = cartById.cart?.userId;
 
   const data = items.map((item) => ({
     key: item.id,
@@ -77,12 +77,20 @@ function Checkout() {
     total: item.quantity * item.price,
   }));
 
+  const idItemArr = items.map((item) => item.id);
+
   // -------------order--------------------------------
   const [paymentMethod, setPaymentMethod] = useState();
+
+  const [flag, setFlag] = useState(false);
 
   const onChange = (e) => {
     setPaymentMethod(e.target.value);
   };
+
+  useEffect(() => {
+    dispatch(getCartById(accessToken, idCart));
+  }, [flag]);
 
   const handleCheckout = () => {
     const newOrder = {
@@ -96,7 +104,8 @@ function Checkout() {
       itemArr,
     };
     dispatch(createOrder(accessToken, newOrder));
-    // dispatch(deleteCart(accessToken, cartId));
+    idItemArr.forEach((idItem) => dispatch(deleteItem(accessToken, idItem)));
+    setFlag(!flag);
   };
 
   //---------------------------------------------
