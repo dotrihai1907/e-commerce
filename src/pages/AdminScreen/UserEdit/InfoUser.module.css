@@ -6,6 +6,7 @@ label {
   letter-spacing: -0.02em;
   font-style: normal;
   color: #000;
+  margin-bottom: 10px;
 }
 .input {
   margin-top: 11px !important;
@@ -22,4 +23,7 @@ label {
   letter-spacing: -0.02em !important;
 
   color: #000000 !important;
+}
+.form_group {
+  margin-top: 35px;
 }

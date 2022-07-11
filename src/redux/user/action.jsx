@@ -13,6 +13,7 @@ import {
   getAmountUsersSuccess,
   getQueryUsersSuccess,
   getIdUserUpdateSuccess,
+  getUserSuccess,
 } from "./reducer";
 
 export const getProfile = (accessToken) => async (dispatch) => {
@@ -212,3 +213,36 @@ export const deleteUserById = (accessToken, idDelete) => async (dispatch) => {
 export const getIdUserUpdate = (idUpdate) => async (dispatch) => {
   dispatch(getIdUserUpdateSuccess(idUpdate));
 };
+
+export const getUser = (accessToken, idUser) => async (dispatch) => {
+  dispatch(loading());
+  try {
+    const { data } = await axios.get(`/v1/users/${idUser}`, {
+      headers: { Authorization: "Bearer " + accessToken },
+    });
+    dispatch(getUserSuccess(data.data));
+  } catch (error) {
+  } finally {
+    dispatch(loadingDone());
+  }
+};
+
+export const updateUserById =
+  (accessToken, idUser, userUpdate) => async (dispatch) => {
+    dispatch(loading());
+    try {
+      await axios.patch(`/v1/users/${idUser}`, userUpdate, {
+        headers: { Authorization: "Bearer " + accessToken },
+      });
+      Modal.success({
+        title: "Update User successfully",
+      });
+    } catch (error) {
+      Modal.error({
+        title: "Error updating user",
+        content: error.message,
+      });
+    } finally {
+      dispatch(loadingDone());
+    }
+  };

@@ -74,7 +74,6 @@ function ProductEdit() {
   };
 
   const handleUpdateProduct = () => {
-    console.log(accessToken, idProductUpdate, productUpdate);
     dispatch(updateProductById(accessToken, idProductUpdate, productUpdate));
   };
   //----------info product--------------------

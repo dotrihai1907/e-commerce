@@ -31,3 +31,8 @@ export const selectIdUserUpdate = createSelector(
   [selectUserReducer],
   (userSlice) => userSlice?.idUserUpdate
 );
+
+export const selectUser = createSelector(
+  [selectUserReducer],
+  (userSlice) => userSlice?.user
+);

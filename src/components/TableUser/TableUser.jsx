@@ -24,7 +24,7 @@ import {
 } from "../../redux/user/action";
 
 export default function TableUser() {
-  const queryUsers = useSelector(selectQueryUsers)?.result;
+  const queryUsers = useSelector(selectQueryUsers)?.result ?? [];
   const amountUsers = useSelector(selectAmountUsers);
   const accessToken = useSelector(selectAccessToken);
 

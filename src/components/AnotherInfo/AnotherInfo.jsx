@@ -1,7 +1,7 @@
 import { Input, Radio } from "antd";
 import React, { useState } from "react";
-import style_css from "./AnotherInfo.module.css";
-import style_less from "./AnotherInfo.module.less";
+import styleAnother_css from "./AnotherInfo.module.css";
+import styleAnother_less from "./AnotherInfo.module.less";
 export default function AnotherInfo() {
   const [value1, setValue1] = useState("Disabled");
   const [value2, setValue2] = useState("Yes");
@@ -30,44 +30,44 @@ export default function AnotherInfo() {
         height: "60.3%",
       }}
     >
-      <h1 className={style_css.headingImage}>Another info</h1>
+      <h1 className={styleAnother_css.headingImage}>Another info</h1>
       <hr style={{ borderTop: "1px solid #929395" }} />
       <div className="py-4 px-[27px]">
-        <div className={style_less.style_anotherInfo}>
-          <p className={style_css.contact}>Contact</p>
+        <div className={styleAnother_less.style_anotherInfo}>
+          <p className={styleAnother_css.contact}>Contact</p>
           <Input />
         </div>
       </div>
 
-      <div className={style_css.wrapper_radio}>
-        <div className={style_less.style_anotherInfo}>
+      <div className={styleAnother_css.wrapper_radio}>
+        <div className={styleAnother_less.style_anotherInfo}>
           <div className="flex">
-            <span className={style_css.title}>Status</span>
+            <span className={styleAnother_css.title}>Status</span>
             <Radio.Group
               options={plainOptions1}
-              className={style_less.style_anotherInfo}
+              className={styleAnother_less.style_anotherInfo}
               onChange={onChange1}
               value={value1}
             />
           </div>
         </div>
-        <div className={style_less.style_anotherInfo}>
+        <div className={styleAnother_less.style_anotherInfo}>
           <div className="flex">
-            <span className={style_css.title}>Verify Email</span>
+            <span className={styleAnother_css.title}>Verify Email</span>
             <Radio.Group
               options={plainOptions2}
-              className={style_less.style_anotherInfo}
+              className={styleAnother_less.style_anotherInfo}
               onChange={onChange2}
               value={value2}
             />
           </div>
         </div>
-        <div className={style_less.style_anotherInfo}>
+        <div className={styleAnother_less.style_anotherInfo}>
           <div className="flex">
-            <span className={style_css.title}>Verify Contact</span>
+            <span className={styleAnother_css.title}>Verify Contact</span>
             <Radio.Group
               options={plainOptions3}
-              className={style_less.style_anotherInfo}
+              className={styleAnother_less.style_anotherInfo}
               onChange={onChange3}
               value={value3}
             />

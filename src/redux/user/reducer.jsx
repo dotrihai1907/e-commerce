@@ -8,6 +8,7 @@ const userSlice = createSlice({
     amountUsers: 0,
     queryUsers: null,
     idUserUpdate: null,
+    user: null,
   },
   reducers: {
     getProfileSuccess: (state, action) => {
@@ -40,6 +41,9 @@ const userSlice = createSlice({
     getIdUserUpdateSuccess: (state, action) => {
       state.idUserUpdate = action.payload;
     },
+    getUserSuccess: (state, action) => {
+      state.user = action.payload;
+    },
   },
 });
 
@@ -54,6 +58,7 @@ export const {
   getAmountUsersSuccess,
   getQueryUsersSuccess,
   getIdUserUpdateSuccess,
+  getUserSuccess,
 } = userSlice.actions;
 
 export default userSlice.reducer;

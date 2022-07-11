@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap");
+.headingImage {
+  font-weight: 700;
+  font-family: "Arial";
+  font-style: normal;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: #000;
+  line-height: 25px;
+  padding: 11px 0px;
+  margin-left: 22px;
+}
+.contact {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+
+  color: #000000;
+  margin-bottom: 8px;
+}
+.title {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  flex: 1 1 45%;
+  color: #000000;
+}
+.option {
+  color: red;
+}
+.wrapper_radio {
+  padding: 0 25px;
+}
+.wrapper_radio > div:not(:first-child) {
+  margin-top: 20px;
+}
