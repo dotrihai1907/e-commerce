@@ -45,7 +45,6 @@ export default function UploadAvatar(props) {
       });
     }
   };
-  console.log(props);
   return (
     <div
       className="bg-[#fff]"

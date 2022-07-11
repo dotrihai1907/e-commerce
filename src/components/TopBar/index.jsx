@@ -90,7 +90,9 @@ function TopBar() {
       </div>
 
       <div className={styles.main}>
-        <div className={styles.name}>Shop App</div>
+        <div className={styles.name} onClick={() => navigate("/logged")}>
+          Shop App
+        </div>
 
         <div className={styles.searchBar}>
           <div className={styles.classify} onClick={() => navigate("/logged")}>

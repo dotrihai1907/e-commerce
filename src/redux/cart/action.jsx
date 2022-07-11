@@ -65,7 +65,6 @@ export const getCartById = (accessToken, idCart) => async (dispatch) => {
 
 //-----------delete item by id item--------------------
 export const deleteItem = (accessToken, idItem) => async (dispatch) => {
-  console.log(accessToken, idItem);
   dispatch(loading());
   try {
     const { data } = await axios.delete(`/v1/cart/manage-item/${idItem}`, {

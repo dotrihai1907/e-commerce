@@ -1,10 +1,145 @@
-import { Breadcrumb } from "antd";
-import CategoriesProduct from "../../../components/CategoriesProduct/CategoriesProduct";
-import InfoProduct from "../../../components/InfoProduct/InfoProduct";
-import Rating from "../../../components/Rating/Rating";
-import UploadAvatar from "../../../components/UploadAvatar/UploadAvatar";
+import styleInfo from "./InfoProduct.module.css";
 import style_css from "./ProductEdit.module.css";
+import styles_css from "./Rating.module.css";
+
+import { Breadcrumb } from "antd";
+import { Form, Input, Tag } from "antd";
+import TextArea from "antd/lib/input/TextArea";
+import { PlusOutlined } from "@ant-design/icons";
+import { TweenOneGroup } from "rc-tween-one";
+
+import UploadAvatar from "../../../components/UploadAvatar/UploadAvatar";
+
+import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { updateProductById, getProduct } from "../../../redux/product/action";
+
+import {
+  selectIdProductUpdate,
+  selectProduct,
+} from "../../../redux/product/selector";
+import { selectAccessToken } from "../../../redux/auth/selector";
+
+const formItemLayout = {
+  labelCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 8,
+    },
+  },
+  wrapperCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 16,
+    },
+  },
+};
+
 function ProductEdit() {
+  const accessToken = useSelector(selectAccessToken);
+  const idProductUpdate = useSelector(selectIdProductUpdate);
+  const product = useSelector(selectProduct);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getProduct(idProductUpdate));
+  }, [idProductUpdate]);
+
+  const [name, setName] = useState(product?.product.name);
+  const [description, setDescription] = useState(product?.product.description);
+  const [price, setPrice] = useState(product?.product.price);
+  const [brand, setBrand] = useState(product?.product.brand);
+  const [countInStock, setCountInStock] = useState(
+    product?.product.countInStock
+  );
+  const [tags, setTags] = useState([product?.product.category]); // tags === categories
+  const [rating, setRating] = useState(product?.product.rating);
+
+  const productUpdate = {
+    name,
+    brand,
+    category: tags[0],
+    description,
+    price,
+    rating,
+    countInStock,
+  };
+
+  const handleUpdateProduct = () => {
+    console.log(accessToken, idProductUpdate, productUpdate);
+    dispatch(updateProductById(accessToken, idProductUpdate, productUpdate));
+  };
+  //----------info product--------------------
+  const [form] = Form.useForm();
+
+  //-----------------category--------------------
+
+  const [inputVisible, setInputVisible] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const inputRef = useRef(null);
+  useEffect(() => {
+    if (inputVisible) {
+      inputRef.current?.focus();
+    }
+  }, []);
+
+  const handleClose = (removedTag) => {
+    const newTags = tags.filter((tag) => tag !== removedTag);
+    console.log(newTags);
+    setTags(newTags);
+  };
+
+  const showInput = () => {
+    setInputVisible(true);
+  };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleInputConfirm = () => {
+    if (inputValue && tags.indexOf(inputValue) === -1) {
+      setTags([inputValue]);
+    }
+
+    setInputVisible(false);
+    setInputValue("");
+  };
+
+  const forMap = (tag) => {
+    const tagElem = (
+      <Tag
+        closable
+        onClose={(e) => {
+          e.preventDefault();
+          handleClose(tag);
+        }}
+      >
+        {tag}
+      </Tag>
+    );
+    return (
+      <span
+        key={tag}
+        style={{
+          display: "inline-block",
+        }}
+      >
+        {tagElem}
+      </span>
+    );
+  };
+
+  const tagChild = tags.map(forMap);
+
   return (
     <div className="content" style={{ height: "100%" }}>
       <div
@@ -16,17 +151,23 @@ function ProductEdit() {
       >
         <Breadcrumb>
           <Breadcrumb.Item className={style_css.breadcrumb}>
-            Dashboard
+            <a
+              onClick={() => navigate("/admin")}
+              className={style_css.breadcrumb}
+            >
+              Dashboard
+            </a>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
-            <a href="" className={style_css.breadcrumb}>
+            <a
+              onClick={() => navigate("/admin/product-list")}
+              className={style_css.breadcrumb}
+            >
               Product
             </a>
           </Breadcrumb.Item>
-          <Breadcrumb.Item>
-            <a href="" className={style_css.breadcrumb}>
-              Update Product
-            </a>
+          <Breadcrumb.Item className={style_css.breadcrumb}>
+            Update Product
           </Breadcrumb.Item>
         </Breadcrumb>
 
@@ -35,10 +176,19 @@ function ProductEdit() {
           style={{ display: "flex", justifyContent: "space-between" }}
         >
           <div>
-            <h1 className={style_css.heading}>Update Product #423</h1>
-            <span className={style_css.productID}>Product ID : 423</span>
+            <h1 className={style_css.heading}>
+              Update Product #{idProductUpdate}
+            </h1>
+            <span className={style_css.productID}>
+              Product ID : {idProductUpdate}
+            </span>
           </div>
-          <button className={style_css.saveProduct}>Save</button>
+          <button
+            onClick={handleUpdateProduct}
+            className={style_css.saveProduct}
+          >
+            Save
+          </button>
         </div>
         <div
           className="container"
@@ -62,12 +212,196 @@ function ProductEdit() {
             >
               Basic information
             </h1>
-            <InfoProduct />
+
+            <Form
+              {...formItemLayout}
+              form={form}
+              className="pt-5 px-[32px] border-t border-[#929395]"
+              scrollToFirstError
+            >
+              <div className="form-group">
+                <label>Name</label>
+                <Input
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className={styleInfo.input}
+                />
+              </div>
+              <div className="form-group mt-[25px]">
+                <label>Description </label>
+                <TextArea
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  style={{
+                    height: 112,
+                    marginTop: 11,
+                    borderRadius: "2px",
+                    border: "1px solid #929395",
+                    fontFamily: "Arial",
+                    fontWeight: 400,
+                    fontSize: 18,
+                    display: "flex",
+                    alignItems: "center",
+                    letterSpacing: "-0.02em",
+                  }}
+                />
+              </div>
+              <div className="form-group flex justify-between mt-[30px]">
+                <div className="flex flex-col pr-5" style={{ width: "50%" }}>
+                  <label>Price</label>
+                  <Input
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                    type="number"
+                    min="0"
+                    className={styleInfo.input}
+                  />
+                </div>
+                <div className="flex flex-col pl-5" style={{ width: "50%" }}>
+                  <label>Discount Percent</label>
+                  <Input type="number" min="0" className={styleInfo.input} />
+                </div>
+              </div>
+              <div className="form-group mt-[35px]">
+                <label>Brand</label>
+                <Input
+                  value={brand}
+                  onChange={(e) => setBrand(e.target.value)}
+                  className={styleInfo.input}
+                />
+              </div>
+              <div className="form-group mt-[35px]">
+                <label>Stock quantity</label>
+                <Input
+                  value={countInStock}
+                  onChange={(e) => setCountInStock(e.target.value)}
+                  className={styleInfo.input}
+                />
+              </div>
+            </Form>
           </div>
           <div className="other flex flex-col justify-between ml-5 flex-[1_1_37.5%] bg-[#F5F7FA]">
             <UploadAvatar />
-            <CategoriesProduct />
-            <Rating />
+            <div
+              style={{
+                width: "431px",
+                background: "#FFFFFF",
+                boxShadow: "0.5px 0.5px 12px rgba(0, 0, 0, 0.25)",
+                padding: "10px 0 29px",
+              }}
+            >
+              <div
+                style={{
+                  fontWeight: "700",
+                  fontSize: "22px",
+                  lineHeight: "25px",
+                  margin: "0 0 17px 22px",
+                }}
+              >
+                Category
+              </div>
+              <hr
+                style={{ borderTop: "1px solid #929395", marginBottom: "30px" }}
+              />
+              <div>
+                <TweenOneGroup
+                  className="ml-[22px]"
+                  enter={{
+                    scale: 0.8,
+                    opacity: 0,
+                    type: "from",
+                    duration: 100,
+                  }}
+                  onEnd={(e) => {
+                    if (e.type === "appear" || e.type === "enter") {
+                      e.target.style = "display: inline-block";
+                    }
+                  }}
+                  leave={{
+                    opacity: 0,
+                    width: 0,
+                    scale: 0,
+                    duration: 200,
+                  }}
+                  appear={false}
+                >
+                  {tagChild}
+                </TweenOneGroup>
+              </div>
+              {inputVisible && (
+                <Input
+                  ref={inputRef}
+                  type="text"
+                  size="small"
+                  style={{
+                    width: "300px",
+                    marginLeft: "22px",
+                    marginTop: "20px",
+                  }}
+                  value={inputValue}
+                  onChange={handleInputChange}
+                  onBlur={handleInputConfirm}
+                  onPressEnter={handleInputConfirm}
+                />
+              )}
+              {!inputVisible && (
+                <Tag
+                  onClick={showInput}
+                  className="ml-[22px] mt-[20px] rounded-[2px] bg-white border-dashed w-[100px] flex"
+                >
+                  <PlusOutlined className="mr-[5px] mt-[4px]" /> Change Tag
+                </Tag>
+              )}
+            </div>
+
+            <div
+              className="bg-[#fff]"
+              style={{
+                boxShadow: "0.5px 0.5px 12px rgba(0, 0, 0, 0.25)",
+                height: "31.7%",
+              }}
+            >
+              <h1 className={styles_css.heading}>Rating</h1>
+              <hr style={{ borderTop: "1px solid #929395" }} />
+              <div
+                style={{
+                  margin: "21px 25px 0",
+                  borderRadius: 2,
+                  border: "1px solid #929395",
+                }}
+              >
+                <select
+                  value={rating}
+                  onChange={(e) => setRating(e.target.value)}
+                  style={{
+                    width: "100%",
+                    outline: "none",
+                    height: 40,
+                    fontSize: 18,
+                    fontStyle: "normal",
+                    fontFamily: "Work Sans",
+                    lineHeight: "21px",
+                    paddingLeft: "40px",
+                  }}
+                >
+                  <option value="1" className={styles_css.option}>
+                    1
+                  </option>
+                  <option value="2" className={styles_css.option}>
+                    2
+                  </option>
+                  <option value="3" className={styles_css.option}>
+                    3
+                  </option>
+                  <option value="4" className={styles_css.option}>
+                    4
+                  </option>
+                  <option value="5" className={styles_css.option}>
+                    5
+                  </option>
+                </select>
+              </div>
+            </div>
           </div>
         </div>
       </div>

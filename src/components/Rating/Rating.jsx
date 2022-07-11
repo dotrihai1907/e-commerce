@@ -1,8 +1,5 @@
 import React from "react";
 import style_css from "./Rating.module.css";
-// import style_less from "./Rating.module.less";
-import { Select } from "antd";
-const { Option } = Select;
 
 const handleChange = (value) => {
   console.log(`selected ${value}`);
@@ -29,7 +26,6 @@ export default function Rating() {
         <select
           style={{
             width: "100%",
-            border: "1px solid #929395",
             outline: "none",
             height: 40,
             fontSize: 18,
@@ -52,7 +48,6 @@ export default function Rating() {
             4
           </option>
           <option value="5" className={style_css.option}>
-            {" "}
             5
           </option>
         </select>

@@ -124,3 +124,23 @@ export const deleteProductById =
 export const getIdProductUpdate = (idUpdate) => async (dispatch) => {
   dispatch(getIdProductUpdateSuccess(idUpdate));
 };
+
+export const updateProductById =
+  (accessToken, idProductUpdate, productUpdate) => async (dispatch) => {
+    dispatch(loading());
+    try {
+      await axios.patch(`/v1/products/${idProductUpdate}`, productUpdate, {
+        headers: { Authorization: "Bearer " + accessToken },
+      });
+      Modal.success({
+        title: "Product updated successfully",
+      });
+    } catch (error) {
+      Modal.error({
+        title: "Error updating product",
+        content: error.message,
+      });
+    } finally {
+      dispatch(loadingDone());
+    }
+  };

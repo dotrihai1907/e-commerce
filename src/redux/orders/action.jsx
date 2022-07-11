@@ -22,7 +22,6 @@ export const getOrders = (accessToken) => async (dispatch) => {
 
 export const createOrder = (accessToken, newOrder) => async (dispatch) => {
   dispatch(loading());
-  console.log(accessToken, newOrder);
   try {
     await axios.post("/v1/orders", newOrder, {
       headers: { Authorization: "Bearer " + accessToken },
