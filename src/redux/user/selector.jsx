@@ -27,9 +27,9 @@ export const selectQueryUsers = createSelector(
   (userSlice) => userSlice?.queryUsers
 );
 
-export const selectIdUserUpdate = createSelector(
+export const selectIdUser = createSelector(
   [selectUserReducer],
-  (userSlice) => userSlice?.idUserUpdate
+  (userSlice) => userSlice?.idUser
 );
 
 export const selectUser = createSelector(

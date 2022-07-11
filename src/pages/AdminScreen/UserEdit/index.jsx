@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 import { getUser, updateUserById } from "../../../redux/user/action";
 
-import { selectIdUserUpdate, selectUser } from "../../../redux/user/selector";
+import { selectIdUser, selectUser } from "../../../redux/user/selector";
 import { selectAccessToken } from "../../../redux/auth/selector";
 
 const formItemLayout = {
@@ -40,7 +40,7 @@ const { Option } = Select;
 
 function UserEdit() {
   const accessToken = useSelector(selectAccessToken);
-  const idUserUpdate = useSelector(selectIdUserUpdate);
+  const idUserUpdate = useSelector(selectIdUser);
   const user = useSelector(selectUser);
 
   const [form] = Form.useForm();

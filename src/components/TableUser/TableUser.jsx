@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Rate } from "antd";
+import { Table } from "antd";
 import "antd/dist/antd.css";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
@@ -20,7 +20,7 @@ import {
   getQueryUsers,
   getAmountUsers,
   deleteUserById,
-  getIdUserUpdate,
+  getIdUser,
 } from "../../redux/user/action";
 
 export default function TableUser() {
@@ -74,12 +74,17 @@ export default function TableUser() {
 
   //----------update---------------------
   const handleUpdate = (idUpdate) => {
-    dispatch(getIdUserUpdate(idUpdate));
+    dispatch(getIdUser(idUpdate));
     navigate("/admin/user-edit");
   };
 
-  //--------------------------------------
+  //---------------user detail-----------------------
+  const handleUserDetail = (idUserDetail) => {
+    dispatch(getIdUser(idUserDetail));
+    navigate("/admin/user-detail-by-admin");
+  };
 
+  //-----------------------------
   useEffect(() => {
     dispatch(getAmountUsers(accessToken));
   }, []);
@@ -121,7 +126,10 @@ export default function TableUser() {
       sorter: (a, b) => a.user.text.name.length - b.user.text.name.length,
       sortDirections: ["descend", "ascend"],
       render: (user) => (
-        <div className="flex">
+        <div
+          className="flex cursor-pointer hover:opacity-60"
+          onClick={() => handleUserDetail(user.text.idUser)}
+        >
           <img src={user.image} className={style_css.image} />
           <div className="flex flex-col justify-around w-[200px]">
             <div className="flex justify-between">

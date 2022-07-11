@@ -7,7 +7,7 @@ const userSlice = createSlice({
     amountAdmins: 0,
     amountUsers: 0,
     queryUsers: null,
-    idUserUpdate: null,
+    idUser: null,
     user: null,
   },
   reducers: {
@@ -38,8 +38,8 @@ const userSlice = createSlice({
     getQueryUsersSuccess: (state, action) => {
       state.queryUsers = action.payload;
     },
-    getIdUserUpdateSuccess: (state, action) => {
-      state.idUserUpdate = action.payload;
+    getIdUserSuccess: (state, action) => {
+      state.idUser = action.payload;
     },
     getUserSuccess: (state, action) => {
       state.user = action.payload;
@@ -57,7 +57,7 @@ export const {
   getAmountAdminsSuccess,
   getAmountUsersSuccess,
   getQueryUsersSuccess,
-  getIdUserUpdateSuccess,
+  getIdUserSuccess,
   getUserSuccess,
 } = userSlice.actions;
 

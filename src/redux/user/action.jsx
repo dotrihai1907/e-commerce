@@ -12,7 +12,7 @@ import {
   getAmountAdminsSuccess,
   getAmountUsersSuccess,
   getQueryUsersSuccess,
-  getIdUserUpdateSuccess,
+  getIdUserSuccess,
   getUserSuccess,
 } from "./reducer";
 
@@ -64,7 +64,6 @@ export const changeUsername = (accessToken, username) => async (dispatch) => {
       }
     );
     dispatch(changeUsernameSuccess(data.data.data));
-    console.log(data.data.data);
     Modal.success({
       title: "Change username success",
     });
@@ -90,7 +89,6 @@ export const changePassword =
         }
       );
       dispatch(changePasswordSuccess(data.data.data));
-      console.log(data.data.data);
       Modal.success({
         title: "Change password success",
       });
@@ -115,7 +113,6 @@ export const changeContact = (accessToken, contact) => async (dispatch) => {
       }
     );
     dispatch(changeContactSuccess(data.data.data));
-    console.log(data.data.data);
     Modal.success({
       title: "Change contact success",
     });
@@ -210,8 +207,8 @@ export const deleteUserById = (accessToken, idDelete) => async (dispatch) => {
   }
 };
 
-export const getIdUserUpdate = (idUpdate) => async (dispatch) => {
-  dispatch(getIdUserUpdateSuccess(idUpdate));
+export const getIdUser = (id) => async (dispatch) => {
+  dispatch(getIdUserSuccess(id));
 };
 
 export const getUser = (accessToken, idUser) => async (dispatch) => {
