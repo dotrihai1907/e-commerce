@@ -28,7 +28,12 @@ function UserList() {
         style={{ display: "flex", justifyContent: "space-between" }}
       >
         <h1 className={style_css.heading}>User</h1>
-        <button className={style_css.addUser}>New user</button>
+        <button
+          onClick={() => navigate("/admin/user-create")}
+          className={style_css.addUser}
+        >
+          New user
+        </button>
       </div>
       <div className={style_css.contentTable}>
         <TableUser />

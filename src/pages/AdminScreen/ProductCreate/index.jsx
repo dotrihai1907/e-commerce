@@ -12,7 +12,6 @@ import UploadAvatar from "../../../components/UploadAvatar/UploadAvatar";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { createProduct } from "../../../redux/product/action";
 
@@ -41,7 +40,6 @@ function ProductCreate() {
   const accessToken = useSelector(selectAccessToken);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [name, setName] = useState();
   const [description, setDescription] = useState();

@@ -205,29 +205,31 @@ export default function TableUser() {
   ];
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "100%" }}>
+    <div style={{ width: "100%" }}>
       {isHidden && ConfirmDelete()}
       <Search placeholder={"Search Product"} />
-      <Table
-        style={{ width: "100%", backgroundColor: "#fff", height: "100%" }}
-        columns={columns}
-        dataSource={data}
-        className={style_less.style_table}
-        pagination={{
-          pageSize: Number(size),
-          total: Number(amountUsers),
-          onChange: (e) => setPage(e),
-        }}
-      />
-      <div className="absolute bottom-[20px] right-[31px]">
-        <span className={style_css.itemPerPage}>Items per page</span>
-        <input
-          type="number"
-          value={size}
-          max={7}
-          onChange={(e) => setSize(e.target.value)}
-          className={style_css.numberItem}
+      <div style={{ width: "100%", position: "relative" }}>
+        <Table
+          style={{ width: "100%", backgroundColor: "#fff", height: "100%" }}
+          columns={columns}
+          dataSource={data}
+          className={style_less.style_table}
+          pagination={{
+            pageSize: Number(size),
+            total: Number(amountUsers),
+            onChange: (e) => setPage(e),
+          }}
         />
+        <div className="absolute bottom-[20px] right-[31px]">
+          <span className={style_css.itemPerPage}>Items per page</span>
+          <input
+            type="number"
+            value={size}
+            max={7}
+            onChange={(e) => setSize(e.target.value)}
+            className={style_css.numberItem}
+          />
+        </div>
       </div>
     </div>
   );

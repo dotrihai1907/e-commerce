@@ -246,3 +246,22 @@ export const updateUserById =
       dispatch(loadingDone());
     }
   };
+
+export const createUser = (accessToken, userCreate) => async (dispatch) => {
+  dispatch(loading());
+  try {
+    await axios.post("/v1/users", userCreate, {
+      headers: { Authorization: "Bearer " + accessToken },
+    });
+    Modal.success({
+      title: "Create user successfully",
+    });
+  } catch (error) {
+    Modal.error({
+      title: "Error creating user",
+      content: error.message,
+    });
+  } finally {
+    dispatch(loadingDone());
+  }
+};

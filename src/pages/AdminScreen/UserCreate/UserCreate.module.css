@@ -33,6 +33,13 @@
   padding: 0 10px;
   border-radius: 5px;
 }
+
+.addUser:hover {
+  border: 1px solid #ffd333;
+  background-color: white;
+  color: #ffd333;
+}
+
 .breadcrumb {
   font-family: "Arial";
   font-style: normal;

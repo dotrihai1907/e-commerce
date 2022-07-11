@@ -68,7 +68,7 @@ function UserEdit() {
     email,
     password,
     contact,
-    role: role.toLowerCase(),
+    role: role?.toLowerCase(),
     isActive: isActive === "Active" ? true : false,
     isEmailVerified: isEmailVerified === "Yes" ? true : false,
     isContactVerified: isContactVerified === "Yes" ? true : false,

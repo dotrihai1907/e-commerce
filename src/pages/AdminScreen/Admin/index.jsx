@@ -44,7 +44,7 @@ function Admin() {
   const deviceId = useSelector(selectDeviceId);
 
   const profile = useSelector(selectProfile) ?? {};
-  const avatar = profile.avatar ?? "https://joeschmoe.io/api/v1/random";
+  const avatar = profile?.avatar ?? "https://joeschmoe.io/api/v1/random";
   const username = profile?.username;
 
   useEffect(() => {
