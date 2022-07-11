@@ -1,5 +1,5 @@
-import styleInfo from "./InfoProduct.module.css";
 import style_css from "./ProductEdit.module.css";
+import styleInfo from "./InfoProduct.module.css";
 import styles_css from "./Rating.module.css";
 
 import { Breadcrumb } from "antd";
@@ -280,8 +280,10 @@ function ProductEdit() {
               </div>
             </Form>
           </div>
+
           <div className="other flex flex-col justify-between ml-5 flex-[1_1_37.5%] bg-[#F5F7FA]">
             <UploadAvatar />
+            
             <div
               style={{
                 width: "431px",

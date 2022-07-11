@@ -144,3 +144,23 @@ export const updateProductById =
       dispatch(loadingDone());
     }
   };
+
+export const createProduct =
+  (accessToken, productCreate) => async (dispatch) => {
+    dispatch(loading());
+    try {
+      await axios.post("/v1/products", productCreate, {
+        headers: { Authorization: "Bearer " + accessToken },
+      });
+      Modal.success({
+        title: "Product created successfully",
+      });
+    } catch (error) {
+      Modal.error({
+        title: "Error creating product",
+        content: error.message,
+      });
+    } finally {
+      dispatch(loadingDone());
+    }
+  };
