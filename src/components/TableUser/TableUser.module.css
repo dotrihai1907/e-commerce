@@ -19,35 +19,98 @@
   border: 1px solid #929395;
   border-radius: 2px;
 }
-.nameUser {
+
+.title {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  color: #000000;
+}
+
+.id {
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
-  line-height: 23px;
-  /* identical to box height */
-
   color: #000000;
+  text-align: center;
 }
-.role {
+
+.image {
+  box-shadow: 0.5px 0.5px 12px rgba(0, 0, 0, 0.25);
+  width: 60px;
+  height: 60px;
+  margin-right: 11px;
+}
+
+.name {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  color: #000000;
+  line-height: 23px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.roleAdmin {
+  width: 60px;
+  height: 18px;
+  background: #4b9528;
+  border-radius: 10px;
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
-  line-height: 16px;
-
-  padding: 0 8px;
-  height: 18px;
+  line-height: 18px;
   color: #ffffff;
-  background-color: #4b9528;
-  border-radius: 10px;
-  max-width: 69px;
+  text-align: center;
 }
-.gmailUser {
+
+.roleUser {
+  float: right;
+  width: 60px;
+  height: 18px;
+  background: #e13a44;
+  border-radius: 10px;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.email {
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 21px;
   color: #3d464d;
+  line-height: 21px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.email:hover {
+  overflow: visible;
+  font-size: 15.5px;
+  transition: all 0.5s;
+}
+
+.verifyContact,
+.verifyEmail,
+.status,
+.contact {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  color: #000000;
 }

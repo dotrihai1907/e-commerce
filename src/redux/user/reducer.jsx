@@ -4,8 +4,10 @@ const userSlice = createSlice({
   name: "user",
   initialState: {
     profile: null,
-    allAdmins: null,
-    allUsers: null,
+    amountAdmins: 0,
+    amountUsers: 0,
+    queryUsers: null,
+    idUserUpdate: null,
   },
   reducers: {
     getProfileSuccess: (state, action) => {
@@ -26,11 +28,17 @@ const userSlice = createSlice({
     changeAvatarSuccess: (state, action) => {
       state.profile = action.payload;
     },
-    getAllAdminsSuccess: (state, action) => {
-      state.allAdmins = action.payload;
+    getAmountAdminsSuccess: (state, action) => {
+      state.amountAdmins = action.payload;
     },
-    getAllUsersSuccess: (state, action) => {
-      state.allUsers = action.payload;
+    getAmountUsersSuccess: (state, action) => {
+      state.amountUsers = action.payload;
+    },
+    getQueryUsersSuccess: (state, action) => {
+      state.queryUsers = action.payload;
+    },
+    getIdUserUpdateSuccess: (state, action) => {
+      state.idUserUpdate = action.payload;
     },
   },
 });
@@ -42,8 +50,10 @@ export const {
   changePasswordSuccess,
   changeContactSuccess,
   changeAvatarSuccess,
-  getAllAdminsSuccess,
-  getAllUsersSuccess,
+  getAmountAdminsSuccess,
+  getAmountUsersSuccess,
+  getQueryUsersSuccess,
+  getIdUserUpdateSuccess,
 } = userSlice.actions;
 
 export default userSlice.reducer;

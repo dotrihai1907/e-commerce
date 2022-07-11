@@ -1,20 +1,27 @@
+import style_css from "./UserList.module.css";
+
 import { Breadcrumb } from "antd";
-import Search from "../../../components/Search/Search";
+
 import TableUser from "../../../components/TableUser/TableUser";
 
-import style_css from "./UserList.module.css";
+import { useNavigate } from "react-router-dom";
+
 function UserList() {
+  const navigate = useNavigate();
+
+  const handleClickDashboard = () => {
+    navigate("/admin");
+  };
+
   return (
     <div className={style_css.userContent}>
       <Breadcrumb>
         <Breadcrumb.Item className={style_css.breadcrumb}>
-          Dashboard
-        </Breadcrumb.Item>
-        <Breadcrumb.Item>
-          <a href="" className={style_css.breadcrumb}>
-            User
+          <a onClick={handleClickDashboard} className={style_css.breadcrumb}>
+            Dashboard
           </a>
         </Breadcrumb.Item>
+        <Breadcrumb.Item className={style_css.breadcrumb}>User</Breadcrumb.Item>
       </Breadcrumb>
       <div
         className="mb-[47px] mt-[21px]"
@@ -24,7 +31,6 @@ function UserList() {
         <button className={style_css.addUser}>New user</button>
       </div>
       <div className={style_css.contentTable}>
-        <Search placeholder={"Search Product"} />
         <TableUser />
       </div>
     </div>

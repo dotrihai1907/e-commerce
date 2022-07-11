@@ -9,8 +9,10 @@ import {
   changePasswordSuccess,
   changeContactSuccess,
   changeAvatarSuccess,
-  getAllAdminsSuccess,
-  getAllUsersSuccess,
+  getAmountAdminsSuccess,
+  getAmountUsersSuccess,
+  getQueryUsersSuccess,
+  getIdUserUpdateSuccess,
 } from "./reducer";
 
 export const getProfile = (accessToken) => async (dispatch) => {
@@ -137,7 +139,6 @@ export const changeAvatar = (accessToken, avatar) => async (dispatch) => {
       }
     );
     dispatch(changeAvatarSuccess(data.data.data));
-    console.log(data.data.data);
     Modal.success({
       title: "Change avatar success",
     });
@@ -151,13 +152,13 @@ export const changeAvatar = (accessToken, avatar) => async (dispatch) => {
   }
 };
 
-export const getAllAdmins = (accessToken) => async (dispatch) => {
+export const getAmountAdmins = (accessToken) => async (dispatch) => {
   dispatch(loading());
   try {
-    const { data } = await axios.get(`/v1/users?role=admin&size=1000`, {
+    const { data } = await axios.get("/v1/users?role=admin", {
       headers: { Authorization: "Bearer " + accessToken },
     });
-    dispatch(getAllAdminsSuccess(data.data));
+    dispatch(getAmountAdminsSuccess(data.data.total));
   } catch (error) {
     Modal.error({
       content: error.message,
@@ -167,15 +168,47 @@ export const getAllAdmins = (accessToken) => async (dispatch) => {
   }
 };
 
-export const getAllUsers = (accessToken) => async (dispatch) => {
+export const getAmountUsers = (accessToken) => async (dispatch) => {
   dispatch(loading());
   try {
-    const { data } = await axios.get(`/v1/users?role=user&size=1000`, {
+    const { data } = await axios.get("/v1/users?role=user", {
       headers: { Authorization: "Bearer " + accessToken },
     });
-    dispatch(getAllUsersSuccess(data.data));
+    dispatch(getAmountUsersSuccess(data.data.total));
   } catch (error) {
   } finally {
     dispatch(loadingDone());
   }
+};
+
+export const getQueryUsers = (accessToken, size, page) => async (dispatch) => {
+  dispatch(loading());
+  try {
+    const { data } = await axios.get(`/v1/users?size=${size}&page=${page}`, {
+      headers: { Authorization: "Bearer " + accessToken },
+    });
+    dispatch(getQueryUsersSuccess(data.data));
+  } catch (error) {
+  } finally {
+    dispatch(loadingDone());
+  }
+};
+
+export const deleteUserById = (accessToken, idDelete) => async (dispatch) => {
+  dispatch(loading());
+  try {
+    await axios.delete(`/v1/users/${idDelete}`, {
+      headers: { Authorization: "Bearer " + accessToken },
+    });
+    Modal.success({
+      title: "Delete User successfully",
+    });
+  } catch (error) {
+  } finally {
+    dispatch(loadingDone());
+  }
+};
+
+export const getIdUserUpdate = (idUpdate) => async (dispatch) => {
+  dispatch(getIdUserUpdateSuccess(idUpdate));
 };

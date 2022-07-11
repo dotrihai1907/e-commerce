@@ -11,23 +11,23 @@ export const selectProfile = createSelector(
 
 //----------------------admins------------------------
 
-const selectAllAdmins = createSelector(
-  [selectUserReducer],
-  (userSlice) => userSlice?.allAdmins
-);
-
 export const selectAmountAdmins = createSelector(
-  [selectAllAdmins],
-  (allAdmins) => allAdmins?.total
+  [selectUserReducer],
+  (userSlice) => userSlice?.amountAdmins
 );
 
 //----------------------users------------------
-const selectAllUsers = createSelector(
+export const selectAmountUsers = createSelector(
   [selectUserReducer],
-  (userSlice) => userSlice?.allUsers
+  (userSlice) => userSlice?.amountUsers
 );
 
-export const selectAmountUsers = createSelector(
-  [selectAllUsers],
-  (allUsers) => allUsers?.total
+export const selectQueryUsers = createSelector(
+  [selectUserReducer],
+  (userSlice) => userSlice?.queryUsers
+);
+
+export const selectIdUserUpdate = createSelector(
+  [selectUserReducer],
+  (userSlice) => userSlice?.idUserUpdate
 );

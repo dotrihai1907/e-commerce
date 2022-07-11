@@ -16,7 +16,7 @@ import { selectAccessToken } from "../../../redux/auth/selector";
 import { selectAmountProducts } from "../../../redux/product/selector";
 import { selectAmountOrdersByAdmin } from "../../../redux/orders/selector";
 
-import { getAllAdmins, getAllUsers } from "../../../redux/user/action";
+import { getAmountAdmins, getAmountUsers } from "../../../redux/user/action";
 import { getAllProducts } from "../../../redux/product/action";
 import { getAmountOrdersByAdmin } from "../../../redux/orders/action";
 
@@ -30,11 +30,11 @@ function IndexAdmin() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllAdmins(accessToken));
+    dispatch(getAmountAdmins(accessToken));
   }, []);
 
   useEffect(() => {
-    dispatch(getAllUsers(accessToken));
+    dispatch(getAmountUsers(accessToken));
   }, []);
 
   useEffect(() => {
