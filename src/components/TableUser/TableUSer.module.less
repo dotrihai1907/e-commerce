@@ -3,7 +3,7 @@
 .style_table {
   :global {
     .ant-table-wrapper {
-      height: 100% !important;
+      max-height: 630px !important;
       font-size: 40px;
     }
     .ant-spin-nested-loading {
@@ -17,6 +17,12 @@
     }
     .ant-table-content {
       border-top: 2px solid #929395;
+      max-height: 651px;
+      max-height: 525px;
+      overflow-y: auto;
+    }
+    .ant-select-selector {
+      display: none;
     }
     .ant-table-thead {
       border-top: 2px #929395 solid;
@@ -92,6 +98,9 @@
       color: #ffd333;
       border: none;
       outline: none;
+    }
+    .ant-pagination-options {
+      border: none !important;
     }
     .ant-pagination > li > button > span {
       font-size: 14px;

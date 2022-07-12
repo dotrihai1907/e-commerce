@@ -3,11 +3,14 @@
   //----------------------------
   .introduction {
     display: flex;
+    min-width: 1163px;
+    max-height: 740px;
   }
   //----------------------------
   .benefit {
     display: flex;
     justify-content: space-between;
+    min-width: 1163px;
   }
   //---------------------------
   .banner {

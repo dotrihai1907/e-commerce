@@ -13,6 +13,7 @@
     line-height: 38px;
     color: #5b5b5b;
     cursor: pointer;
+    min-width: 1536px;
   }
   //------------------------
   .main {
@@ -20,6 +21,7 @@
     height: 124px;
     background: #ffd333;
     border-radius: 0 0 5px 5px;
+    min-width: 1536px;
     //------------------------
     .name {
       text-transform: uppercase;
@@ -30,6 +32,7 @@
       margin-left: 11.32%;
       margin-right: 15px;
       cursor: pointer;
+      min-width: 168px;
     }
     //------------------------
     .searchBar {

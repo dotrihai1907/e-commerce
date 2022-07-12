@@ -126,7 +126,7 @@ function UserCreate() {
         }}
       >
         <div
-          className="form mr-5 flex-[1_1_59%] bg-[#fff]"
+          className="form mr-5 flex-[1_1_59%] bg-[#fff] min-w-[550px]"
           style={{
             boxShadow: "0.5px 0.5px 12px rgba(0, 0, 0, 0.25)",
           }}

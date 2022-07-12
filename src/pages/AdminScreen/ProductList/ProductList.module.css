@@ -35,7 +35,7 @@
 }
 
 .userContent {
-  padding: 25px 32px 0px;
+  padding: 25px 32px 30px;
   background-color: #f5f7fa;
   height: 100%;
 }
@@ -46,6 +46,7 @@
   flex-direction: column;
   align-items: center;
   height: 760px;
+  max-height: 760px;
   box-shadow: 0.5px 0.5px 12px rgba(0, 0, 0, 0.25);
 }
 .breadcrumb {
