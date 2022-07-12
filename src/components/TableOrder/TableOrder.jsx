@@ -2,7 +2,6 @@ import React from "react";
 import { Table } from "antd";
 import "antd/dist/antd.css";
 import { FiEdit } from "react-icons/fi";
-import { RiDeleteBinLine } from "react-icons/ri";
 import style_css from "./TableOrder.module.css";
 import style_less from "./TableOrder.module.less";
 
