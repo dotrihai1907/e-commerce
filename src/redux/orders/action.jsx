@@ -88,3 +88,23 @@ export const getOrderById = (accessToken, idOrder) => async (dispatch) => {
     dispatch(loadingDone());
   }
 };
+
+export const updateOrder =
+  (accessToken, idOrder, orderUpdate) => async (dispatch) => {
+    dispatch(loading());
+    try {
+      await axios.patch(`/v1/orders/${idOrder}`, orderUpdate, {
+        headers: { Authorization: "Bearer " + accessToken },
+      });
+      Modal.success({
+        title: "Order updated successfully",
+      });
+    } catch (error) {
+      Modal.error({
+        title: "Error updating order",
+        content: error.message,
+      });
+    } finally {
+      dispatch(loadingDone());
+    }
+  };

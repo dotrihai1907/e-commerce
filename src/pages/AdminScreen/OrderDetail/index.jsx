@@ -11,13 +11,13 @@ import { Breadcrumb, Select, Table } from "antd";
 import { NavLink } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { selectIdOrder, selectOrderById } from "../../../redux/orders/selector";
 import { selectAccessToken } from "../../../redux/auth/selector";
 import { selectUser } from "../../../redux/user/selector";
 
-import { getOrderById } from "../../../redux/orders/action";
+import { getOrderById, updateOrder } from "../../../redux/orders/action";
 import { getUser } from "../../../redux/user/action";
 
 const { Option } = Select;
@@ -34,7 +34,17 @@ function OrderDetail() {
 
   const dispatch = useDispatch();
 
-  console.log(items);
+  const [status, setStatus] = useState(order?.status);
+  const [isPaid, setIsPaid] = useState(order?.isPaid);
+
+  const orderUpdate = {
+    status,
+    isPaid,
+  };
+
+  const handleUpdate = () => {
+    dispatch(updateOrder(accessToken, idOrder, orderUpdate));
+  };
 
   useEffect(() => {
     dispatch(getUser(accessToken, userId));
@@ -153,8 +163,9 @@ function OrderDetail() {
           <div className={styles.status}>
             <p>Status</p>
             <Select
+              value={status}
+              onChange={(e) => setStatus(e)}
               size="large"
-              defaultValue={order.status}
               className={styles.selectStatus}
             >
               <Option value="Processing">Processing</Option>
@@ -165,8 +176,9 @@ function OrderDetail() {
           <div className={styles.paided}>
             <p>Paided</p>
             <Select
+              value={isPaid ? "Yes" : "No"}
+              onChange={(e) => setIsPaid(e === "Yes" ? true : false)}
               size="large"
-              defaultValue={order.isPaid ? "Yes" : "No"}
               className={styles.selectPaided}
             >
               <Option value="Yes">Yes</Option>
@@ -174,7 +186,9 @@ function OrderDetail() {
             </Select>
           </div>
 
-          <button className={styles.button}>Update order</button>
+          <button onClick={handleUpdate} className={styles.button}>
+            Update order
+          </button>
         </div>
 
         <hr className={styles.firstDivider} />
@@ -188,9 +202,9 @@ function OrderDetail() {
             <div className={styles.textCustomer}>
               <p className={styles.nameCustomer}>Customer</p>
               <div className={styles.detailCustomer}>
-                <p className={styles.lineSpace}>Name: {user.username}</p>
-                <p className={styles.lineSpace}>Email: {user.email}</p>
-                <p className={styles.lineSpace}>Phone: {user.contact}</p>
+                <p className={styles.lineSpace}>Name: {user?.username}</p>
+                <p className={styles.lineSpace}>Email: {user?.email}</p>
+                <p className={styles.lineSpace}>Phone: {user?.contact}</p>
               </div>
             </div>
           </div>
