@@ -1,11 +1,12 @@
 .benefit {
   display: flex;
-  width: 280px;
+  min-width: 280px;
   height: 94px;
   background: #f8f8f8;
   border: 1px solid #dfd8d8;
   border-radius: 5px;
   margin-top: 8px;
+  width: 24%;
   //------------------------
   .icon {
     width: 41.13px;

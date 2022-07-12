@@ -23,6 +23,8 @@
     font-family: "Arial";
     font-style: normal;
     font-weight: 700;
+    justify-content: space-between;
+    min-width: 1163px;
     //------------------------
     .textBanner {
       font-size: 22px;
@@ -30,7 +32,7 @@
     }
     //---------------------------
     .buttonBanner {
-      position: absolute;
+      // position: absolute;
       box-sizing: border-box;
       width: 131px;
       height: 31px;
@@ -39,7 +41,7 @@
       font-size: 16px;
       border-radius: 56px;
       text-align: center;
-      right: 20px;
+      // right: 20px;
       margin-top: 6px;
       &:hover {
         color: #f0e36a;
@@ -51,16 +53,18 @@
   .list {
     display: flex;
     flex-wrap: wrap;
+    min-width: 1163px;
+    justify-content: space-between;
     .card {
       cursor: pointer;
       box-sizing: border-box;
       background: #fffcfc;
       border: 1px solid #b4b1b1;
       border-radius: 5px;
-      width: 280px;
+      min-width: 280px;
       height: 395px;
       margin-top: 19px;
-      margin-right: 8px;
+      width: 24%;
       //------------------------
       .photoCard {
         width: 233.18px;
