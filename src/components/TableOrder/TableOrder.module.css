@@ -21,29 +21,55 @@
   border: 1px solid #929395;
   border-radius: 2px;
 }
-.paidedComplete {
-  background-color: #ffd333;
-  border-radius: 20px;
-  padding: 1.5px 20px;
+
+.title {
   font-family: "Arial";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 20px;
   line-height: 23px;
-  /* identical to box height */
-
-  color: #ffffff;
+  color: #000000;
 }
-.paidedPending {
-  background-color: #366ab8;
-  border-radius: 20px;
+
+.id,
+.userId,
+.amount,
+.contact,
+.date,
+.status,
+.address {
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 23px;
-  /* identical to box height */
+  color: #000000;
+}
 
+.yes {
+  width: 72px;
+  height: 25px;
+  background: #ffd333;
+  border-radius: 20px;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
   color: #ffffff;
-  padding: 1.5px 20px;
+  text-align: center;
+}
+
+.no {
+  width: 72px;
+  height: 25px;
+  background: #366ab8;
+  border-radius: 20px;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  color: #ffffff;
+  text-align: center;
 }

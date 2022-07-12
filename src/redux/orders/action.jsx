@@ -2,7 +2,12 @@ import "antd/dist/antd.css";
 import { Modal } from "antd";
 import axios from "../../api/axios";
 import { loading, loadingDone } from "../auth/reducer";
-import { getOrdersSuccess, getAmountOrdersByAdminSuccess } from "./reducer";
+import {
+  getOrdersSuccess,
+  getAmountOrdersByAdminSuccess,
+  getQueryOrdersByAdminSuccess,
+  getIdOrderSuccess,
+} from "./reducer";
 
 export const getOrders = (accessToken) => async (dispatch) => {
   dispatch(loading());
@@ -50,4 +55,22 @@ export const getAmountOrdersByAdmin = (accessToken) => async (dispatch) => {
   } finally {
     dispatch(loadingDone());
   }
+};
+
+export const getQueryOrdersByAdmin =
+  (accessToken, size, page) => async (dispatch) => {
+    dispatch(loading());
+    try {
+      const { data } = await axios.get(`/v1/orders?size=${size}&page=${page}`, {
+        headers: { Authorization: "Bearer " + accessToken },
+      });
+      dispatch(getQueryOrdersByAdminSuccess(data.data.orders.result));
+    } catch (error) {
+    } finally {
+      dispatch(loadingDone());
+    }
+  };
+
+export const getIdOrder = (id) => async (dispatch) => {
+  dispatch(getIdOrderSuccess(id));
 };

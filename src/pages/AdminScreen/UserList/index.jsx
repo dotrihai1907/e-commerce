@@ -1,3 +1,4 @@
+import "antd/dist/antd.css";
 import style_css from "./UserList.module.css";
 
 import { Breadcrumb } from "antd";

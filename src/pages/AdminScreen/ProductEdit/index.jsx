@@ -1,3 +1,4 @@
+import "antd/dist/antd.css";
 import style_css from "./ProductEdit.module.css";
 import styleInfo from "./InfoProduct.module.css";
 import styles_css from "./Rating.module.css";

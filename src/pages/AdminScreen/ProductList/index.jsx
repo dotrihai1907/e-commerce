@@ -1,3 +1,4 @@
+import "antd/dist/antd.css";
 import { Breadcrumb } from "antd";
 import TableProduct from "../../../components/TableProduct/TableProduct";
 import styleProductList from "./ProductList.module.css";

@@ -1,29 +1,35 @@
+import "antd/dist/antd.css";
 import { Breadcrumb } from "antd";
-import Search from "../../../components/Search/Search";
 import TableOrder from "../../../components/TableOrder/TableOrder";
-
 import style_css from "./OrderList.module.css";
+import { useNavigate } from "react-router-dom";
+
 function OrderDetail() {
+  const navigate = useNavigate();
+
+  const handleClickDashboard = () => {
+    navigate("/admin");
+  };
+
   return (
     <div className={style_css.userContent}>
       <Breadcrumb>
         <Breadcrumb.Item className={style_css.breadcrumb}>
-          Dashboard
-        </Breadcrumb.Item>
-        <Breadcrumb.Item>
-          <a href="" className={style_css.breadcrumb}>
-            Order
+          <a onClick={handleClickDashboard} className={style_css.breadcrumb}>
+            Dashboard
           </a>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item className={style_css.breadcrumb}>
+          Order
         </Breadcrumb.Item>
       </Breadcrumb>
       <div
         className="mb-[47px] mt-[21px]"
         style={{ display: "flex", justifyContent: "space-between" }}
       >
-        <h1 className={style_css.heading}>Order</h1>
+        <h1 className={style_css.heading}>Orders</h1>
       </div>
       <div className={style_css.contentTable}>
-        <Search placeholder={"Search Order"} />
         <TableOrder />
       </div>
     </div>

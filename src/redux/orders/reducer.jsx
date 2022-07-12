@@ -5,6 +5,8 @@ const ordersSlice = createSlice({
   initialState: {
     orders: null,
     amountOrdersByAdmin: 0,
+    queryOrdersByAdmin: null,
+    idOrder: null,
   },
   reducers: {
     getOrdersSuccess: (state, action) => {
@@ -13,10 +15,20 @@ const ordersSlice = createSlice({
     getAmountOrdersByAdminSuccess: (state, action) => {
       state.amountOrdersByAdmin = action.payload;
     },
+    getQueryOrdersByAdminSuccess: (state, action) => {
+      state.queryOrdersByAdmin = action.payload;
+    },
+    getIdOrderSuccess: (state, action) => {
+      state.idOrder = action.payload;
+    },
   },
 });
 
-export const { getOrdersSuccess, getAmountOrdersByAdminSuccess } =
-  ordersSlice.actions;
+export const {
+  getOrdersSuccess,
+  getAmountOrdersByAdminSuccess,
+  getQueryOrdersByAdminSuccess,
+  getIdOrderSuccess,
+} = ordersSlice.actions;
 
 export default ordersSlice.reducer;

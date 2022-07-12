@@ -1,3 +1,4 @@
+import "antd/dist/antd.css";
 import styles_css from "./UserEdit.module.css";
 import style_less from "./InfoUser.module.less";
 import style_css from "./InfoUser.module.css";

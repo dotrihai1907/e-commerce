@@ -11,3 +11,13 @@ export const selectAmountOrdersByAdmin = createSelector(
   [selectOrdersReducer],
   (ordersSlice) => ordersSlice?.amountOrdersByAdmin
 );
+
+export const selectQueryOrdersByAdmin = createSelector(
+  [selectOrdersReducer],
+  (ordersSlice) => ordersSlice?.queryOrdersByAdmin
+);
+
+export const selectIdOrder = createSelector(
+  [selectOrdersReducer],
+  (ordersSlice) => ordersSlice?.idOrder
+);
