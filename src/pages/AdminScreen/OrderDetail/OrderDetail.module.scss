@@ -138,6 +138,11 @@
         border-radius: 5px;
         width: 147px;
         height: 40px;
+        &:hover {
+          border: 1px solid #ffd333;
+          background: white;
+          color: #ffd333;
+        }
       }
     }
     //----------------------------
@@ -284,6 +289,10 @@
             font-size: 16px;
             line-height: 19px;
             color: #3d464d;
+            white-space: nowrap;
+            overflow: scroll;
+            text-overflow: ellipsis;
+            max-width: 250px;
             //--------------------------
             .lineSpace {
               margin-bottom: 7px;
@@ -342,6 +351,12 @@
         height: 60px;
         box-shadow: 0.5px 0.5px 12px rgba(0, 0, 0, 0.25);
         margin-right: 17.2px;
+        // ------------------
+        .image {
+          width: 93.27px;
+          height: 60px;
+          box-shadow: 0.5px 0.5px 12px rgba(0, 0, 0, 0.25);
+        }
       }
       //------------------------
       .textProduct {

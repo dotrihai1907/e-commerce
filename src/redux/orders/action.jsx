@@ -7,6 +7,7 @@ import {
   getAmountOrdersByAdminSuccess,
   getQueryOrdersByAdminSuccess,
   getIdOrderSuccess,
+  getOrderByIdSuccess,
 } from "./reducer";
 
 export const getOrders = (accessToken) => async (dispatch) => {
@@ -73,4 +74,17 @@ export const getQueryOrdersByAdmin =
 
 export const getIdOrder = (id) => async (dispatch) => {
   dispatch(getIdOrderSuccess(id));
+};
+
+export const getOrderById = (accessToken, idOrder) => async (dispatch) => {
+  dispatch(loading());
+  try {
+    const { data } = await axios.get(`/v1/orders/${idOrder}`, {
+      headers: { Authorization: "Bearer " + accessToken },
+    });
+    dispatch(getOrderByIdSuccess(data.data));
+  } catch (error) {
+  } finally {
+    dispatch(loadingDone());
+  }
 };

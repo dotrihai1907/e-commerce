@@ -21,3 +21,8 @@ export const selectIdOrder = createSelector(
   [selectOrdersReducer],
   (ordersSlice) => ordersSlice?.idOrder
 );
+
+export const selectOrderById = createSelector(
+  [selectOrdersReducer],
+  (ordersSlice) => ordersSlice?.orderById
+);

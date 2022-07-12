@@ -6,25 +6,57 @@ import { FiUser } from "react-icons/fi";
 import { BsTruck } from "react-icons/bs";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 
-import { Breadcrumb, Divider, Select, Table, Avatar } from "antd";
+import { Breadcrumb, Select, Table } from "antd";
 
 import { NavLink } from "react-router-dom";
 
-function OrderDetail() {
-  const { Option } = Select;
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
-  const data = [
-    {
-      key: 0,
-      product: {
-        name: "Adidas",
-        ID: 240,
-      },
-      price: 200,
-      quantity: 2,
-      total: 400,
+import { selectIdOrder, selectOrderById } from "../../../redux/orders/selector";
+import { selectAccessToken } from "../../../redux/auth/selector";
+import { selectUser } from "../../../redux/user/selector";
+
+import { getOrderById } from "../../../redux/orders/action";
+import { getUser } from "../../../redux/user/action";
+
+const { Option } = Select;
+
+function OrderDetail() {
+  const accessToken = useSelector(selectAccessToken);
+  const idOrder = useSelector(selectIdOrder);
+  const orderById = useSelector(selectOrderById) ?? {};
+  const user = useSelector(selectUser);
+
+  const order = orderById?.order ?? {};
+  const userId = order.userId;
+  const items = orderById?.items ?? [];
+
+  const dispatch = useDispatch();
+
+  console.log(items);
+
+  useEffect(() => {
+    dispatch(getUser(accessToken, userId));
+  }, [userId]);
+
+  useEffect(() => {
+    dispatch(getOrderById(accessToken, idOrder));
+  }, [accessToken, idOrder]);
+
+  const data = items.map((item) => ({
+    key: item.id,
+    product: {
+      image: item.itemInfo.images[0].url,
+      name: item.itemInfo.name,
+      ID: item.itemInfo.id,
     },
-  ];
+    price: item.price,
+    quantity: item.quantity,
+    total: item.total,
+  }));
+
+  const totalAmount = data?.reduce((result, item) => result + item.total, 0);
 
   const columns = [
     {
@@ -37,7 +69,7 @@ function OrderDetail() {
       render: (product) => (
         <div className={styles.product}>
           <div className={styles.avatarProduct}>
-            <img src="https://media.istockphoto.com/photos/flag-of-malaysia-rectangular-icon-picture-id596378016" />
+            <img src={product.image} className={styles.image} />
           </div>
           <div className={styles.textProduct}>
             <p className={styles.textName}>{product.name}</p>
@@ -78,19 +110,24 @@ function OrderDetail() {
   return (
     <div className={styles.orderDetail}>
       <Breadcrumb className={styles.breadcrumb}>
-        <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
+        <Breadcrumb.Item>
+          <NavLink to="/admin" className={styles.orderList}>
+            Dashboard
+          </NavLink>
+        </Breadcrumb.Item>
         <Breadcrumb.Item>
           <NavLink to="/admin/order-list" className={styles.orderList}>
             Order
           </NavLink>
-          
         </Breadcrumb.Item>
-        <Breadcrumb.Item className={styles.orderId}>Order #789</Breadcrumb.Item>
+        <Breadcrumb.Item className={styles.orderId}>
+          Order #{order.id}
+        </Breadcrumb.Item>
       </Breadcrumb>
 
       <div className={styles.title}>
-        <p className={styles.name}>Order Detail #789</p>
-        <p className={styles.id}>Order ID: #789</p>
+        <p className={styles.name}>Order Detail #{order.id}</p>
+        <p className={styles.id}>Order ID: #{order.id}</p>
       </div>
 
       <div className={styles.detail}>
@@ -98,20 +135,26 @@ function OrderDetail() {
           <div className={styles.date}>
             <div className={styles.created}>
               <MdCalendarToday className={styles.iconCreated} />
-              <p className={styles.textCreated}>Created at: 19/07/2022</p>
+              <p className={styles.textCreated}>
+                Created at:{" "}
+                {order.createdAt?.slice(0, 10).split("-").reverse().join("/")}
+              </p>
             </div>
             <div className={styles.updated}>
               <MdEditCalendar className={styles.iconUpdated} />
-              <p className={styles.textUpdated}>Updated at: 19/07/2022</p>
+              <p className={styles.textUpdated}>
+                Updated at:{" "}
+                {order.updatedAt?.slice(0, 10).split("-").reverse().join("/")}
+              </p>
             </div>
-            <div className={styles.idOrder}>Order ID: 789</div>
+            <div className={styles.idOrder}>Order ID: {order.id}</div>
           </div>
 
           <div className={styles.status}>
             <p>Status</p>
             <Select
               size="large"
-              defaultValue="Processing"
+              defaultValue={order.status}
               className={styles.selectStatus}
             >
               <Option value="Processing">Processing</Option>
@@ -123,7 +166,7 @@ function OrderDetail() {
             <p>Paided</p>
             <Select
               size="large"
-              defaultValue="Yes"
+              defaultValue={order.isPaid ? "Yes" : "No"}
               className={styles.selectPaided}
             >
               <Option value="Yes">Yes</Option>
@@ -145,9 +188,9 @@ function OrderDetail() {
             <div className={styles.textCustomer}>
               <p className={styles.nameCustomer}>Customer</p>
               <div className={styles.detailCustomer}>
-                <p className={styles.lineSpace}>Name: Taylor Swift</p>
-                <p className={styles.lineSpace}>Email: taylorswift@gmail.com</p>
-                <p className={styles.lineSpace}>Phone: 0394892679</p>
+                <p className={styles.lineSpace}>Name: {user.username}</p>
+                <p className={styles.lineSpace}>Email: {user.email}</p>
+                <p className={styles.lineSpace}>Phone: {user.contact}</p>
               </div>
             </div>
           </div>
@@ -160,9 +203,13 @@ function OrderDetail() {
             <div className={styles.textShipping}>
               <p className={styles.nameShipping}>Order Info</p>
               <div className={styles.detailShipping}>
-                <p className={styles.lineSpace}>Status: Processing</p>
-                <p className={styles.lineSpace}>Pay method: Online</p>
-                <p className={styles.lineSpace}>Paided: Yes</p>
+                <p className={styles.lineSpace}>Status: {order.status}</p>
+                <p className={styles.lineSpace}>
+                  Pay method: {order.paymentMethod}
+                </p>
+                <p className={styles.lineSpace}>
+                  Paided: {order.isPaid ? "Yes" : "No"}
+                </p>
               </div>
             </div>
           </div>
@@ -175,7 +222,7 @@ function OrderDetail() {
             <div className={styles.textAddress}>
               <p className={styles.nameAddress}>Deliver to</p>
               <div className={styles.detailAddress}>
-                <p className={styles.lineSpace}>Address: Ha Noi</p>
+                <p className={styles.lineSpace}>Address: {order.address}</p>
                 <p className={styles.lineSpace}>Contact: 0948057744</p>
                 <p className={styles.lineSpace}>Shipper: GHTK</p>
               </div>
@@ -196,7 +243,7 @@ function OrderDetail() {
             footer={() => (
               <div className={styles.footerTable}>
                 <p className={styles.textFooter}>Total Amount :</p>
-                <p className={styles.numberFooter}>$800</p>
+                <p className={styles.numberFooter}>${totalAmount}</p>
               </div>
             )}
           />
