@@ -163,7 +163,6 @@ export default function TableOrder() {
           <input
             type="number"
             value={size}
-            max={7}
             onChange={(e) => setSize(e.target.value)}
             className={style_css.numberItem}
           />

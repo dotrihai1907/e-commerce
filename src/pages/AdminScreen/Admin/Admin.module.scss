@@ -39,8 +39,9 @@ li {
   //------------------------
   .navigation {
     // position: fixed;
-    width: 225px;
+    min-width: 225px;
     // z-index: 1000;
+    // height: ;
     transition: ease-in-out 0.5s;
     //--------------------------------
     .logo {
@@ -142,24 +143,28 @@ li {
   .container.expand {
     left: 0;
     .header {
-      width: 1440px;
+      width: 100%;
     }
     .content {
-      width: 1440px;
+      width: 100%;
     }
   }
   //----------------------------------
   .container {
+    width: calc(100% - 225px);
+    min-width: 1217px;
+    min-height: 1024px;
     position: absolute;
     left: 225px;
     transition: ease-in-out 0.5s;
     .header {
       display: flex;
       position: relative;
-      width: 1215px;
+      width: 100%;
       height: 78px;
       font-family: "Arial";
       font-weight: 400;
+      background-color: #fff;
       //-------------------------------
       .toggleMenu {
         position: absolute;
@@ -236,8 +241,8 @@ li {
     }
     //------------------------------
     .content {
-      width: 1215px;
-      height: 946px;
+      width: 100%;
+      height: 100%;
       background-color: #f5f7fa;
     }
   }

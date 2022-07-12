@@ -178,7 +178,7 @@ function ProductCreate() {
         }}
       >
         <div
-          className="form mr-5 flex-[1_1_59%] bg-[#fff]"
+          className="form mr-5 flex-[1_1_59%] bg-[#fff] min-w-[550px] "
           style={{
             boxShadow: "0.5px 0.5px 12px rgba(0, 0, 0, 0.25)",
           }}
@@ -263,7 +263,6 @@ function ProductCreate() {
 
           <div
             style={{
-              width: "431px",
               background: "#FFFFFF",
               boxShadow: "0.5px 0.5px 12px rgba(0, 0, 0, 0.25)",
               padding: "10px 0 29px",

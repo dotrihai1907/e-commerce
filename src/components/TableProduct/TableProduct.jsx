@@ -60,17 +60,23 @@ export default function TableProduct() {
     return (
       <div className={styles_scss.delete}>
         <div className={styles_scss.title}>Confirm Delete</div>
-        <hr className={styles_scss.firstDivider} />
+        <div className="border-t-[1px] border-[#929395] pb-[18px]"></div>
         <div className={styles_scss.content}>
           Are you sure to delete product #{idDelete}?
         </div>
-        <hr className={styles_scss.secondDivider} />
-        <button onClick={handleCancel} className={styles_scss.cancelButton}>
-          Cancel
-        </button>
-        <button onClick={handleDelete} className={styles_scss.deleteButton}>
-          Delete
-        </button>
+        <div className="border-b-[1px] border-[#929395] pt-[35px]"></div>
+
+        <div
+          className="mt-4 flex justify-end
+        px-6"
+        >
+          <button onClick={handleCancel} className={styles_scss.cancelButton}>
+            Cancel
+          </button>
+          <button onClick={handleDelete} className={styles_scss.deleteButton}>
+            Delete
+          </button>
+        </div>
       </div>
     );
   }
@@ -207,7 +213,7 @@ export default function TableProduct() {
   ];
 
   return (
-    <div style={{ width: "100%" }}>
+    <div style={{ width: "100%", position: "relative" }}>
       {isHidden && ConfirmDelete()}
       <Search placeholder={"Search Product"} />
       <div style={{ width: "100%", position: "relative" }}>
@@ -227,7 +233,6 @@ export default function TableProduct() {
           <input
             type="number"
             value={size}
-            max={7}
             onChange={(e) => setSize(e.target.value)}
             className={style_css.numberItem}
           />

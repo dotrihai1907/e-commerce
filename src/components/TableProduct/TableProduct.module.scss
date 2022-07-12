@@ -1,50 +1,56 @@
 .delete {
-  position: relative;
-  width: 663px;
+  position: absolute;
+  width: 40%;
   height: 221px;
   background: white;
   box-shadow: 5px 5px 15px 2px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   font-family: "Arial";
   font-style: normal;
-  margin: 50px auto 0px;
+  padding: 16px 0px 12px;
+
+  top: 25%;
+  left: 25%;
+  z-index: 1000;
   //--------------------------
   .title {
-    position: absolute;
+    // position: absolute;
     font-weight: 700;
     font-size: 25px;
-    margin-left: 24px;
-    margin-top: 17px;
+    padding-left: 24px;
+    padding-bottom: 20px;
+    // margin-left: 24px;
+    // margin-top: 17px;
   }
   //--------------------------
-  .firstDivider {
-    position: absolute;
-    height: 0px;
-    border-top: 1px solid #929395;
-    top: 42px;
-  }
+  // .firstDivider {
+  //   position: absolute;
+  //   height: 0px;
+  //   border-top: 1px solid #929395;
+  //   top: 42px;
+  // }
   //--------------------------
   .content {
-    position: absolute;
+    // position: absolute;
     font-weight: 400;
     font-size: 20px;
-    left: 25px;
-    top: 84px;
+    padding-left: 24px;
+    // left: 25px;
+    // top: 84px;
   }
   //--------------------------
-  .secondDivider {
-    position: absolute;
-    height: 0px;
-    border-top: 1px solid #929395;
-    top: 135px;
-  }
+  // .secondDivider {
+  //   position: absolute;
+  //   height: 0px;
+  //   border-top: 1px solid #929395;
+  //   top: 135px;
+  // }
   //--------------------------
   .cancelButton {
-    position: absolute;
+    // position: absolute;
     width: 108px;
     height: 38px;
-    top: 171px;
-    left: 410px;
+
     background: #c4c4c4;
     border-radius: 5px;
     font-weight: 400;
@@ -52,14 +58,15 @@
     cursor: pointer;
     text-align: center;
     line-height: 38px;
+    margin-right: 20px;
   }
   //--------------------------
   .deleteButton {
-    position: absolute;
+    // position: absolute;
     width: 108px;
     height: 38px;
-    top: 171px;
-    left: 539px;
+    // top: 171px;
+    // left: 539px;
     background: #f02020;
     color: white;
     border-radius: 5px;

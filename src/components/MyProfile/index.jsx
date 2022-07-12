@@ -1,6 +1,6 @@
 import "antd/dist/antd.css";
 import styles from "./MyProfile.module.scss";
-
+import style_less from "./MyProfile.module.less";
 import { Avatar, Table, Modal, Divider } from "antd";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -277,17 +277,19 @@ function MyProfile() {
         </div>
       </div>
 
-      <Table
-        className={styles.table}
-        dataSource={data}
-        columns={columns}
-        pagination={{
-          position: ["bottomCenter"],
-          pageSize: "4",
-        }}
-        bordered={false}
-        title={() => <div className={styles.titleTable}>Recent Orders</div>}
-      />
+      <div className={style_less.style_table}>
+        <Table
+          className={styles.table}
+          dataSource={data}
+          columns={columns}
+          pagination={{
+            position: ["bottomCenter"],
+            pageSize: "4",
+          }}
+          bordered={false}
+          title={() => <div className={styles.titleTable}>Recent Orders</div>}
+        />
+      </div>
     </div>
   );
 }
